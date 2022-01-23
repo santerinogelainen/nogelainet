@@ -17,16 +17,6 @@ const SlideAnimation = ({
     const openByDefault = React.useRef(open);
     const insetOpen = "inset(0% 0% 0% 0%)";
 
-    useDidUpdateEffect(() => {
-        const fromInset = open ? getInset(from) : insetOpen;
-        const toInset = open ? insetOpen : getInset(to);
-        
-        setInset(bg.current, fromInset);
-        const anim = animateInset(bg.current, toInset);
-
-        return () => anim.kill();
-    }, [open, animateInset]);
-
     const animateInset = React.useCallback((target, inset) => {
 
         if (before) {
@@ -69,6 +59,16 @@ const SlideAnimation = ({
         };
         gsap.set(target, options);
     }
+    
+    useDidUpdateEffect(() => {
+        const fromInset = open ? getInset(from) : insetOpen;
+        const toInset = open ? insetOpen : getInset(to);
+        
+        setInset(bg.current, fromInset);
+        const anim = animateInset(bg.current, toInset);
+
+        return () => anim.kill();
+    }, [open, animateInset]);
 
     return (
         <span ref={container} className="slide-animation-container">

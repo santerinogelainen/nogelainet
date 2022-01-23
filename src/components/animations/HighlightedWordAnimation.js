@@ -24,6 +24,21 @@ const HighlightedWordAnimation = ({
 
     const [state, setState] = React.useState(getInitialState());
 
+
+    const hideSlide = () => {
+        setState({
+            wordVisible: true,
+            slideOpen: false
+        });
+    }
+    
+    const showSlide = () => {
+        setState({
+            wordVisible: false,
+            slideOpen: true
+        });
+    }
+
     React.useEffect(() => {
 
         if (start) {
@@ -41,21 +56,7 @@ const HighlightedWordAnimation = ({
             setState(getInitialState());
         }
 
-    }, [start, visible, delay, showSlide])
-
-    const hideSlide = () => {
-        setState({
-            wordVisible: true,
-            slideOpen: false
-        });
-    }
-    
-    const showSlide = () => {
-        setState({
-            wordVisible: false,
-            slideOpen: true
-        });
-    }
+    }, [start, visible, delay, showSlide]);
 
     return (
         <span className="highlighted-word-container">
