@@ -1,4 +1,4 @@
-name: Master
+name: Prod
 
 on:
   #push:
