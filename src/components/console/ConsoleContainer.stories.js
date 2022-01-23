@@ -2,7 +2,7 @@ import React from "react";
 import ConsoleContainer from "./ConsoleContainer"
 import { SBContentPlaceholder } from "../../utils/storybookUtils";
 import { Commands, CommandsSBArgs } from "../../models/commands"
-import { Themes, ThemesSBArgs } from "../../state/slices/themeSlice"
+import { Themes, ThemesSBArgs } from "../../models/themes"
 
 export default {
     title: "Console/ConsoleContainer",

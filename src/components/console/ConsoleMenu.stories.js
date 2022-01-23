@@ -1,7 +1,7 @@
 import React from "react";
 import ConsoleMenu from "./ConsoleMenu";
 import { Commands, CommandsSBArgs } from "../../models/commands"
-import { Themes, ThemesSBArgs } from "../../state/slices/themeSlice"
+import { Themes, ThemesSBArgs } from "../../models/themes"
 
 export default {
     title: "Console/ConsoleMenu",
