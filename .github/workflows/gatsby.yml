@@ -23,17 +23,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
         uses: actions/checkout@v2
-        
-      - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install npm packages
-        run: npm install
-        
-      - name: Build gatsby
-        run: npm run build
 
       # Publish to azure static web apps
       - name: Azure Static Web Apps Deploy
@@ -41,9 +30,6 @@ jobs:
         with:
           # Action to perform
           action: 'upload'
-          # Directory location of the application source code
-          app_location: ./public/
-          # Required token
+          app_location: ./
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          # Skips the build step for the application source code if set to true.
-          skip_app_build: true
+          app_build_command: build
