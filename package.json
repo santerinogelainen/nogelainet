@@ -1,0 +1,52 @@
+{
+  "name": "nogelainet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "nogelainet",
+  "author": "Santeri Nogelainen",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.0.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@reduxjs/toolkit": "^1.7.1",
+    "gatsby": "^4.4.0",
+    "gatsby-plugin-sass": "^5.4.0",
+    "gsap": "^3.9.1",
+    "i18next": "^21.6.4",
+    "image-js": "^0.33.1",
+    "js-cookie": "^3.0.1",
+    "keycode-js": "^3.1.0",
+    "lodash": "^4.17.21",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-i18next": "^11.15.2",
+    "react-redux": "^7.2.6",
+    "redux-thunk": "^2.4.1",
+    "sass": "^1.45.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/builder-webpack5": "^6.4.9",
+    "@storybook/manager-webpack5": "^6.4.9",
+    "@storybook/react": "^6.4.9",
+    "babel-loader": "^8.2.3"
+  }
+}

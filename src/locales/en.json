@@ -1,0 +1,16 @@
+{
+    "hello": "Hello!",
+    "myNameIs": "My name is",
+    "imA": "I'm a {0}",
+    "basedIn": "based in {0}",
+    "tryTyping": "Try typing",
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "light": "Light",
+    "dark": "Dark",
+    "projectsHelpText": "Type 'projects' to see what I've done",
+    "aboutHelpText": "Type 'about' to learn more about me",
+    "contactHelpText": "Type 'contact' to find my contact details"
+}

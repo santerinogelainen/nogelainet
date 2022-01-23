@@ -1,0 +1,106 @@
+$color-background: #F2EFE9;
+$color-text: #0B0B0B;
+$color-muted: rgba(11,11,11,.15);
+$color-highlight: #F88379;
+
+.theme-light {
+    
+    background-color: $color-background;
+    color: $color-text;
+
+    .console-input-wrapper {
+
+        .console-input-placeholder {
+            color: $color-muted;
+        }
+
+        .console-input .console-input-suffix .console-input-autocomplete {
+            color: $color-muted;
+        }
+    }
+
+    .console-menu-wrapper {
+
+        .console-menu {
+
+            .console-menu-item {
+                
+                &.console-menu-item-active {
+                    .highlighted-word {
+                        color: $color-muted;
+                    }
+                }
+
+                &:hover:not(.console-menu-item-active) {
+                    .highlighted-word {
+                        color: $color-highlight;
+                    }
+                }
+            }
+        }
+    }
+
+    .console-menu-mobile-wrapper {
+        
+        .console-menu-mobile {
+
+            .console-menu-item {
+                
+                &.console-menu-item-active {
+                    .highlighted-word {
+                        color: $color-muted;
+                    }
+                }
+
+                &:hover:not(.console-menu-item-active) {
+                    .highlighted-word {
+                        color: $color-highlight;
+                    }
+                }
+            }
+        }
+
+        .console-menu-handle .console-menu-handle-line {
+            background-color: $color-text;
+        }
+    }
+
+    .console-input-caret {
+        background-color: $color-text;
+    }
+
+    span.name {
+        border-color: $color-text;
+    }
+
+    .slide-animation-container {
+
+        .slide-animation-bg {
+            background-color: $color-text;
+            color: $color-background;
+        }
+    
+        .slide-animation-content {
+            color: $color-text;
+        }
+    }
+
+    .socials {
+
+        .social-item {
+            color: $color-text;
+        }
+    
+        .social-item:hover {
+            color: $color-highlight;
+        }
+    }
+
+    .console-menu-item:hover:not(.console-menu-item-active) .highlighted-word {
+        color: $color-highlight;
+    }
+
+    .highlighted-word-container .highlighted-word {
+        color: $color-text;
+    }
+}
