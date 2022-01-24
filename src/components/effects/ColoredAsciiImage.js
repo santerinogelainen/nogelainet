@@ -1,29 +1,19 @@
 import React from "react";
 import IJS from "image-js";
+import { AsciiImageRamp } from "./AsciiImage"
 
 // https://marmelab.com/blog/2018/02/20/convert-image-to-ascii-art-masterpiece.html
 
-export const AsciiImageRamp = {
-    Default: "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,\"^`'. ",
-    Simple: "@%#*+=-:. ",
-    Block: "█▓▒░ "
-}
-
-export const AsciiImageRampSBArgs = {
-    options: AsciiImageRamp,
-    mapping: AsciiImageRamp,
-    control: {
-        type: 'select'
-    },
-}
-
-const AsciiImage = ({
+const ColoredAsciiImage = ({
     href = "",
     maxSize = 0,
-    ramp = AsciiImageRamp.Default
+    fontSize = 10,
+    ramp = AsciiImageRamp.Default,
+    width = 1000,
+    height = 1000
 }) => {
 
-    const [ascii, setAscii] = React.useState("");
+    const canvas = React.useRef(null);
     React.useEffect(() => loadImage());
 
     const loadImage = async () => {
@@ -31,7 +21,7 @@ const AsciiImage = ({
         if (!href) {
             return;
         }
-        
+
         const toGrayScale = (r, g, b) => 0.21 * r + 0.72 * g + 0.07 * b;
 
         const getCharacter = (grayscale) => {
@@ -39,7 +29,6 @@ const AsciiImage = ({
         }
 
         let image = await IJS.load(href);
-        const result = [];
 
         if (maxSize > 0) {
             image = image.resize({
@@ -48,24 +37,36 @@ const AsciiImage = ({
             });
         }
 
+        
+        const ratio = window.devicePixelRatio;
+        const ctx = canvas.current.getContext("2d");
+        ctx.font = `${fontSize}px monospace`;
+        ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
+        canvas.current.width = width * ratio;
+        canvas.current.height = height * ratio;
+        canvas.current.style.width = width + "px";
+        canvas.current.style.height = height + "px";
+        ctx.scale(ratio, ratio);
+
         for (var y = 0; y < image.height; y++) {
 
             for (var x = 0; x < image.width; x++) {
 
                 const pixel = image.getPixelXY(x, y);
                 const grayscale = toGrayScale(pixel[0], pixel[1], pixel[2]);
-                result.push(getCharacter(grayscale));
+                const char = getCharacter(grayscale);
+
+                ctx.fillStyle = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+                ctx.fillText(char, x * (fontSize / 1.5), y * fontSize);
             }
 
-            result.push("\n");              
         }
 
-        setAscii(result.join(""));
     };
 
     return (
-        <pre className="ascii-art">{ascii}</pre>
+        <canvas ref={canvas}></canvas>
     )
 }
 
-export default AsciiImage;
+export default ColoredAsciiImage;
