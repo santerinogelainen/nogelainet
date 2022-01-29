@@ -483,6 +483,18 @@ span.name {
 .ascii-art {
     margin: 0;
     padding: 0;
+    line-height: 0.9em;
+}
+
+.written-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.written-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 // X-Small devices (portrait phones, less than 576px)

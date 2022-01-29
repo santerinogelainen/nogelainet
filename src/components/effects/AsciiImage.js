@@ -19,7 +19,7 @@ export const AsciiImageRampSBArgs = {
 }
 
 const AsciiImage = ({
-    href = "",
+    src = "",
     maxSize = 0,
     animate = false,
     speed = 5,
@@ -35,11 +35,11 @@ const AsciiImage = ({
 
     const loadImage = React.useCallback(async () => {
 
-        if (!href) {
+        if (!src) {
             return;
         }
 
-        let image = await IJS.load(href);
+        let image = await IJS.load(src);
 
         if (maxSize > 0) {
             image = image.resize({
@@ -50,7 +50,7 @@ const AsciiImage = ({
 
         setImage(image);
 
-    }, [href, maxSize]);
+    }, [src, maxSize]);
 
     const loadAscii = React.useCallback(() => {
 
