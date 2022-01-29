@@ -83,8 +83,8 @@ const IndexView = ({
             speed={35}
             delay={delay || 0}
             onEnd={onEnd || nextPosition}
-            text={position < IndexPosition.Finish ? txt : ""}
-            textVisible={position >= IndexPosition.Finish ? txt : ""} />
+            text={txt}
+            finished={position >= IndexPosition.Finish} />
     }
 
     return (

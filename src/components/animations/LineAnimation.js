@@ -24,17 +24,17 @@ const LineAnimation = ({
         else {
             animateLines("0");
         }
-    });
+    }, [animateLines, visible]);
 
-    const animateLines = (size) => {
+    const animateLines = React.useCallback((size) => {
 
         animateLine(left.current, anchor1, Plane.Vertical, size, after);
         animateLine(top.current, anchor1, Plane.Horizontal, size);
         animateLine(right.current, anchor2, Plane.Vertical, size);
         animateLine(bottom.current, anchor2, Plane.Horizontal, size);
-    }
+    }, [animateLine, anchor1, anchor2, after]);
 
-    const animateLine = (line, anchor, plane, size, onComplete) => {
+    const animateLine = React.useCallback((line, anchor, plane, size, onComplete) => {
 
         setPosition(line, anchor);
 
@@ -56,10 +56,10 @@ const LineAnimation = ({
         }
 
         gsap.to(line, options);
-    }
 
+    }, [setPosition, speed]);
 
-    const setPosition = (line, anchor) => {
+    const setPosition = React.useCallback((line, anchor) => {
 
         switch (anchor) {
             case Anchor.TopLeft:
@@ -78,7 +78,7 @@ const LineAnimation = ({
                 gsap.set(line, { bottom: 0, right: 0, clearProps: "top,left" });
                 break;
         }
-    }
+    }, []);
 
     return (
         <div className="line-animation">

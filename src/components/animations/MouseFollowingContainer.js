@@ -33,9 +33,9 @@ const MouseFollowingContainer = ({
 
         }
 
-    }, [enabled]);
+    }, [enabled, update, updateMousePosition]);
 
-    const update = () => {
+    const update = React.useCallback(() => {
 
         if (!div.current) {
             return;
@@ -62,9 +62,10 @@ const MouseFollowingContainer = ({
         });
         
         state.current = current;
-    }
 
-    const updateMousePosition = (event) => {
+    }, [rotate, ease]);
+
+    const updateMousePosition = React.useCallback((event) => {
 
         state.current.mouse.x = event.clientX;
         state.current.mouse.y = event.clientY;
@@ -93,9 +94,8 @@ const MouseFollowingContainer = ({
                 state.current.mouse.y -= div.current.offsetHeight / 2;
                 break;
         }
-    }
+    }, []);
 
-    
     return (<div
         ref={div}
         className="mouse-following-container"

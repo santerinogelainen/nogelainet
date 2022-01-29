@@ -33,7 +33,7 @@ const SlideAnimation = ({
         return gsap.to(target, options);
     }, [before, after, speed]);
 
-    const getInset = (direction) => {
+    const getInset = React.useCallback((direction) => {
 
         switch (direction) {
 
@@ -51,14 +51,14 @@ const SlideAnimation = ({
                 return "inset(0% 0% 0% 100%)";
         }
 
-    }
+    }, []);
 
-    const setInset = (target, inset) => {
+    const setInset = React.useCallback((target, inset) => {
         const options = {
             clipPath: inset
         };
         gsap.set(target, options);
-    }
+    }, []);
     
     useDidUpdateEffect(() => {
         const fromInset = open ? getInset(from) : insetOpen;
@@ -68,7 +68,7 @@ const SlideAnimation = ({
         const anim = animateInset(bg.current, toInset);
 
         return () => anim.kill();
-    }, [open, animateInset]);
+    }, [from, to, open, animateInset, setInset, getInset]);
 
     return (
         <span ref={container} className="slide-animation-container">
