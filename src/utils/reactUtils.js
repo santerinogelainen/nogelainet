@@ -1,5 +1,6 @@
 import React from "react";
 import { DataContext } from "../data/dataContext";
+import { useSelector } from "react-redux";
 
 /**
  * Add an event listened to a ref that is also cleaned up afterwards
@@ -98,5 +99,22 @@ export const useFetchEntitiesEffect = (getTableClients, entities, setEntities) =
         return result;
     }
 
+
+}
+
+/**
+ * Set document title
+ */
+export const useTitle = (title) => {
+
+    const data = useSelector(x => x.data);
+
+    React.useEffect(() => {
+        document.title = title;
+
+        if (data.settings.FirstName && data.settings.LastName) {
+            document.title += " | " + data.settings.FirstName + " " + data.settings.LastName;
+        }
+    }, [title, data.settings.FirstName, data.settings.LastName]);
 
 }
