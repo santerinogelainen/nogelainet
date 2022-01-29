@@ -6,6 +6,9 @@ import ConsoleMenuMobile from "./ConsoleMenuMobile";
 import { Commands } from "../../models/commands";
 import { Themes } from "../../models/themes";
 import { nextCommand } from "../../commands/commandMapper";
+import { useDidMountEffect } from "../../utils/reactUtils";
+import { loadTheme } from "../../state/slices/themeSlice";
+import store from "../../state/store";
 
 export const ConsoleContainer = ({
     visible = false,
@@ -17,13 +20,16 @@ export const ConsoleContainer = ({
 }) => {
 
     const content = React.useRef(null);
-
     const [inputVisible, setInputVisible] = React.useState(visible);
     const [menuVisible, setMenuVisible] = React.useState(visible);
 
     const nextPageEvent = React.useCallback((event) => {
         onCommand(nextCommand(activePage));
     }, [activePage]);
+
+    useDidMountEffect(() => {
+        store.dispatch(loadTheme);
+    }, []);
 
     React.useEffect(() => {
 

@@ -11,9 +11,7 @@ import "./src/styles/global.scss";
 import "./src/styles/theme-dark.scss";
 import "./src/styles/theme-light.scss";
 import { fetchData } from "./src/state/slices/dataSlice";
-import { loadTheme } from "./src/state/slices/themeSlice";
 
-store.dispatch(loadTheme);
 store.dispatch(fetchData);
 
 const RootElement = ({ element }) => {
