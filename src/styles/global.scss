@@ -468,6 +468,11 @@ span.name {
 .about {
     max-width: 70%;
     overflow: hidden;
+
+    .fade-animation-container {
+        position: relative;
+        z-index: 1;
+    }
 }
 
 .about-text {

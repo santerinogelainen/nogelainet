@@ -6,7 +6,8 @@ const WrittenImage = ({
     src = "",
     maxSize = 100,
     speed = 400,
-    after = null
+    afterText = null,
+    afterImage = null
 }) => {
 
     const img = React.useRef(null);
@@ -33,6 +34,10 @@ const WrittenImage = ({
 
         setTimeout(() => {
 
+            if (afterText) {
+                afterText();
+            }
+
             if (img.current && container.current) {
 
                 resizeImage(img.current, container.current);
@@ -41,7 +46,7 @@ const WrittenImage = ({
                     opacity: 1,
                     duration: speed / 1000,
                     ease: Power2.easeInOut,
-                    onComplete: after
+                    onComplete: afterImage
                 });
             }
 
