@@ -5,11 +5,29 @@ import gsap, { Power2 } from "gsap";
 const WrittenImage = ({
     src = "",
     maxSize = 100,
-    speed = 400
+    speed = 400,
+    after = null
 }) => {
 
     const img = React.useRef(null);
     const container = React.useRef(null);
+
+    React.useEffect(() => {
+        const currentImage = img.current;
+        const currentContainer = container.current;
+
+        window.addEventListener("resize", () => resizeImage(currentImage, currentContainer));
+        return () => window.removeEventListener("resize", () => resizeImage(currentImage, currentContainer));
+    });
+
+    const resizeImage = (currentImage, currentContainer) => {
+        if (currentImage && currentContainer) {
+            gsap.set(currentImage, {
+                width: currentContainer.offsetWidth,
+                height: currentContainer.offsetHeight
+            });
+        }
+    }
 
     const showImage = React.useCallback(() => {
 
@@ -17,15 +35,13 @@ const WrittenImage = ({
 
             if (img.current && container.current) {
 
-                gsap.set(img.current, {
-                    width: container.current.offsetWidth,
-                    height: container.current.offsetHeight
-                });
+                resizeImage(img.current, container.current);
         
                 gsap.to(img.current, {
                     opacity: 1,
                     duration: speed / 1000,
-                    ease: Power2.easeInOut
+                    ease: Power2.easeInOut,
+                    onComplete: after
                 });
             }
 

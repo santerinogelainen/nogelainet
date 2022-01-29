@@ -1,6 +1,6 @@
 $color-background: #F2EFE9;
 $color-text: #0B0B0B;
-$color-muted: rgba(11,11,11,.15);
+$color-muted: rgba(208, 205, 200);
 $color-highlight: #F88379;
 
 .theme-light {
@@ -102,5 +102,9 @@ $color-highlight: #F88379;
 
     .highlighted-word-container .highlighted-word {
         color: $color-text;
+    }
+
+    .about-text {
+        background-color: $color-background;
     }
 }

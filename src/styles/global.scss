@@ -4,7 +4,7 @@ $color-highlight: #82F7D3;
 $color-white: #F2EFE9;
 $color-black: #0B0B0B;
 $color-link: #89CFF0;
-$muted-white: rgba($color-white, 0.15);
+$muted-white: rgb(45, 45, 44);
 
 * {
     box-sizing: border-box;
@@ -466,9 +466,22 @@ span.name {
 }
 
 .about {
-    max-height: 100%;
-    font-size: 2rem;
     max-width: 70%;
+    overflow: hidden;
+}
+
+.about-text {
+    z-index: 1;
+    position: relative;
+    background-color: $color-black;
+    display: inline;
+}
+
+.about-image {
+    z-index: 0;
+    right: 10%;
+    top: 10%;
+    position: absolute;
 }
 
 .home {
@@ -483,7 +496,9 @@ span.name {
 .ascii-art {
     margin: 0;
     padding: 0;
-    line-height: 0.9em;
+    font-size: 1.5vh;
+    letter-spacing: 0.2em;
+    line-height: 0.75em;
 }
 
 .written-image-container {

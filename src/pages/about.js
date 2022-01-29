@@ -12,7 +12,7 @@ const AboutPage = () => {
     useTitle(t("about"));
 
     return (
-        <AboutView text={data.settings.About} />
+        <AboutView text={data.settings.About} image={data.settings.AboutImage} />
     )
 }
 
