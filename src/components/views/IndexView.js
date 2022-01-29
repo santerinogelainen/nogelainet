@@ -29,6 +29,18 @@ const IndexView = ({
     const { t } = useTranslation();
     const nameContainer = React.useRef();
 
+    const showImage = React.useCallback(() => setImageVisible(true), []);
+    const hideImage = React.useCallback(() => setImageVisible(false), []);
+    
+    const finishAnimations = React.useCallback(() => {
+
+        setPosition(IndexPosition.Finish);
+
+        if (onComplete) {
+            onComplete();
+        }
+    }, [onComplete]);
+
     React.useEffect(() => {
 
         const currentName = nameContainer.current;
@@ -51,18 +63,6 @@ const IndexView = ({
             }
         }
     }, [showImage, hideImage, finishAnimations]);
-
-    const showImage = React.useCallback(() => setImageVisible(true), []);
-    const hideImage = React.useCallback(() => setImageVisible(false), []);
-
-    const finishAnimations = React.useCallback(() => {
-
-        setPosition(IndexPosition.Finish);
-
-        if (onComplete) {
-            onComplete();
-        }
-    }, [onComplete]);
 
     const nextPosition = () => {
         if (position >= IndexPosition.Finish) {

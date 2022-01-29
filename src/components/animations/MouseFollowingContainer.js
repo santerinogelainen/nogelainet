@@ -19,22 +19,6 @@ const MouseFollowingContainer = ({
         mouse: new Position()
     });
 
-    React.useEffect(() => {
-
-        if (enabled) {
-
-            document.addEventListener("mousemove", updateMousePosition);
-            gsap.ticker.add(update);
-    
-            return () => {
-                document.removeEventListener("mousemove", updateMousePosition);
-                gsap.ticker.remove(update);
-            }
-
-        }
-
-    }, [enabled, update, updateMousePosition]);
-
     const update = React.useCallback(() => {
 
         if (!div.current) {
@@ -95,6 +79,22 @@ const MouseFollowingContainer = ({
                 break;
         }
     }, []);
+
+    React.useEffect(() => {
+
+        if (enabled) {
+
+            document.addEventListener("mousemove", updateMousePosition);
+            gsap.ticker.add(update);
+    
+            return () => {
+                document.removeEventListener("mousemove", updateMousePosition);
+                gsap.ticker.remove(update);
+            }
+
+        }
+
+    }, [enabled, update, updateMousePosition]);
 
     return (<div
         ref={div}
