@@ -9,10 +9,17 @@ const slice = createSlice({
     reducers: {
         changeTheme: (state, action) => {
             Cookies.set("theme", action.payload);
+            const body = document.getElementsByTagName("body")[0];
+            body.className = "theme " + action.payload;
             return action.payload;
         }
     },
 });
 
 export const themeActions = slice.actions;
+
+export const loadTheme = (dispatch) => {
+    dispatch(themeActions.changeTheme(Cookies.get("theme")));
+}
+
 export default slice

@@ -11,8 +11,9 @@ import "./src/styles/global.scss";
 import "./src/styles/theme-dark.scss";
 import "./src/styles/theme-light.scss";
 import { fetchData } from "./src/state/slices/dataSlice";
-import ThemeContainer from "./src/components/ThemeContainer";
+import { loadTheme } from "./src/state/slices/themeSlice";
 
+store.dispatch(loadTheme);
 store.dispatch(fetchData);
 
 const RootElement = ({ element }) => {
@@ -31,18 +32,16 @@ const PageElementWithHooks = (props) => {
     const location = useLocation();
 
     return (
-        <ThemeContainer>
-            <div className="app">
-                <ConsoleContainer 
-                    visible={view.controlsVisible}
-                    commands={data.commands}
-                    activePage={mapPageToCommand(location.pathname)}
-                    activeTheme={theme}
-                    onCommand={runCommand}>
-                    {props.children}
-                </ConsoleContainer>
-            </div>
-        </ThemeContainer>
+        <div className="app">
+            <ConsoleContainer 
+                visible={view.controlsVisible}
+                commands={data.commands}
+                activePage={mapPageToCommand(location.pathname)}
+                activeTheme={theme}
+                onCommand={runCommand}>
+                {props.children}
+            </ConsoleContainer>
+        </div>
     )
 }
 
