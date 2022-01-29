@@ -15,9 +15,9 @@ export const Default = Template.bind({});
 
 Default.args = {
     href: "https://picsum.photos/id/1003/1181/1772",
-    maxSize: 250,
+    maxSize: 100,
     ramp: AsciiImageRamp.Default,
     animate: false,
-    speed: 20
+    speed: 5
 };
 

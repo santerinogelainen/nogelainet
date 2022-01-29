@@ -22,13 +22,16 @@ const AsciiImage = ({
     href = "",
     maxSize = 0,
     animate = false,
-    speed = 20,
+    speed = 5,
+    after = null,
     ramp = AsciiImageRamp.Default
 }) => {
 
     const [image, setImage] = React.useState(null);
     const [ascii, setAscii] = React.useState("");
+    const [maxIndex, setMaxIndex] = React.useState(0);
     const [index, setIndex] = React.useState(0);
+    const [result, setResult] = React.useState("");
 
     const loadImage = React.useCallback(async () => {
 
@@ -75,13 +78,14 @@ const AsciiImage = ({
             result.push("\n");              
         }
 
+        setMaxIndex(image.width + image.height);
         setAscii(result.join(""));
 
     }, [image, ramp]);
 
-    const startAnimation = React.useCallback(() => {
+    const startIndex = React.useCallback(() => {
 
-        if (animate && ascii) {
+        if (animate && ascii && index < maxIndex) {
 
             const interval = setInterval(() => {
                 setIndex(index + 1);
@@ -90,16 +94,21 @@ const AsciiImage = ({
             return () => clearInterval(interval);
         }
 
-    }, [animate, ascii, speed, index]);
+        if (ascii && (!animate || index == maxIndex)) {
+            if (after) {
+                after();
+            }
+        }
+
+    }, [animate, ascii, speed, index, maxIndex]);
 
     const resetIndex = React.useCallback(() => setIndex(0), [animate, ascii]);
 
-    const getAscii = () => {
+    const loadResult = React.useCallback(() => {
 
-        if (animate && ascii) {
+        if (animate && ascii && index < maxIndex) {
             
             let lines = ascii.split("\n");
-
             lines = _.map(lines, (line, i) => {
                 let position = index - i;
 
@@ -115,19 +124,22 @@ const AsciiImage = ({
                 return visible + _.repeat(" ", line.length - visible.length);
             });
 
-            return lines.join("\n");
+            setResult(lines.join("\n"));
+        }
+        else {
+            setResult(ascii);
         }
 
-        return ascii;
-    }
+    }, [animate, ascii, index, maxIndex]);
 
     React.useEffect(() => loadImage(), [loadImage]);
     React.useEffect(() => loadAscii(), [loadAscii]);
-    React.useEffect(() => startAnimation(), [startAnimation]);
+    React.useEffect(() => loadResult(), [loadResult]);
+    React.useEffect(() => startIndex(), [startIndex]);
     React.useEffect(() => resetIndex(), [resetIndex]);
 
     return (
-        <pre className="ascii-art">{getAscii()}</pre>
+        <pre className="ascii-art">{result}</pre>
     )
 }
 
