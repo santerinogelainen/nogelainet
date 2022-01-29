@@ -50,19 +50,19 @@ const IndexView = ({
                 document.removeEventListener("click", finishAnimations);
             }
         }
-    });
+    }, [showImage, hideImage, finishAnimations]);
 
-    const showImage = () => setImageVisible(true);
-    const hideImage = () => setImageVisible(false);
+    const showImage = React.useCallback(() => setImageVisible(true), []);
+    const hideImage = React.useCallback(() => setImageVisible(false), []);
 
-    const finishAnimations = () => {
+    const finishAnimations = React.useCallback(() => {
 
         setPosition(IndexPosition.Finish);
 
         if (onComplete) {
             onComplete();
         }
-    }
+    }, [onComplete]);
 
     const nextPosition = () => {
         if (position >= IndexPosition.Finish) {

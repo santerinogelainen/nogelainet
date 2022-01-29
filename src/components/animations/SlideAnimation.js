@@ -15,7 +15,7 @@ const SlideAnimation = ({
     const bg = React.useRef();
     const container = React.useRef();
     const openByDefault = React.useRef(open);
-    const insetOpen = "inset(0% 0% 0% 0%)";
+    const insetOpen = React.useRef("inset(0% 0% 0% 0%)");
 
     const animateInset = React.useCallback((target, inset) => {
 
@@ -60,19 +60,21 @@ const SlideAnimation = ({
         gsap.set(target, options);
     }, []);
     
+    const fromInset = React.useMemo(() => getInset(from), [from]);
+    const toInset = React.useMemo(() => getInset(to), [to]);
+
     useDidUpdateEffect(() => {
-        const fromInset = open ? getInset(from) : insetOpen;
-        const toInset = open ? insetOpen : getInset(to);
-        
-        setInset(bg.current, fromInset);
-        const anim = animateInset(bg.current, toInset);
+
+        setInset(bg.current, open ? fromInset : insetOpen.current);
+        const anim = animateInset(bg.current, open ? insetOpen.current : toInset);
 
         return () => anim.kill();
-    }, [from, to, open, animateInset, setInset, getInset]);
+
+    }, [open]);
 
     return (
         <span ref={container} className="slide-animation-container">
-            <span ref={bg} className="slide-animation-bg" style={{ zIndex: 1, clipPath: openByDefault.current ? insetOpen : getInset(from) }}>
+            <span ref={bg} className="slide-animation-bg" style={{ zIndex: 1, clipPath: openByDefault.current ? insetOpen.current : fromInset }}>
                 {props.children}
             </span>
             <span className="slide-animation-content" style={{ zIndex: 0 }}>

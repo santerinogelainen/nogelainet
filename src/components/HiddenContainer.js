@@ -23,7 +23,7 @@ const HiddenContainer = ({
 
             setEnabled(true);
         }
-    }
+    };
     
     const disable = () => {
         if (!visible) {
@@ -34,7 +34,7 @@ const HiddenContainer = ({
 
             setEnabled(false);
         }
-    }
+    };
 
     return (
         <MouseFollowingContainer
