@@ -65,7 +65,7 @@ const HighlightedWordAnimation = ({
                 to={to}
                 open={state.slideOpen}
                 after={state.slideOpen ? hideSlide : onComplete}>
-                <span className="highlighted-word" style={{opacity: state.wordVisible ? 1 : 0}}>
+                <span className={"highlighted-word" + (state.wordVisible ? " highlighted-word-visible" : "")}>
                     {word || props.children}
                 </span>
             </SlideAnimation>

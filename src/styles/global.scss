@@ -437,7 +437,14 @@ span.name {
     position: relative;
     display: inline-block;
 
+    .slide-animation-content {
+        .highlighted-word-visible {
+            opacity: 1;
+        }
+    }
+
     .highlighted-word {
+        opacity: 0;
         color: $color-white;
     }
 }
