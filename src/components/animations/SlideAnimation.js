@@ -15,6 +15,7 @@ const SlideAnimation = ({
     const bg = React.useRef();
     const container = React.useRef();
     const openByDefault = React.useRef(open);
+    const anim = React.useRef(null);
     const insetOpen = React.useRef("inset(0% 0% 0% 0%)");
 
     const animateInset = React.useCallback((target, clipPath) => {
@@ -66,11 +67,17 @@ const SlideAnimation = ({
     useDidUpdateEffect(() => {
 
         setInset(bg.current, open ? fromInset : insetOpen.current);
-        const anim = animateInset(bg.current, open ? insetOpen.current : toInset);
+        anim.current = animateInset(bg.current, open ? insetOpen.current : toInset);
 
-        return () => anim.kill();
+        return () => anim.current?.kill();
 
     }, [open]);
+
+    useDidUpdateEffect(() => {
+        if (anim.current && anim.current.vars && anim.current.isActive()) {
+            anim.current.vars.onComplete = after;
+        }
+    }, [after]);
 
     return (
         <span ref={container} className="slide-animation-container">

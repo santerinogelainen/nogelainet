@@ -64,7 +64,7 @@ const IndexView = ({
         }
     }, [showImage, hideImage, finishAnimations]);
 
-    const nextPosition = () => {
+    const nextPosition = React.useCallback(() => {
         if (position >= IndexPosition.Finish) {
             return;
         }
@@ -72,7 +72,7 @@ const IndexView = ({
         const futurePositions = _.filter(IndexPosition, x => x > position);
         const nextPosition = _.min(futurePositions);
         setPosition(nextPosition ?? IndexPosition.Finish);
-    }
+    }, [position]);
 
     const writtenText = (animPosition, text, delay, onEnd) => {
 
@@ -94,7 +94,8 @@ const IndexView = ({
                     { writtenText(IndexPosition.Hello, t("hello")) }
                     { writtenText(IndexPosition.MyNameIs, t("myNameIs")) }
                         <HighlightedWordAnimation 
-                            start={position >= IndexPosition.Name} 
+                            start={position == IndexPosition.Name} 
+                            visible={position > IndexPosition.Name}
                             speed={400} 
                             onComplete={nextPosition}>
                             <span className="name" ref={nameContainer}>
