@@ -467,12 +467,16 @@ span.name {
 }
 
 .about {
-    max-width: 70%;
-    overflow: hidden;
+    display: flex;
 
     .fade-animation-container {
         position: relative;
         z-index: 1;
+    }
+    
+    .about-text-container {
+        display: flex;
+        align-items: flex-end;
     }
 
     .about-text {
@@ -484,10 +488,9 @@ span.name {
     }
 
     .about-image {
+        margin-left: -100px;
+        padding-right: 18vw;
         z-index: 0;
-        right: 10%;
-        top: 10%;
-        position: absolute;
     }
 }
 
@@ -576,6 +579,12 @@ span.name {
             font-size: 2rem;
         }
     }
+
+    .about {
+        .about-image {
+            padding-right: 14vw;
+        }
+    }
 }
 // X-Large devices (large desktops, 1200px and up)
 @media (max-width: 1000px) {
@@ -586,6 +595,13 @@ span.name {
 
         .console-menu-item:nth-child(2) {
             margin-left: 5px;
+        }
+    }
+
+    
+    .about {
+        .about-image {
+            padding-right: 8vw;
         }
     }
 }
@@ -642,6 +658,11 @@ span.name {
 
     .about {
         max-width: 100%;
+        
+        .about-image {
+            padding-right: 0;
+            margin-left: -200px;
+        }
     }
 
     .project-item {
@@ -685,6 +706,14 @@ span.name {
     .project-item {
         .block-button-container {
             margin-left: -10px;
+        }
+    }
+
+    .about {
+        .about-image {
+            position: absolute;
+            top: 25px;
+            right: 25px;
         }
     }
 
