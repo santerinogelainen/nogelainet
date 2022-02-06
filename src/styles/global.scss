@@ -224,7 +224,6 @@ body {
 
     .console-menu-mobile {
         display: none;
-        display: flex;
         flex-direction: column;
         position: absolute;
         bottom: 50px;
@@ -525,6 +524,16 @@ span.name {
     height: 100%;
 }
 
+.project-item {
+    .project-item-nr-mobile {
+        display: none;
+    }
+    
+    .block-button-container {
+        margin-left: -15px;
+    }
+}
+
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 // Small devices (landscape phones, 576px and up)
@@ -534,6 +543,19 @@ span.name {
 @media (max-width: 1200px) {
     .large-text {
         font-size: 2.5rem;
+    }
+
+    .block-button-container {
+        .block-button {
+            font-size: 2.5rem;
+            padding: 5px 10px;
+        }
+    }
+
+    .project-item {
+        .block-button-container {
+            margin-left: -10px;
+        }
     }
 
     .console-menu {
@@ -606,6 +628,8 @@ span.name {
 
     .home {
 
+        max-width: 80%;
+
         .home-line {
             flex-direction: column;
             align-items: flex-start;
@@ -624,6 +648,17 @@ span.name {
     .about {
         max-width: 100%;
     }
+
+    .project-item {
+        .project-item-nr {
+            display: none;
+        }
+
+        .project-item-nr-mobile {
+            display: block;
+            margin-top: 5px;
+        }
+    }
 }
 // Large devices (desktops, 992px and up)
 @media (max-width: 992px) {
@@ -636,12 +671,26 @@ span.name {
 // Medium devices (tablets, 768px and up)
 @media (max-width: 600px) {
     .large-text {
-        font-size: 10vw;
+        font-size: 8.5vw;
     }
 
     .console-menu-mobile-wrapper {
         .console-menu-item {
-            font-size: 10vw;
+            font-size: 8.5vw;
         }
     }
+
+    .block-button-container {
+        .block-button {
+            font-size: 8.5vw;
+            padding: 4px 8px;
+        }
+    }
+
+    .project-item {
+        .block-button-container {
+            margin-left: -10px;
+        }
+    }
+
 }

@@ -11,18 +11,28 @@ const ProjectsView = ({
 
     const speed = 300;
 
-    return <div className="projects">
-        {projects.map((project, index) => {
-            return <div className="project-item" key={index}>
+    const items = projects.map((project, index) => {
+        const nr = padStart((index + 1).toString(), 2, "0");
+        return (
+            <div className="project-item" key={index}>
+                <div className="project-item-nr-mobile">
+                    {nr}
+                </div>
                 <HighlightedWordAnimation 
                     start={true} 
                     delay={index * (speed / 1.5)} 
                     speed={speed} 
                     onComplete={index === projects.length - 1 ? onComplete : null}>
-                    <BlockButton text={padStart((index + 1).toString(), 2, "0") + " / " + project.Name} />
+                    <BlockButton>
+                        <span className="project-item-nr">{nr + " / "}</span>{project.Name}
+                    </BlockButton>
                 </HighlightedWordAnimation>
-            </div>;
-        })}
+            </div>
+        );
+    });
+
+    return <div className="projects">
+        {items}
     </div>;
 
 }

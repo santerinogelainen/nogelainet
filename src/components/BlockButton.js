@@ -2,7 +2,11 @@ import React from "react";
 import SlideAnimation from "./animations/SlideAnimation";
 import { Direction } from "../models/direction";
 
-const BlockButton = ({text = "", onClick = null}) => {
+const BlockButton = ({
+    text = "", 
+    onClick = null, 
+    ...props
+}) => {
 
     const [slideOpen, setSlideOpen] = React.useState(false);
 
@@ -16,7 +20,7 @@ const BlockButton = ({text = "", onClick = null}) => {
                 from={Direction.Left}
                 to={Direction.Right}>
                 <div className="block-button noselect">
-                    {text}
+                    {text || props.children}
                 </div>
             </SlideAnimation>
         </div>
