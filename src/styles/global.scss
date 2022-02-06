@@ -227,18 +227,12 @@ body {
         flex-direction: column;
         position: absolute;
         bottom: 50px;
-        margin: 30px;
+        margin: 35px 30px;
         left: 0;
 
         
         .console-menu-item {
             cursor: pointer;
-
-            &.console-menu-item-active {
-                .highlighted-word {
-                    color: $muted-white;
-                }
-            }
 
             &:hover:not(.console-menu-item-active) {
                 .highlighted-word {
@@ -249,7 +243,7 @@ body {
     }
 
     .console-menu-handle {
-        width: 40px;
+        width: 35px;
         height: 15px;
         cursor: pointer;
         margin: 30px;
@@ -480,20 +474,21 @@ span.name {
         position: relative;
         z-index: 1;
     }
-}
 
-.about-text {
-    z-index: 1;
-    position: relative;
-    background-color: $color-black;
-    display: inline;
-}
+    .about-text {
+        font-size: 16px;
+        z-index: 1;
+        position: relative;
+        background-color: $color-black;
+        display: inline;
+    }
 
-.about-image {
-    z-index: 0;
-    right: 10%;
-    top: 10%;
-    position: absolute;
+    .about-image {
+        z-index: 0;
+        right: 10%;
+        top: 10%;
+        position: absolute;
+    }
 }
 
 .home {
@@ -599,7 +594,7 @@ span.name {
 
     .app {
         padding: 25px;
-        padding-bottom: 100px;
+        padding-bottom: 85px;
     }
 
     .large-text {

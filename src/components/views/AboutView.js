@@ -12,14 +12,14 @@ const AboutView = ({
 
     return (
         <div className="about">
+            <div className="about-image">
+                <WrittenImage src={image} speed={400} maxSize={55} afterText={() => setTextVisible(true)} />
+            </div>
             <FadeAnimation visible={textVisible} speed={400} after={onComplete}>
                 <span className="large-text about-text">
                     {text}
                 </span>
             </FadeAnimation>
-            <div className="about-image">
-                <WrittenImage src={image} speed={400} maxSize={65} afterText={() => setTextVisible(true)} />
-            </div>
         </div>
     )
 }
