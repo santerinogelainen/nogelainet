@@ -3,6 +3,8 @@ import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
 import { useTranslation } from "react-i18next";
 import { Commands } from "../../models/commands";
 import ConsoleMenuItem from "./ConsoleMenuItem";
+import { nextCommand } from "../../commands/commandMapper";
+import SlideAnimation from "../animations/SlideAnimation";
 
 const ConsoleMenu = ({
     visible = false,
@@ -24,7 +26,7 @@ const ConsoleMenu = ({
         return <ConsoleMenuItem 
             key={index}
             visible={visible}
-            delay={index * speed}
+            delay={(index + 1) * speed}
             name={t(item).toLowerCase()} 
             speed={speed}
             active={item === activeItem}

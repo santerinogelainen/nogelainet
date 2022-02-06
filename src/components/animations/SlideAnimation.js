@@ -5,9 +5,9 @@ import { useDidUpdateEffect } from "../../utils/reactUtils";
 
 const SlideAnimation = ({ 
     open = false, 
-    speed = 400, 
+    speed = 400,
     from = Direction.Left, 
-    to = Direction.Right, 
+    to = Direction.Right,
     before = null, 
     after = null, 
     ...props }) => {
@@ -17,7 +17,7 @@ const SlideAnimation = ({
     const openByDefault = React.useRef(open);
     const insetOpen = React.useRef("inset(0% 0% 0% 0%)");
 
-    const animateInset = React.useCallback((target, inset) => {
+    const animateInset = React.useCallback((target, clipPath) => {
 
         if (before) {
             before();
@@ -26,7 +26,7 @@ const SlideAnimation = ({
         const options = {
             duration: speed / 1000,
             ease: Power3.easeInOut,
-            clipPath: inset,
+            clipPath: clipPath,
             onComplete: after
         };
 
@@ -51,11 +51,11 @@ const SlideAnimation = ({
                 return "inset(0% 0% 0% 100%)";
         }
 
-    }, []);
+    });
 
-    const setInset = React.useCallback((target, inset) => {
+    const setInset = React.useCallback((target, clipPath) => {
         const options = {
-            clipPath: inset
+            clipPath: clipPath
         };
         gsap.set(target, options);
     }, []);
