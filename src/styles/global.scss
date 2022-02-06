@@ -217,6 +217,7 @@ body {
     
     display: none;
     position: absolute;
+    align-items: flex-end;
     width: 100%;
     left: 0;
     bottom: 0;
@@ -227,14 +228,12 @@ body {
         flex-direction: column;
         position: absolute;
         bottom: 50px;
-        margin: 35px;
+        margin: 30px;
         left: 0;
 
         
         .console-menu-item {
             cursor: pointer;
-            
-            font-size: 2.5rem;
 
             &.console-menu-item-active {
                 .highlighted-word {
@@ -254,7 +253,7 @@ body {
         width: 40px;
         height: 15px;
         cursor: pointer;
-        margin: 35px;
+        margin: 30px;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
@@ -595,6 +594,10 @@ span.name {
 
     .console-menu-mobile-wrapper {
         display: flex;
+
+        .console-menu-item {
+            font-size: 3rem;
+        }
     }
 
     .home-line-1 {
@@ -634,5 +637,11 @@ span.name {
 @media (max-width: 600px) {
     .large-text {
         font-size: 10vw;
+    }
+
+    .console-menu-mobile-wrapper {
+        .console-menu-item {
+            font-size: 10vw;
+        }
     }
 }
