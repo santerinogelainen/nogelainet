@@ -9,6 +9,7 @@ const HiddenContainer = ({
     anchor = Anchor.Center,
     onHide = null,
     onShow = null,
+    zIndex = -1,
     ...props
 }) => {
 
@@ -41,7 +42,7 @@ const HiddenContainer = ({
             enabled={enabled}
             rotate={rotate}
             anchor={anchor}
-            zIndex={-1}>
+            zIndex={zIndex}>
             <FadeAnimation 
                 visible={visible} 
                 before={enable}

@@ -42,7 +42,7 @@ const SocialMediaItem = ({
         <a ref={item} className="social-item" target="_blank" rel="noreferrer" aria-label={social.Name} href={social.Url}>
             {social.Name}
         </a>
-        <HiddenContainer visible={tooltipVisible} rotate={false} anchor={Anchor.BottomLeft}>
+        <HiddenContainer zIndex={5} visible={tooltipVisible} rotate={false} anchor={Anchor.BottomLeft}>
             <span className="target-blank social-tooltip">{social.Username}</span>
         </HiddenContainer>
     </div>
