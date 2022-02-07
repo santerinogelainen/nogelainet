@@ -13,6 +13,16 @@ const ContactView = ({
 
     const { t } = useTranslation();
     const speed = 300;
+    const parts = email.split("@");
+    let emailJsx = [email];
+
+    if (parts.length === 2) {
+        emailJsx = [
+            parts[0],
+            <span className="email-at">@</span>,
+            parts[1]
+        ];
+    }
 
     const sendEmail = () => {
         window.location.href = "mailto:" + email;
@@ -27,7 +37,9 @@ const ContactView = ({
                     start={true} 
                     speed={speed} 
                     onComplete={onComplete}>
-                <BlockButton text={email} onClick={ sendEmail } />
+                <BlockButton onClick={ sendEmail }>
+                    {emailJsx}
+                </BlockButton>
             </HighlightedWordAnimation>
         </div>
         <SocialMediaList socials={socials} />
