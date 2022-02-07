@@ -7,6 +7,7 @@ import { Commands } from "../../models/commands";
 import { Themes } from "../../models/themes";
 import { useDidMountEffect } from "../../utils/reactUtils";
 import { loadTheme } from "../../state/slices/themeSlice";
+import { fetchData } from "../../state/slices/dataSlice";
 import store from "../../state/store";
 
 export const ConsoleContainer = ({
@@ -19,10 +20,14 @@ export const ConsoleContainer = ({
 }) => {
 
     const content = React.useRef(null);
+    const [dataLoading, setDataLoading] = React.useState(true);
     const [inputVisible, setInputVisible] = React.useState(visible);
     const [menuVisible, setMenuVisible] = React.useState(visible);
 
     useDidMountEffect(() => {
+        store.dispatch(fetchData).then(() => {
+            setDataLoading(false);
+        });
         store.dispatch(loadTheme);
     }, []);
 
@@ -37,7 +42,7 @@ export const ConsoleContainer = ({
         Commands.Projects,
         Commands.About,
         Commands.Contact,
-        activeTheme == Themes.Light ? 
+        activeTheme === Themes.Light ? 
             Commands.Dark : 
             Commands.Light,
         Commands.Home
@@ -46,7 +51,7 @@ export const ConsoleContainer = ({
     return (
         <div className="console-view">
             <div className="console-view-content" ref={content}>
-                {props.children}
+                {dataLoading ? "loading..." : props.children}
             </div>
             <div className="console-view-controls">
                 <ConsoleInput visible={inputVisible} commands={commands} onCommand={onCommand} />

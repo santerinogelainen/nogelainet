@@ -10,9 +10,6 @@ import "./src/i18n";
 import "./src/styles/global.scss";
 import "./src/styles/theme-dark.scss";
 import "./src/styles/theme-light.scss";
-import { fetchData } from "./src/state/slices/dataSlice";
-
-store.dispatch(fetchData);
 
 const RootElement = ({ element }) => {
     return (
