@@ -9,6 +9,7 @@ import { useDidMountEffect } from "../../utils/reactUtils";
 import { loadTheme } from "../../state/slices/themeSlice";
 import { fetchData } from "../../state/slices/dataSlice";
 import store from "../../state/store";
+import Loader from "../Loader";
 
 export const ConsoleContainer = ({
     visible = false,
@@ -51,7 +52,7 @@ export const ConsoleContainer = ({
     return (
         <div className="console-view">
             <div className="console-view-content" ref={content}>
-                {dataLoading ? "loading..." : props.children}
+                {dataLoading ? <Loader/> : props.children}
             </div>
             <div className="console-view-controls">
                 <ConsoleInput visible={inputVisible} commands={commands} onCommand={onCommand} />
