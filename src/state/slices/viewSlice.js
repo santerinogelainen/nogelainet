@@ -9,6 +9,7 @@ const slice = createSlice({
     reducers: {
         setControlsVisible: (state, action) => {
             state.controlsVisible = action.payload;
+            return state;
         }
     },
 });
