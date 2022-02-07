@@ -118,3 +118,13 @@ export const useTitle = (title) => {
     }, [title, data.settings.FirstName, data.settings.LastName]);
 
 }
+
+/**
+ * Use and cleanup an interval
+ */
+export const useInterval = (callback, speed, inputs) => {
+    React.useEffect(() => {
+        const interval = setInterval(callback, speed);
+        return () => clearInterval(interval);
+    }, inputs);
+}

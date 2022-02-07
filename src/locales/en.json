@@ -13,5 +13,6 @@
     "projectsHelpText": "Type 'projects' to see what I've done",
     "aboutHelpText": "Type 'about' to learn more about me",
     "contactHelpText": "Type 'contact' to find my contact details",
-    "feelFreeToContactMe": "Feel free to contact me!"
+    "feelFreeToContactMe": "Feel free to contact me!",
+    "loading": "Loading"
 }
