@@ -1,20 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { DataContext } from '../../data/dataContext';
 
+const initialState = {
+    commands: {},
+    settings: {},
+    images: [],
+    projects: [],
+    employers: [],
+    socials: []
+};
+
 const slice = createSlice({
     name: 'data',
     // `createSlice` will infer the state type from the `initialState` argument
-    initialState: {
-        commands: {},
-        settings: {},
-        images: [],
-        projects: [],
-        employers: [],
-        socials: []
-    },
+    initialState: initialState,
     reducers: {
         set: (state, action) => {
-            return action.payload;
+            return action.payload || initialState;
         }
     },
 });

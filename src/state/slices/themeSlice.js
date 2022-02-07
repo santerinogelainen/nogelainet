@@ -8,10 +8,11 @@ const slice = createSlice({
     initialState: Cookies.get("theme") || Themes.Dark,
     reducers: {
         changeTheme: (state, action) => {
-            Cookies.set("theme", action.payload);
+            const theme = action.payload || Themes.Dark;
+            Cookies.set("theme", theme);
             const body = document.getElementsByTagName("body")[0];
-            body.className = "theme " + action.payload;
-            return action.payload;
+            body.className = "theme " + theme;
+            return theme;
         }
     },
 });
