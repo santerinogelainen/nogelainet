@@ -85,6 +85,7 @@ body {
 
 .mouse-following-container {
     position: fixed;
+    pointer-events: none;
     width: auto;
     height: auto;
 }
