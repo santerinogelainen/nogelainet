@@ -2,6 +2,7 @@ import React from "react";
 import { Commands } from "../../models/commands";
 import { useTranslation } from "react-i18next";
 import ConsoleMenuItem from "./ConsoleMenuItem";
+import FadeAnimation from "../animations/FadeAnimation";
 import gsap, { Power2 } from "gsap";
 import { useDidUpdateEffect } from "../../utils/reactUtils";
 
@@ -34,23 +35,25 @@ const ConsoleMenuMobile = ({
 
     useDidUpdateEffect(() => {
 
+        const app = document.getElementsByClassName("app");
+            
         gsap.set(".console-view-content", {
             filter: open ? "blur(10px)" : "none"
         });
 
         if (open) {
-            gsap.set(menu.current, {
-                display: "flex"
-            });
+            gsap.set(menu.current, { display: "flex" });
+            gsap.set(app, { overflow: "hidden" });
         }
 
         gsap.to(menu.current, {
-            duration: 0.3,
+            duration: 0.2,
             ease: Power2.easeInOut,
             opacity: open ? 1 : 0,
             onComplete: () => {
 
                 if (!open) {
+                    gsap.set(app, { delay: 0.2, clearProps: "overflow" });
                     gsap.set(menu.current, {
                         display: "none"
                     });
@@ -65,7 +68,7 @@ const ConsoleMenuMobile = ({
         if (!menu.current) {
             return;
         }
-        
+
         setOpen(!open);
     }
     
@@ -104,10 +107,12 @@ const ConsoleMenuMobile = ({
             <div className="console-menu-mobile" ref={menu}>
                 { menuItems }
             </div>
-            <div className="console-menu-handle" ref={handle} style={{ opacity: visible ? 1 : 0 }}>
-                <div className="console-menu-handle-line" />
-                <div className="console-menu-handle-line" />
-            </div>
+            <FadeAnimation visible={visible}>
+                <div className="console-menu-handle" ref={handle} style={{ opacity: visible ? 1 : 0 }}>
+                    <div className="console-menu-handle-line" />
+                    <div className="console-menu-handle-line" />
+                </div>
+            </FadeAnimation>
         </div>
     )
 }
