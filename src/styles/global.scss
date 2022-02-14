@@ -72,6 +72,12 @@ body {
         position: absolute;
         background-color: $color-white;
         color: $color-black;
+
+        .block-button,
+        .project-item-nr,
+        .email-at {
+            color: $color-black;
+        }
     }
 
     .slide-animation-content {
@@ -189,6 +195,7 @@ body {
         margin-bottom: 1em;
         margin-left: -1em;
         background-color: $color-black;
+        color: $color-white;
         z-index: 5;
     }
 }
@@ -248,7 +255,7 @@ body {
         .console-menu-item {
             cursor: pointer;
 
-            &:hover:not(.console-menu-item-active) {
+            &:hover {
                 .highlighted-word {
                     color: $color-highlight;
                 }
@@ -286,6 +293,7 @@ body {
     .console-input:focus-visible {
         position: absolute;
         background-color: transparent;
+        max-width: 90%;
         outline: none;
         border: 0;
         top: 0;
@@ -298,7 +306,23 @@ body {
     }
 
     .console-input-placeholder {
-        color: $muted-white;
+
+        .written-text-container {
+            max-width: 100%;
+            display: inline-block;
+
+            .written-text-visible {
+                max-width: 100%;
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .written-text-visible {
+            color: $muted-white;
+        }
         text-overflow: ellipsis;
         font-size: 2.5rem;
         left: 40px;
@@ -437,6 +461,16 @@ span.break-lg {
 span.name {
     display: inline-block;
     border-bottom: 1px solid $color-white;
+    color: $color-white;
+}
+
+.large-text,
+.written-text-visible,
+.project-item-nr,
+.block-button,
+.email-at,
+.about-text {
+    color: $color-white;
 }
 
 .highlighted-word-container {
@@ -693,7 +727,11 @@ span.name {
 
         .project-item-nr-mobile {
             display: block;
-            margin-top: 5px;
+            color: $muted-white;
+            font-weight: normal;
+            margin-top: -5px;
+            margin-left: -15px;
+            margin-bottom: -8px;
         }
     }
 }
@@ -708,18 +746,18 @@ span.name {
 // Medium devices (tablets, 768px and up)
 @media (max-width: 600px) {
     .large-text {
-        font-size: 8.5vw;
+        font-size: 8vw;
     }
 
     .console-menu-mobile-wrapper {
         .console-menu-item {
-            font-size: 8.5vw;
+            font-size: 8vw;
         }
     }
 
     .block-button-container {
         .block-button {
-            font-size: 8.5vw;
+            font-size: 8vw;
             padding: 4px 8px;
         }
     }

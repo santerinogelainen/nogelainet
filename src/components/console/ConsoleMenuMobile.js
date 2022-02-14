@@ -111,10 +111,11 @@ const ConsoleMenuHandle = ({
     const line1 = React.useRef(null);
     const line2 = React.useRef(null);
 
-    const animateLine = React.useCallback((target, rotate, translateY) => {
+    const animateLine = React.useCallback((target, rotate, translateY, translateX) => {
         gsap.to(target, {
             duration: 0.2,
             rotate: rotate,
+            translateX: translateX,
             translateY: translateY
         });
     }, []);
@@ -122,12 +123,12 @@ const ConsoleMenuHandle = ({
     useDidUpdateEffect(() => {
 
         if (open) {
-            animateLine(line1.current, 45, 6);
-            animateLine(line2.current, -45, -6);
+            animateLine(line1.current, 45, 6, -3);
+            animateLine(line2.current, -45, -6, -3);
         }
         else {
-            animateLine(line1.current, 0, 0);
-            animateLine(line2.current, 0, 0);
+            animateLine(line1.current, 0, 0, 0);
+            animateLine(line2.current, 0, 0, 0);
         }
 
     }, [open]);
