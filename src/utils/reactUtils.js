@@ -18,6 +18,14 @@ export const useEventListener = (ref, type, callback) => {
 
 };
 
+export const useWindowEventListener = (type, callback) => {
+    
+    React.useEffect(() => {
+        window.addEventListener(type, callback);
+        return () => window.removeEventListener(type, callback);
+    }, [type, callback]);
+}
+
 /**
  * Similar to componentDidUpdate, use effect only after the first mount
  */

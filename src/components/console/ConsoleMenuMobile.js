@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import ConsoleMenuItem from "./ConsoleMenuItem";
 import FadeAnimation from "../animations/FadeAnimation";
 import gsap, { Power2 } from "gsap";
-import { useDidUpdateEffect } from "../../utils/reactUtils";
+import { useDidUpdateEffect, useWindowEventListener } from "../../utils/reactUtils";
 
 const ConsoleMenuMobile = ({
     visible = false,
@@ -13,7 +13,6 @@ const ConsoleMenuMobile = ({
     onCommand = null
 }) =>  {
 
-    const handle = React.useRef(null);
     const menu = React.useRef(null);
 
     const speed = 200;
@@ -21,17 +20,34 @@ const ConsoleMenuMobile = ({
 
     const [open, setOpen] = React.useState(false); 
 
-    React.useEffect(() => {
+    const toggleMenu = () => {
 
-        const currentHandle = handle.current;
-
-        currentHandle?.addEventListener("mouseup", toggleMenu);
-        window.addEventListener('resize', closeMenu);
-        return () => {
-            currentHandle?.removeEventListener("mouseup", toggleMenu);
-            window.removeEventListener('resize', closeMenu);
+        if (!menu.current) {
+            return;
         }
-    });
+
+        setOpen(!open);
+    }
+    
+    const closeMenu = () => {
+        if (open) {
+            toggleMenu();
+        }
+    }
+
+    const runCommand = (command, event) => {
+
+        if(onCommand) {
+            onCommand(command, event);
+        }
+
+        // close mobile menu
+        if (open) {
+            setOpen(false);
+        }
+    }
+
+    useWindowEventListener('resize', closeMenu);
 
     useDidUpdateEffect(() => {
 
@@ -63,33 +79,6 @@ const ConsoleMenuMobile = ({
 
     }, [open]);
 
-    const toggleMenu = () => {
-
-        if (!menu.current) {
-            return;
-        }
-
-        setOpen(!open);
-    }
-    
-    const closeMenu = () => {
-        if (open) {
-            toggleMenu();
-        }
-    }
-
-    const runCommand = (command, event) => {
-
-        if(onCommand) {
-            onCommand(command, event);
-        }
-
-        // close mobile menu
-        if (open) {
-            setOpen(false);
-        }
-    }
-
     const menuItems = items.map((item, index) => {
         return <ConsoleMenuItem 
             key={index}
@@ -108,11 +97,46 @@ const ConsoleMenuMobile = ({
                 { menuItems }
             </div>
             <FadeAnimation visible={visible}>
-                <div className="console-menu-handle" ref={handle} style={{ opacity: visible ? 1 : 0 }}>
-                    <div className="console-menu-handle-line" />
-                    <div className="console-menu-handle-line" />
-                </div>
+                <ConsoleMenuHandle onClick={toggleMenu} open={open} />
             </FadeAnimation>
+        </div>
+    )
+}
+
+const ConsoleMenuHandle = ({
+    open = false,
+    onClick = null
+}) => {
+
+    const handle = React.useRef(null);
+    const line1 = React.useRef(null);
+    const line2 = React.useRef(null);
+
+    const animateLine = React.useCallback((target, rotate, translateY) => {
+        gsap.to(target, {
+            duration: 0.2,
+            rotate: rotate,
+            translateY: translateY
+        });
+    }, []);
+
+    useDidUpdateEffect(() => {
+
+        if (open) {
+            animateLine(line1.current, 45, 6);
+            animateLine(line2.current, -45, -6);
+        }
+        else {
+            animateLine(line1.current, 0, 0);
+            animateLine(line2.current, 0, 0);
+        }
+
+    }, [open]);
+    
+    return (
+        <div className="console-menu-handle" role="button" tabIndex={0} ref={handle} onClick={onClick}>
+            <div className="console-menu-handle-line" ref={line1} />
+            <div className="console-menu-handle-line" ref={line2} />
         </div>
     )
 }
