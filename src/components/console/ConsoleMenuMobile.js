@@ -108,7 +108,6 @@ const ConsoleMenuHandle = ({
     onClick = null
 }) => {
 
-    const handle = React.useRef(null);
     const line1 = React.useRef(null);
     const line2 = React.useRef(null);
 
@@ -134,7 +133,7 @@ const ConsoleMenuHandle = ({
     }, [open]);
     
     return (
-        <div className="console-menu-handle" role="button" tabIndex={0} ref={handle} onClick={onClick}>
+        <div className="console-menu-handle" role="button" tabIndex={0} onClick={onClick}>
             <div className="console-menu-handle-line" ref={line1} />
             <div className="console-menu-handle-line" ref={line2} />
         </div>
