@@ -83,7 +83,7 @@ const ConsoleMenuMobile = ({
         return <ConsoleMenuItem 
             key={index}
             visible={open}
-            delay={(index * speed) / 1.5}
+            delay={(index * speed) / 2}
             name={t(item).toLowerCase()} 
             speed={speed}
             active={item === activeItem}
