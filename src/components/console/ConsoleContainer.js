@@ -10,6 +10,7 @@ import { loadTheme } from "../../state/slices/themeSlice";
 import { fetchData } from "../../state/slices/dataSlice";
 import store from "../../state/store";
 import Loader from "../Loader";
+import { useTranslation } from "react-i18next";
 
 export const ConsoleContainer = ({
     visible = false,
@@ -24,8 +25,11 @@ export const ConsoleContainer = ({
     const [dataLoading, setDataLoading] = React.useState(true);
     const [inputVisible, setInputVisible] = React.useState(visible);
     const [menuVisible, setMenuVisible] = React.useState(visible);
+    const { t } = useTranslation();
 
     useDidMountEffect(() => {
+        document.title = t("loading") + "...";
+
         store.dispatch(fetchData).then(() => {
             setDataLoading(false);
         });
