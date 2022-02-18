@@ -1,6 +1,7 @@
 import React from "react";
 import WrittenImage from "../effects/WrittenImage";
 import FadeAnimation from "../animations/FadeAnimation";
+import ReactMarkdown from "react-markdown"
 
 const AboutView = ({
     text = "", 
@@ -14,9 +15,9 @@ const AboutView = ({
         <div className="about">
             <div className="about-text-container">
                 <FadeAnimation visible={textVisible} speed={400} after={onComplete}>
-                    <span className="about-text">
+                    <ReactMarkdown className="about-text">
                         {text}
-                    </span>
+                    </ReactMarkdown>
                 </FadeAnimation>
             </div>
             <div className="about-image">
