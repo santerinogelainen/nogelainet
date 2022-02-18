@@ -544,12 +544,6 @@ span.name {
         background-color: $color-black;
         display: inline;
     }
-
-    .about-image {
-        margin-left: -100px;
-        padding-right: 18vw;
-        z-index: 0;
-    }
 }
 
 .home {
@@ -644,12 +638,6 @@ span.name {
             font-size: 2rem;
         }
     }
-
-    .about {
-        .about-image {
-            padding-right: 14vw;
-        }
-    }
 }
 // X-Large devices (large desktops, 1200px and up)
 @media (max-width: 1000px) {
@@ -665,13 +653,8 @@ span.name {
 
     
     .about {
-
         max-width: 80%;
-
-        .about-image {
-            padding-right: 8vw;
-        }
-
+        
         .about-text-container {
             
             p {
@@ -734,11 +717,6 @@ span.name {
 
     .about {
         max-width: 100%;
-        
-        .about-image {
-            padding-right: 0;
-            margin-left: -200px;
-        }
     }
 
     .project-item {
@@ -790,14 +768,7 @@ span.name {
     }
 
     .about {
-        .about-image {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-        }
-
         .about-text-container {
-            
             p {
                 margin-block-start: 1em;
                 margin-block-end: 1em;
