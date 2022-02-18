@@ -2,6 +2,7 @@ import React from "react";
 import WrittenImage from "../effects/WrittenImage";
 import FadeAnimation from "../animations/FadeAnimation";
 import ReactMarkdown from "react-markdown"
+import { useDidMountEffect } from "../../utils/reactUtils";
 
 const AboutView = ({
     text = "", 
@@ -10,6 +11,14 @@ const AboutView = ({
 }) => {
 
     const [textVisible, setTextVisible] = React.useState(false);
+
+    useDidMountEffect(() => {
+
+        if (!textVisible) {
+            setTextVisible(true);
+        }
+
+    }, [textVisible]);
 
     return (
         <div className="about">
@@ -20,9 +29,9 @@ const AboutView = ({
                     </ReactMarkdown>
                 </FadeAnimation>
             </div>
-            <div className="about-image">
+            {/* <div className="about-image">
                 <WrittenImage src={image} speed={400} maxSize={35} afterText={() => setTextVisible(true)} />
-            </div>
+            </div> */}
         </div>
     )
 }
