@@ -56,7 +56,7 @@ const WrittenImage = ({
 
     return (
         <div ref={container} className="written-image-container">
-            <img ref={img} src={src} alt="image" className="written-image" style={{opacity: 0, width: "1px", height: "1px"}} />
+            <img ref={img} src={src} className="written-image" style={{opacity: 0, width: "1px", height: "1px"}} />
             <AsciiImage speed={6} src={src} ramp={AsciiImageRamp.Simple} animate={true} maxSize={maxSize} after={showImage} />
         </div>
     )

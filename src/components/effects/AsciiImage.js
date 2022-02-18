@@ -94,7 +94,7 @@ const AsciiImage = ({
             return () => clearInterval(interval);
         }
 
-        if (ascii && (!animate || index == maxIndex)) {
+        if (ascii && (!animate || index === maxIndex)) {
             if (after) {
                 after();
             }

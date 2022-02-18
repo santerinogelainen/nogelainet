@@ -21,7 +21,7 @@ const ConsoleInputPlaceholder = ({
 
             let newIndex = index + 1;
 
-            if (newIndex == helpTexts.length) {
+            if (newIndex === helpTexts.length) {
                 newIndex = 0;
             }
 

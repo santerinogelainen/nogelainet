@@ -73,6 +73,7 @@ const MouseFollowingContainer = ({
                 state.current.mouse.y -= div.current.offsetHeight;
                 break;
 
+            default:
             case Anchor.Center:
                 state.current.mouse.x -= div.current.offsetWidth / 2;
                 state.current.mouse.y -= div.current.offsetHeight / 2;

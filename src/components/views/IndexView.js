@@ -94,7 +94,7 @@ const IndexView = ({
                     { writtenText(IndexPosition.Hello, t("hello")) }
                     { writtenText(IndexPosition.MyNameIs, t("myNameIs")) }
                         <HighlightedWordAnimation 
-                            start={position == IndexPosition.Name} 
+                            start={position === IndexPosition.Name} 
                             visible={position > IndexPosition.Name}
                             speed={400} 
                             onComplete={nextPosition}>

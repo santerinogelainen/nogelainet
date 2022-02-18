@@ -16,7 +16,7 @@ const HiddenImage = ({
     
     return (
         <HiddenContainer visible={visible} onHide={nextImage}>
-            <img className="hidden-image" alt="Hidden image" src={images[index]} style={{ zIndex: -2 }} />
+            <img className="hidden-image" src={images[index]} style={{ zIndex: -2 }} />
         </HiddenContainer>
     )
 }

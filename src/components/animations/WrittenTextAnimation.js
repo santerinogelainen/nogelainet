@@ -27,7 +27,7 @@ const WrittenTextAnimation = ({
 
     React.useEffect(() => {
 
-        if (state.visible == text) {
+        if (state.visible === text) {
             
             const timeout = setTimeout(() => {
 
