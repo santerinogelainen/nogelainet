@@ -593,7 +593,16 @@ span.name {
 }
 
 .project-modal {
-    position: relative;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+
+    .modal {
+        overflow: hidden;
+    }
+
     .project-modal-title {
         margin-left: 50px;
         margin-top: 50px;
@@ -603,8 +612,16 @@ span.name {
         left: 0;
     }
 
+    .project-modal-employer {
+        color: $muted-white;
+        margin-bottom: 20px;
+        margin-top: 65px;
+    }
+
     .project-modal-content {
-        margin-top: 80px;
+        max-height: 70vh;
+        overflow-y: auto;
+        max-width: 65%;
     }
 
     .block-button-container {
@@ -613,12 +630,11 @@ span.name {
     
     .modal-close-container {
 
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
-        margin: 40px;
-        padding: 10px;
-        width: 50px;
+        padding: 10px 10px 60px 50px;
+        width: 100%;
         height: 50px;
         overflow: visible;
         background-color: $color-black;
@@ -695,6 +711,12 @@ span.name {
             font-size: 2rem;
         }
     }
+
+    .project-modal {
+        .project-modal-employer {
+            margin-top: 52px;
+        }
+    }
 }
 // X-Large devices (large desktops, 1200px and up)
 @media (max-width: 1000px) {
@@ -720,7 +742,26 @@ span.name {
             }
         }
     }
+
+    .project-modal {
+        .project-modal-content {
+            max-width: 80%;
+        }
+    }
 }
+
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 800px) {
+    
+
+    .project-modal {
+        .project-modal-content {
+            max-width: 100%;
+        }
+    }
+}
+
 // Medium devices (tablets, 768px and up)
 @media (max-width: 768px) {
 
@@ -740,7 +781,8 @@ span.name {
         }
         
         .modal-close-container {
-            margin: 15px;
+            box-sizing: content-box;
+            padding: 10px 10px 25px 25px;
         }
     }
 
@@ -844,6 +886,12 @@ span.name {
         }
     }
 
+    .project-modal {
+        .project-modal-employer {
+            color: $muted-white;
+            margin-top: 10vw;
+        }
+    }
 
     .contacts {
         .large-text {

@@ -19,7 +19,6 @@ const ProjectModal = ({
 
     useDidUpdateEffect(() => {
         if (project) {
-            console.log(project);
             gsap.set(title.current, { opacity: 1, top: project.pos.top });
             gsap.to(title.current, { 
                 top: 0,
@@ -63,6 +62,9 @@ const ProjectModal = ({
                 beforeHide={hideTitle} 
                 afterHide={openTitle} 
                 afterShow={() => setTitleOpen(false)}>
+                <div className="project-modal-employer">
+                    [{project?.project?.Employer}]
+                </div>
                 <div className="project-modal-content">
                     <ReactMarkdown>
                         {project?.project?.Description}
