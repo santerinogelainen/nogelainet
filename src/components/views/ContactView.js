@@ -19,7 +19,7 @@ const ContactView = ({
     if (parts.length === 2) {
         emailJsx = [
             parts[0],
-            <span className="email-at">@</span>,
+            <span className="email-at" key={"email-at"}>@</span>,
             parts[1]
         ];
     }
