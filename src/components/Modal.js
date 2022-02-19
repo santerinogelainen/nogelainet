@@ -50,8 +50,8 @@ const Modal = ({
     }, [visible]);
 
     return (
-        <div ref={modal} className="project-modal" style={{opacity: visibleByDefault.current ? 1 : 0, display: visibleByDefault.current ? "block" : "none"}}>
-            <div className="project-modal-content">
+        <div ref={modal} className="modal" style={{opacity: visibleByDefault.current ? 1 : 0, display: visibleByDefault.current ? "block" : "none"}}>
+            <div className="modal-content">
                 {props.children}
             </div>
         </div>
