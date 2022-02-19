@@ -591,6 +591,17 @@ span.name {
     }
 }
 
+.project-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    left: 0;
+    padding: 50px;
+    background-color: $color-black;
+}
+
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 // Small devices (landscape phones, 576px and up)
