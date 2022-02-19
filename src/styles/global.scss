@@ -249,7 +249,7 @@ body {
         flex-direction: column;
         position: absolute;
         bottom: 50px;
-        margin: 35px 30px;
+        margin: 35px 25px;
         left: 0;
 
         
@@ -268,7 +268,7 @@ body {
         width: 35px;
         height: 15px;
         cursor: pointer;
-        margin: 30px;
+        margin: 30px 25px;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
@@ -602,6 +602,52 @@ span.name {
         top: 0;
         left: 0;
     }
+
+    .project-modal-content {
+        margin-top: 100px;
+    }
+
+    
+    .modal-close-container {
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 40px;
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+        overflow: visible;
+        background-color: $color-black;
+        cursor: pointer;
+
+        .modal-close {
+            box-sizing: content-box;
+            width: 35px;
+            height: 15px;
+            display: flex;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            justify-content: space-between;
+            flex-direction: column;
+            
+    
+            .modal-close-line {
+                height: 2px;
+                background-color: $color-white;
+                width: 100%;
+    
+                &:nth-child(1) {
+                    transform: rotate(45deg) translateY(8px);
+                }
+    
+                &:nth-child(2) {
+                    transform: rotate(-45deg) translateY(-8px);
+                }
+            }
+        }
+    }
 }
 
 // X-Small devices (portrait phones, less than 576px)
@@ -688,6 +734,10 @@ span.name {
         .project-modal-title {
             margin-left: 25px;
             margin-top: 25px;
+        }
+        
+        .modal-close-container {
+            margin: 15px;
         }
     }
 

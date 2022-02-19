@@ -14,5 +14,6 @@
     "aboutHelpText": "Type 'about' to learn more about me",
     "contactHelpText": "Type 'contact' to find my contact details",
     "feelFreeToContactMe": "Feel free to contact me!",
-    "loading": "Loading"
+    "loading": "Loading",
+    "close": "Close"
 }

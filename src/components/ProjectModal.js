@@ -3,6 +3,8 @@ import { useDidUpdateEffect } from "../utils/reactUtils";
 import BlockButton from "./BlockButton";
 import Modal from "./Modal";
 import gsap, { Power2 } from "gsap";
+import ReactMarkdown from "react-markdown";
+import { useTranslation } from "react-i18next";
 
 const ProjectModal = ({
     project = null,
@@ -10,6 +12,7 @@ const ProjectModal = ({
     afterHide = null
 }) => {
     
+    const { t } = useTranslation();
     const [visible, setVisible] = React.useState(Boolean(project));
     const [titleOpen, setTitleOpen] = React.useState(true);
     const title = React.useRef(null);
@@ -61,9 +64,16 @@ const ProjectModal = ({
                 afterHide={openTitle} 
                 afterShow={() => setTitleOpen(false)}>
                 <div className="project-modal-content">
-
+                    <ReactMarkdown>
+                        {project?.Description}
+                    </ReactMarkdown>
                 </div>
-                <button type="button" onClick={() => setVisible(false)} style={{marginTop: "100px"}}>Close</button>
+                <div className="modal-close-container" role="button" tabIndex={0} onClick={() => setVisible(false)} title={t("close")}>
+                    <div className="modal-close">
+                        <div className="modal-close-line" />
+                        <div className="modal-close-line" />
+                    </div>
+                </div>
             </Modal>
         </div>
     )
