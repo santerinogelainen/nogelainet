@@ -152,6 +152,7 @@ body {
 .block-button-container {
     cursor: pointer;
     display: inline-block;
+    margin-left: -15px;
 
     .block-button {
         font-size: 3rem;
@@ -363,7 +364,6 @@ body {
 .console-view {
 
     .console-view-content {
-        padding: 5px;
         transition: filter 0.3s ease-in-out;
     }
 
@@ -578,17 +578,6 @@ span.name {
     .project-item-nr-mobile {
         display: none;
     }
-    
-    .block-button-container {
-        margin-left: -15px;
-    }
-}
-
-.contacts {
-    
-    .block-button-container {
-        margin-left: -15px;
-    }
 }
 
 .modal {
@@ -600,6 +589,19 @@ span.name {
     left: 0;
     padding: 50px;
     background-color: $color-black;
+    z-index: 99;
+}
+
+.project-modal {
+    position: relative;
+    .project-modal-title {
+        margin-left: 50px;
+        margin-top: 50px;
+        z-index: 999;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
 }
 
 // X-Small devices (portrait phones, less than 576px)
@@ -614,15 +616,10 @@ span.name {
     }
 
     .block-button-container {
+        margin-left: -10px;
         .block-button {
             font-size: 2.5rem;
             padding: 5px 10px;
-        }
-    }
-
-    .project-item, .contacts  {
-        .block-button-container {
-            margin-left: -10px;
         }
     }
 
@@ -683,6 +680,17 @@ span.name {
         padding-bottom: 85px;
     }
 
+    .modal {
+        padding: 25px;
+    }
+
+    .project-modal {
+        .project-modal-title {
+            margin-left: 25px;
+            margin-top: 25px;
+        }
+    }
+
     .large-text {
         font-size: 3rem;
     }
@@ -730,10 +738,11 @@ span.name {
         max-width: 100%;
     }
 
+    .project-item-nr {
+        display: none;
+    }
+
     .project-item {
-        .project-item-nr {
-            display: none;
-        }
 
         .project-item-nr-mobile {
             display: block;
@@ -766,15 +775,10 @@ span.name {
     }
 
     .block-button-container {
+        margin-left: -10px;
         .block-button {
             font-size: 8vw;
             padding: 4px 8px;
-        }
-    }
-
-    .project-item, .contacts {
-        .block-button-container {
-            margin-left: -10px;
         }
     }
 

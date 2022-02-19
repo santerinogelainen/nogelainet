@@ -4,11 +4,12 @@ import { Direction } from "../models/direction";
 
 const BlockButton = ({
     text = "", 
+    forceOpen = null,
     onClick = null, 
     ...props
 }) => {
 
-    const [slideOpen, setSlideOpen] = React.useState(false);
+    const [slideOpen, setSlideOpen] = React.useState(forceOpen || false);
 
     return (
         <div className="block-button-container" 
@@ -16,7 +17,7 @@ const BlockButton = ({
             onMouseLeave={() => setSlideOpen(false)} 
             onClick={onClick}>
             <SlideAnimation
-                open={slideOpen}
+                open={forceOpen !== null ? forceOpen : slideOpen}
                 from={Direction.Left}
                 to={Direction.Right}>
                 <div className="block-button noselect">
