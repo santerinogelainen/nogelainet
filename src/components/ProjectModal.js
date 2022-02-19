@@ -65,7 +65,7 @@ const ProjectModal = ({
                 afterShow={() => setTitleOpen(false)}>
                 <div className="project-modal-content">
                     <ReactMarkdown>
-                        {project?.Description}
+                        {project?.project?.Description}
                     </ReactMarkdown>
                 </div>
                 <div className="modal-close-container" role="button" tabIndex={0} onClick={() => setVisible(false)} title={t("close")}>

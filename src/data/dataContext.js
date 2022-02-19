@@ -11,10 +11,6 @@ export class DataContext {
         return getTableClient("SocialMedia");
     }
 
-    get employers() {
-        return getTableClient("Employer");
-    }
-
     get projects() {
         return getTableClient("Project");
     }
