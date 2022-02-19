@@ -66,10 +66,16 @@ const SlideAnimation = ({
 
     useDidUpdateEffect(() => {
 
-        setInset(bg.current, open ? fromInset : insetOpen.current);
-        anim.current = animateInset(bg.current, open ? insetOpen.current : toInset);
-
-        return () => anim.current?.kill();
+        if (anim.current && anim.current.isActive()) {
+            anim.current.then(() => {
+                setInset(bg.current, open ? fromInset : insetOpen.current);
+                anim.current = animateInset(bg.current, open ? insetOpen.current : toInset);
+            });
+        }
+        else {
+            setInset(bg.current, open ? fromInset : insetOpen.current);
+            anim.current = animateInset(bg.current, open ? insetOpen.current : toInset);
+        }
 
     }, [open]);
 
