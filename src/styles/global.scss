@@ -658,11 +658,11 @@ span.name {
                 width: 100%;
     
                 &:nth-child(1) {
-                    transform: rotate(45deg) translateY(8px);
+                    transform: rotate(45deg) translateY(9px);
                 }
     
                 &:nth-child(2) {
-                    transform: rotate(-45deg) translateY(-8px);
+                    transform: rotate(-45deg) translateY(-9px);
                 }
             }
         }

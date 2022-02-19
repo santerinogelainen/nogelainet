@@ -131,4 +131,25 @@ $color-highlight: #F88379;
             color: $color-muted;
         }
     }
+
+    
+    .modal { 
+        background-color: $color-background;
+    }
+
+    .project-modal {
+        .project-modal-employer {
+            color: $color-muted;
+        }
+
+        .modal-close-container {
+            background-color: $color-background;
+
+            .modal-close {
+                .modal-close-line {
+                    background-color: $color-text;
+                }
+            }
+        }
+    }
 }
