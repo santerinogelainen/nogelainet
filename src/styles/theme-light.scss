@@ -14,7 +14,9 @@ $color-highlight: #F88379;
     .project-item-nr,
     .block-button,
     .email-at,
-    .about-text {
+    .about-text,
+    .about-text p,
+    .about-text p strong {
         color: $color-text;
     }
 

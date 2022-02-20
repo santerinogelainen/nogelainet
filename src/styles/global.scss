@@ -469,7 +469,9 @@ span.name {
 .project-item-nr,
 .block-button,
 .email-at,
-.about-text {
+.about-text,
+.about-text p,
+.about-text p strong {
     color: $color-white;
 }
 
@@ -542,7 +544,9 @@ span.name {
         z-index: 1;
         position: relative;
         background-color: $color-black;
-        display: inline;
+        display: inline-block;
+        max-height: 80vh;
+        overflow-y: auto;
     }
 }
 

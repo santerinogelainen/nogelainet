@@ -10,7 +10,7 @@ const ProjectsView = ({
     onComplete = null
 }) => {
 
-    const speed = 300;
+    const speed = 200;
     const [activeProject, setActiveProject] = React.useState(null);
     const [activeRowKey, setActiveRowKey] = React.useState(null);
 
@@ -34,7 +34,7 @@ const ProjectsView = ({
                 <div className="project-item-content" style={{opacity: activeRowKey === project.rowKey ? 0 : 1}}>
                     <HighlightedWordAnimation 
                         start={true} 
-                        delay={index * (speed / 1.5)} 
+                        delay={(index * speed) / 2} 
                         speed={speed} 
                         onComplete={index === projects.length - 1 ? onComplete : null}>
                         <BlockButton 
