@@ -17,6 +17,17 @@ const ProjectModal = ({
     const [titleOpen, setTitleOpen] = React.useState(true);
     const title = React.useRef(null);
 
+    const hide = React.useCallback(() => {
+        setVisible(false);
+    }, []);
+
+    React.useEffect(() => {
+        if (visible) {
+            window.addEventListener("keydown", hide);
+            return () => window.removeEventListener("keydown", hide);
+        }
+    }, [visible, hide]);
+
     useDidUpdateEffect(() => {
         if (project) {
             gsap.set(title.current, { opacity: 1, top: project.pos.top });
@@ -70,7 +81,7 @@ const ProjectModal = ({
                         {project?.project?.Description}
                     </ReactMarkdown>
                 </div>
-                <div className="modal-close-container" role="button" tabIndex={0} onClick={() => setVisible(false)} title={t("close")}>
+                <div className="modal-close-container" role="button" tabIndex={0} onClick={hide} title={t("close")}>
                     <div className="modal-close">
                         <div className="modal-close-line" />
                         <div className="modal-close-line" />

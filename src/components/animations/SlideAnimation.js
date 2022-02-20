@@ -52,7 +52,7 @@ const SlideAnimation = ({
                 return "inset(0% 0% 0% 100%)";
         }
 
-    });
+    }, []);
 
     const setInset = React.useCallback((target, clipPath) => {
         const options = {
@@ -61,8 +61,8 @@ const SlideAnimation = ({
         gsap.set(target, options);
     }, []);
     
-    const fromInset = React.useMemo(() => getInset(from), [from]);
-    const toInset = React.useMemo(() => getInset(to), [to]);
+    const fromInset = React.useMemo(() => getInset(from), [from, getInset]);
+    const toInset = React.useMemo(() => getInset(to), [to, getInset]);
 
     useDidUpdateEffect(() => {
 
