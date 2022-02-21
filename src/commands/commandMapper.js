@@ -34,6 +34,9 @@ export function mapToTheme(command) {
         case Commands.Light:
             return Themes.Light;
 
+        case Commands.Pride:
+            return Themes.Pride;
+
         default:
             throw new Error("Could not map command to theme: " + command);
     }

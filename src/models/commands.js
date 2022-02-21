@@ -4,7 +4,8 @@ export const Commands = {
     About: "about",
     Contact: "contact",
     Light: "light",
-    Dark: "dark"
+    Dark: "dark",
+    Pride: "pride"
 }
 
 export const CommandsSBArgs = {

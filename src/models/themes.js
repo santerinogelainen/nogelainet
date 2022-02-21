@@ -1,6 +1,7 @@
 export const Themes = {
     Dark: "theme-dark",
-    Light: "theme-light"
+    Light: "theme-light",
+    Pride: "theme-pride"
 }
 
 export const ThemesSBArgs = {

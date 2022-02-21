@@ -1,0 +1,175 @@
+$rainbow-gradient: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+);
+
+$color-background: #0B0B0B;
+$color-text: $rainbow-gradient;
+$color-muted: rgb(45, 45, 44);
+$color-highlight: #F2EFE9;
+
+.theme-pride {
+    
+    background-color: $color-background;
+    color: $color-text;
+    font-weight: 200;
+
+    .large-text,
+    .written-text-visible,
+    .project-item-nr,
+    .block-button,
+    .email-at,
+    .about-text,
+    .about-text p,
+    .about-text p strong {
+        color: $color-text;
+    }
+
+    .console-input-wrapper {
+
+        .console-input-placeholder {
+            .written-text-visible {
+                color: $color-muted;
+            }
+        }
+
+        .console-input .console-input-suffix .console-input-autocomplete {
+            color: $color-muted;
+        }
+    }
+
+    .console-menu-wrapper {
+
+        .console-menu {
+
+            .console-menu-item {
+                
+                &.console-menu-item-active {
+                    .highlighted-word {
+                        color: $color-muted;
+                    }
+                }
+
+                &:hover:not(.console-menu-item-active) {
+                    .highlighted-word {
+                        color: $color-highlight;
+                    }
+                }
+            }
+        }
+    }
+
+    .console-menu-mobile-wrapper {
+        
+        .console-menu-mobile {
+
+            .console-menu-item {
+                
+                &:hover {
+                    .highlighted-word {
+                        color: $color-highlight;
+                    }
+                }
+            }
+        }
+
+        .console-menu-handle .console-menu-handle-line {
+            background-color: $color-text;
+        }
+    }
+
+    .console-input-caret {
+        background-color: $color-text;
+    }
+
+    span.name {
+        border-color: $color-text;
+        color: $color-text;
+    }
+
+    .slide-animation-container {
+
+        .slide-animation-bg {
+            background-color: $color-text;
+            color: $color-background;
+            
+            .block-button,
+            .project-item-nr,
+            .email-at {
+                color: $color-background;
+            }
+        }
+    
+        .slide-animation-content {
+            color: $color-text;
+        }
+    }
+
+    .socials {
+
+        .social-item {
+            color: $color-text;
+        }
+    
+        .social-item:hover {
+            color: $color-highlight;
+        }
+
+        .social-tooltip {
+            background-color: $color-background;
+            color: $color-text;
+        }
+    }
+
+    .console-menu-item:hover:not(.console-menu-item-active) .highlighted-word {
+        color: $color-highlight;
+    }
+
+    .highlighted-word-container .highlighted-word {
+        color: $color-text;
+    }
+
+    .about-text {
+        background-color: $color-background;
+    }
+
+    
+    .project-item {
+        .project-item-nr-mobile {
+            color: $color-muted;
+        }
+    }
+
+    
+    .modal { 
+        background-color: $color-background;
+    }
+
+    .project-modal {
+        .project-modal-employer {
+            color: $color-muted;
+        }
+
+        .modal-close-container {
+            background-color: $color-background;
+
+            .modal-close {
+                .modal-close-line {
+                    background-color: $color-text;
+                }
+            }
+        }
+    }
+}
+
+
