@@ -23,6 +23,7 @@ export const runCommand = (command) => {
         case Commands.Dark:
         case Commands.Light:
         case Commands.Pride:
+        case Commands.PowerShell:
             changeTheme(mapToTheme(command.toLowerCase()));
             break;
 

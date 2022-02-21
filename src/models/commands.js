@@ -5,7 +5,8 @@ export const Commands = {
     Contact: "contact",
     Light: "light",
     Dark: "dark",
-    Pride: "pride"
+    Pride: "pride",
+    PowerShell: "powershell"
 }
 
 export const CommandsSBArgs = {

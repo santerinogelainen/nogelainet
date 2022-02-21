@@ -37,6 +37,9 @@ export function mapToTheme(command) {
         case Commands.Pride:
             return Themes.Pride;
 
+        case Commands.PowerShell:
+            return Themes.PowerShell;
+
         default:
             throw new Error("Could not map command to theme: " + command);
     }

@@ -1,7 +1,8 @@
 export const Themes = {
     Dark: "theme-dark",
     Light: "theme-light",
-    Pride: "theme-pride"
+    Pride: "theme-pride",
+    PowerShell: "theme-powershell"
 }
 
 export const ThemesSBArgs = {
