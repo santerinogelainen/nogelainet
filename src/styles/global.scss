@@ -519,6 +519,7 @@ span.name {
 .about {
     display: flex;
     max-width: 65%;
+    max-height: 100%;
 
     .fade-animation-container {
         position: relative;
@@ -528,6 +529,7 @@ span.name {
     .about-text-container {
         display: flex;
         align-items: flex-end;
+        max-height: 100%;
 
         p {
             margin-block-start: 2em;
@@ -544,7 +546,7 @@ span.name {
         z-index: 1;
         position: relative;
         display: inline-block;
-        max-height: 80vh;
+        max-height: 75vh;
         overflow-y: auto;
     }
 }
