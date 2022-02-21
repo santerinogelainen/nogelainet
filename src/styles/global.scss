@@ -621,61 +621,63 @@ span.name {
         left: 0;
     }
 
-    .project-modal-employer {
-        color: $muted-white;
-        margin-bottom: 20px;
-        margin-top: 65px;
+    .modal-content {
+        height: 100%;
     }
 
-    .project-modal-content {
-        max-height: 70vh;
-        overflow-y: auto;
-        max-width: 65%;
+    .project-modal-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-top: 65px;
+        
+        .project-modal-employer {
+            color: $muted-white;
+        }
+
+        .project-modal-content {
+            overflow-y: auto;
+            flex-grow: 1;
+            max-width: 65%;
+            margin-bottom: 15px;
+        }
+        
+        .modal-close-container {
+            padding: 10px;
+            overflow: visible;
+            background-color: $color-black;
+            cursor: pointer;
+
+            .modal-close {
+                box-sizing: content-box;
+                width: 35px;
+                height: 15px;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                
+        
+                .modal-close-line {
+                    height: 2px;
+                    background-color: $color-white;
+                    width: 100%;
+        
+                    &:nth-child(1) {
+                        transform: rotate(45deg) translateY(9px);
+                    }
+        
+                    &:nth-child(2) {
+                        transform: rotate(-45deg) translateY(-9px);
+                    }
+                }
+            }
+        }
     }
 
     .block-button-container {
         margin-top: -5px;
     }
-    
-    .modal-close-container {
 
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        padding: 10px 10px 60px 50px;
-        width: 100%;
-        height: 50px;
-        overflow: visible;
-        background-color: $color-black;
-        cursor: pointer;
-
-        .modal-close {
-            box-sizing: content-box;
-            width: 35px;
-            height: 15px;
-            display: flex;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            justify-content: space-between;
-            flex-direction: column;
-            
-    
-            .modal-close-line {
-                height: 2px;
-                background-color: $color-white;
-                width: 100%;
-    
-                &:nth-child(1) {
-                    transform: rotate(45deg) translateY(9px);
-                }
-    
-                &:nth-child(2) {
-                    transform: rotate(-45deg) translateY(-9px);
-                }
-            }
-        }
-    }
 }
 
 // X-Small devices (portrait phones, less than 576px)
@@ -722,8 +724,8 @@ span.name {
     }
 
     .project-modal {
-        .project-modal-employer {
-            margin-top: 52px;
+        .project-modal-container {
+            padding-top: 52px;
         }
     }
 }
@@ -753,8 +755,10 @@ span.name {
     }
 
     .project-modal {
-        .project-modal-content {
-            max-width: 80%;
+        .project-modal-container {
+            .project-modal-content {
+                max-width: 80%;
+            }
         }
     }
 }
@@ -765,8 +769,10 @@ span.name {
     
 
     .project-modal {
-        .project-modal-content {
-            max-width: 100%;
+        .project-modal-container {
+            .project-modal-content {
+                max-width: 100%;
+            }
         }
     }
 }
@@ -787,11 +793,6 @@ span.name {
         .project-modal-title {
             margin-left: 25px;
             margin-top: 25px;
-        }
-        
-        .modal-close-container {
-            box-sizing: content-box;
-            padding: 10px 10px 25px 25px;
         }
     }
 
@@ -896,9 +897,8 @@ span.name {
     }
 
     .project-modal {
-        .project-modal-employer {
-            color: $muted-white;
-            margin-top: 10vw;
+        .project-modal-container {
+            padding-top: 10vw;
         }
     }
 

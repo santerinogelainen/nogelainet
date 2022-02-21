@@ -73,18 +73,20 @@ const ProjectModal = ({
                 beforeHide={hideTitle} 
                 afterHide={openTitle} 
                 afterShow={() => setTitleOpen(false)}>
-                <div className="project-modal-employer">
-                    [{project?.project?.Employer}]
-                </div>
-                <div className="project-modal-content">
-                    <ReactMarkdown>
-                        {project?.project?.Description}
-                    </ReactMarkdown>
-                </div>
-                <div className="modal-close-container" role="button" tabIndex={0} onClick={hide} title={t("close")}>
-                    <div className="modal-close">
-                        <div className="modal-close-line" />
-                        <div className="modal-close-line" />
+                <div className="project-modal-container">
+                    <div className="project-modal-employer">
+                        [{project?.project?.Employer}]
+                    </div>
+                    <div className="project-modal-content">
+                        <ReactMarkdown>
+                            {project?.project?.Description}
+                        </ReactMarkdown>
+                    </div>
+                    <div className="modal-close-container" role="button" tabIndex={0} onClick={hide} title={t("close")}>
+                        <div className="modal-close">
+                            <div className="modal-close-line" />
+                            <div className="modal-close-line" />
+                        </div>
                     </div>
                 </div>
             </Modal>
