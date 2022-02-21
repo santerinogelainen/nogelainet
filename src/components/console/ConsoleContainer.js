@@ -47,9 +47,9 @@ export const ConsoleContainer = ({
         Commands.Projects,
         Commands.About,
         Commands.Contact,
-        activeTheme === Themes.Light ? 
-            Commands.Dark : 
-            Commands.Light,
+        activeTheme === Themes.Dark ? 
+            Commands.Light : 
+            Commands.Dark,
         Commands.Home
     ];
 
