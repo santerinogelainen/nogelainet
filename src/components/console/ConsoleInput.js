@@ -4,6 +4,7 @@ import ConsoleInputPlaceholder from "./ConsoleInputPlaceholder";
 import ConsoleInputCaret from "./ConsoleInputCaret";
 import { ShakeAnimation } from "../animations/ShakeAnimation";
 import { useTranslation } from "react-i18next";
+import _ from "lodash";
 
 const ConsoleInput = ({
     visible = true,
@@ -127,10 +128,13 @@ const ConsoleInput = ({
         if (!value || value.length <= 1)
             return "";
 
-        const keys = Object.keys(commands).filter(x => x.substring(0, value.length).toUpperCase() === value.toUpperCase());
+        const cmds = _.pickBy(commands, function(val, key) {
+            return _.startsWith(key.toUpperCase(), value.toUpperCase());
+        });
 
-        if (keys.length) {
-            return keys[0];
+        if (Object.keys(cmds).length) {
+            const ordered = _.orderBy(cmds, x => x.Priority || 0, "desc");
+            return ordered[0]?.Name;
         }
 
         return "";
