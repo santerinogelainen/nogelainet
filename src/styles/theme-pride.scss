@@ -1,26 +1,35 @@
-$rainbow-gradient: linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(255, 154, 0, 1) 10%,
-    rgba(208, 222, 33, 1) 20%,
-    rgba(79, 220, 74, 1) 30%,
-    rgba(63, 218, 216, 1) 40%,
-    rgba(47, 201, 226, 1) 50%,
-    rgba(28, 127, 238, 1) 60%,
-    rgba(95, 21, 242, 1) 70%,
-    rgba(186, 12, 248, 1) 80%,
-    rgba(251, 7, 217, 1) 90%,
-    rgba(255, 0, 0, 1) 100%
-);
+@keyframes background-bg {
+    0% {background-color: darken(#CCCC52, 20%);}
+    5.9% {background-color: darken(#A3CC52, 20%);}
+    11% {background-color: darken(#7ACC52, 20%);}
+    16.5% {background-color: darken(#52CC52, 20%);}
+    22% {background-color: darken(#52CC7A, 20%);}
+    27.5% {background-color: darken(#52CCA3, 20%);}
+    33% {background-color: darken(#00CCCC, 20%);}
+    38.5% {background-color: darken(#29A3CC, 20%);}
+    44% {background-color: darken(#297ACC, 20%);}
+    49.5% {background-color: darken(#527ACC, 20%);}
+    55% {background-color: darken(#7A7ACC, 20%);}
+    60.5% {background-color: darken(#A352CC, 20%);}
+    66% {background-color: darken(#CC52CC, 20%);}
+    71.5% {background-color: darken(#CC52A3, 20%);}
+    77% {background-color: darken(#CC527A, 20%);}
+    82.5% {background-color: darken(#CC5252, 20%);}
+    88% {background-color: darken(#CC7A52, 20%);}
+    93.5% {background-color: darken(#CCA352, 20%);}
+    100% {background-color: darken(#CCCC52, 20%);}
+}
 
 $color-background: #0B0B0B;
-$color-text: $rainbow-gradient;
-$color-muted: rgb(45, 45, 44);
-$color-highlight: #F2EFE9;
+$color-text: #F2EFE9;
+$color-muted: rgba(208, 205, 200, 0.25);
+$color-highlight: rgba(208, 205, 200, 0.25);
 
 .theme-pride {
     
     background-color: $color-background;
+    -webkit-animation: background-bg 55s infinite;
+    animation: background-bg 55s infinite;
     color: $color-text;
     font-weight: 200;
 
@@ -126,7 +135,7 @@ $color-highlight: #F2EFE9;
         }
 
         .social-tooltip {
-            background-color: $color-background;
+            background-color: transparent;
             color: $color-text;
         }
     }
@@ -139,11 +148,6 @@ $color-highlight: #F2EFE9;
         color: $color-text;
     }
 
-    .about-text {
-        background-color: $color-background;
-    }
-
-    
     .project-item {
         .project-item-nr-mobile {
             color: $color-muted;
@@ -153,6 +157,8 @@ $color-highlight: #F2EFE9;
     
     .modal { 
         background-color: $color-background;
+        -webkit-animation: background-bg 55s infinite;
+        animation: background-bg 55s infinite;
     }
 
     .project-modal {
@@ -161,8 +167,6 @@ $color-highlight: #F2EFE9;
         }
 
         .modal-close-container {
-            background-color: $color-background;
-
             .modal-close {
                 .modal-close-line {
                     background-color: $color-text;
@@ -171,5 +175,3 @@ $color-highlight: #F2EFE9;
         }
     }
 }
-
-

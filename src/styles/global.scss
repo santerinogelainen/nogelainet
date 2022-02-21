@@ -543,7 +543,6 @@ span.name {
         font-size: 16px;
         z-index: 1;
         position: relative;
-        background-color: $color-black;
         display: inline-block;
         max-height: 80vh;
         overflow-y: auto;
@@ -645,7 +644,6 @@ span.name {
         .modal-close-container {
             padding: 10px;
             overflow: visible;
-            background-color: $color-black;
             cursor: pointer;
 
             .modal-close {
