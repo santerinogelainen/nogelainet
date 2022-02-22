@@ -27,7 +27,7 @@ export async function fetchData(dispatch) {
 
     const data = {
         commands: await fetchDictionary(context.commands, x => x.Name),
-        settings: await fetchDictionary(context.settings, x => x.Key, x => x.Value),
+        settings: await fetchDictionary(context.settings, x => x.rowKey, x => x.Value),
         images: await fetchArray(context.images, x => x.Url),
         projects: await fetchArray(context.projects),
         //employers: await fetchArray(context.employers),
