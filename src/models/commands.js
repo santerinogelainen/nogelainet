@@ -6,7 +6,8 @@ export const Commands = {
     Light: "light",
     Dark: "dark",
     Pride: "pride",
-    PowerShell: "powershell"
+    PowerShell: "powershell",
+    Hacker: "hacker"
 }
 
 export const CommandsSBArgs = {

@@ -12,6 +12,7 @@ import "./styles/theme-dark.scss";
 import "./styles/theme-light.scss";
 import "./styles/theme-pride.scss";
 import "./styles/theme-powershell.scss";
+import "./styles/theme-hacker.scss";
 
 export const RootElement = ({ element }) => {
     return (

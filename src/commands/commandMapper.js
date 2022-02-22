@@ -40,6 +40,9 @@ export function mapToTheme(command) {
         case Commands.PowerShell:
             return Themes.PowerShell;
 
+        case Commands.Hacker:
+            return Themes.Hacker;
+
         default:
             throw new Error("Could not map command to theme: " + command);
     }

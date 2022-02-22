@@ -2,7 +2,8 @@ export const Themes = {
     Dark: "theme-dark",
     Light: "theme-light",
     Pride: "theme-pride",
-    PowerShell: "theme-powershell"
+    PowerShell: "theme-powershell",
+    Hacker: "theme-hacker"
 }
 
 export const ThemesSBArgs = {
