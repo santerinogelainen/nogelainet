@@ -4,6 +4,7 @@ import BlockButton from "../BlockButton";
 import { padStart } from "../../utils/stringUtils";
 import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
 import ProjectModal from "../ProjectModal";
+import _ from "lodash";
 
 const ProjectsView = ({
     projects = [],
@@ -23,8 +24,8 @@ const ProjectsView = ({
             pos: pos
         });
     }, []);
-
-    const items = projects.map((project, index) => {
+    
+    const items = _.orderBy(projects, x => x.Order || x.Name).map((project, index) => {
         const nr = padStart((index + 1).toString(), 2, "0");
         return (
             <div className="project-item" key={index}>
