@@ -3,12 +3,17 @@ import { Commands } from "../models/commands";
 import store from "../state/store"
 import { themeActions } from "../state/slices/themeSlice";
 import { navigate } from "gatsby"
-import { mapToPage, mapToTheme } from "./commandMapper";
+import { mapToLanguage, mapToPage, mapToTheme } from "./commandMapper";
+import i18n from "../i18n";
 
 export const runCommand = (command) => {
 
     function changeTheme(theme) {
         store.dispatch(themeActions.changeTheme(theme));
+    }
+
+    function changeLanguage(lang) {
+        i18n.changeLanguage(lang);
     }
 
     switch (command.toLowerCase()) {
@@ -26,6 +31,11 @@ export const runCommand = (command) => {
         case Commands.PowerShell:
         case Commands.Hacker:
             changeTheme(mapToTheme(command.toLowerCase()));
+            break;
+
+        case Commands.English:
+        case Commands.Finnish:
+            changeLanguage(mapToLanguage(command.toLowerCase()));
             break;
 
         default:

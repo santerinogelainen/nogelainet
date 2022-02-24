@@ -17,8 +17,6 @@ const IndexPosition = {
 
 const IndexView = ({
     name = "",
-    title = "",
-    location = "",
     images = [],
     initialPosition = IndexPosition.Hello,
     onComplete = null
@@ -104,11 +102,11 @@ const IndexView = ({
                         </HighlightedWordAnimation>
                 </span>
                 <span className="break-lg home-line home-line-2">
-                    { writtenText(IndexPosition.Title, format(t("imA"), title?.toLowerCase())) }
+                    { writtenText(IndexPosition.Title, t("imA")) }
                     <span className="height-placeholder">&nbsp;</span>
                 </span>
                 <span className="break-lg home-line home-line-3">
-                    { writtenText(IndexPosition.Location, format(t("basedIn"), location + "."), 0, onComplete) }
+                    { writtenText(IndexPosition.Location, t("basedIn") + ".", 0, onComplete) }
                     <span className="height-placeholder">&nbsp;</span>
                 </span>
             </div>

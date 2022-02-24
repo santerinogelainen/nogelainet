@@ -1,0 +1,19 @@
+{
+    "hello": "Hei!",
+    "myNameIs": "Nimeni on",
+    "imA": "Olen sovellusohjelmoija",
+    "basedIn": "kotoisin Helsingistä",
+    "tryTyping": "Kirjoita",
+    "home": "Etusivu",
+    "projects": "Projektit",
+    "about": "Minusta",
+    "contact": "Yhteystiedot",
+    "light": "Vaalea",
+    "dark": "Tumma",
+    "projectsHelpText": "Kokeile kirjoittaa 'projektit'",
+    "aboutHelpText": "Kokeile kirjoittaa 'minusta'",
+    "contactHelpText": "Kokeile kirjoittaa 'yhteystiedot'",
+    "feelFreeToContactMe": "Ota ihmeessä yhteyttä!",
+    "loading": "Ladataan",
+    "close": "Sulje"
+}

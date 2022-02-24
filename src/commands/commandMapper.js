@@ -1,6 +1,7 @@
 import { Commands } from "../models/commands";
 import { Pages } from "../models/pages";
 import { Themes } from "../models/themes";
+import { Languages } from "../models/languages";
 
 export function mapToPage(command) {
 
@@ -45,6 +46,21 @@ export function mapToTheme(command) {
 
         default:
             throw new Error("Could not map command to theme: " + command);
+    }
+}
+
+export function mapToLanguage(command) {
+
+    switch (command) {
+
+        case Commands.Finnish:
+            return Languages.Fi;
+
+        case Commands.English:
+            return Languages.En;
+
+        default:
+            throw new Error("Could not map command to language: " + command);
     }
 }
 

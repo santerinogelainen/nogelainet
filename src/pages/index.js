@@ -17,8 +17,6 @@ const IndexPage = () => {
     return (
         <IndexView
             name={data.settings.FirstName}
-            title={data.settings.Title}
-            location={data.settings.Location}
             images={data.images ?? []}
             onComplete={() => dispatch(viewActions.setControlsVisible(true))} />
 
