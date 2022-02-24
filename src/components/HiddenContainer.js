@@ -5,6 +5,7 @@ import FadeAnimation from "./animations/FadeAnimation";
 
 const HiddenContainer = ({
     visible = false,
+    enabled = true,
     rotate = true,
     anchor = Anchor.Center,
     onHide = null,
@@ -13,40 +14,40 @@ const HiddenContainer = ({
     ...props
 }) => {
 
-    const [enabled, setEnabled] = React.useState(visible);
+    const [following, setFollowing] = React.useState(visible);
 
-    const enable = () => {
+    const start = () => {
         if (visible) {
 
             if (onShow) {
                 onShow();
             }
 
-            setEnabled(true);
+            setFollowing(true);
         }
     };
     
-    const disable = () => {
+    const stop = () => {
         if (!visible) {
 
             if (onHide) {
                 onHide();
             }
 
-            setEnabled(false);
+            setFollowing(false);
         }
     };
 
     return (
         <MouseFollowingContainer
-            enabled={enabled}
+            enabled={enabled && following}
             rotate={rotate}
             anchor={anchor}
             zIndex={zIndex}>
             <FadeAnimation 
-                visible={visible} 
-                before={enable}
-                after={disable}>
+                visible={enabled && visible} 
+                before={start}
+                after={stop}>
                 {props.children}
             </FadeAnimation>
         </MouseFollowingContainer>

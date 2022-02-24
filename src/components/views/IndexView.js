@@ -109,7 +109,7 @@ const IndexView = ({
                     <span className="height-placeholder">&nbsp;</span>
                 </span>
             </div>
-            <HiddenImage visible={imageVisible} images={images} />
+            <HiddenImage enabled={position > IndexPosition.Name} visible={imageVisible} images={images} />
         </div>
     )
 
