@@ -1,13 +1,14 @@
 import React from "react"
 import HiddenContainer from "./HiddenContainer"
-import { Anchor } from "../models/anchor"
+import { Anchor } from "../models/anchor";
+import _ from "lodash";
 
 const SocialMediaList = ({
     socials = []
 }) => {
 
     return <div className="socials">
-        {socials.map(social => {
+        {_.orderBy(socials, x => x.Order || x.Name).map(social => {
             return <SocialMediaItem key={social.rowKey} social={social} />
         })}
     </div>
