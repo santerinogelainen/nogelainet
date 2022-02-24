@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import gsap, { Power2 } from "gsap";
 import ReactMarkdown from "react-markdown";
 import { useTranslation } from "react-i18next";
+import { Languages } from "../models/languages";
 
 const ProjectModal = ({
     project = null,
@@ -12,10 +13,22 @@ const ProjectModal = ({
     afterHide = null
 }) => {
     
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [visible, setVisible] = React.useState(Boolean(project));
     const [titleOpen, setTitleOpen] = React.useState(true);
     const title = React.useRef(null);
+
+    const name = i18n.language === Languages.Fi ? 
+        project?.project.NameFI || project?.project.Name : 
+        project?.project.Name;
+        
+    const employer = i18n.language === Languages.Fi ? 
+        project?.project.EmployerFI || project?.project.Employer : 
+        project?.project.Employer;
+        
+    const description = i18n.language === Languages.Fi ? 
+        project?.project.DescriptionFI || project?.project.Description : 
+        project?.project.Description;
 
     const hide = React.useCallback(() => {
         setVisible(false);
@@ -66,7 +79,7 @@ const ProjectModal = ({
         <div className="project-modal">
             <div className="project-modal-title" style={{opacity: 0}} ref={title}>
                 <BlockButton forceOpen={titleOpen}>
-                    <span className="project-item-nr">{project?.nr + " / "}</span>{project?.project.Name}
+                    <span className="project-item-nr">{project?.nr + " / "}</span>{name}
                 </BlockButton>
             </div>
             <Modal visible={visible} 
@@ -75,11 +88,11 @@ const ProjectModal = ({
                 afterShow={() => setTitleOpen(false)}>
                 <div className="project-modal-container">
                     <div className="project-modal-employer">
-                        [{project?.project?.Employer}]
+                        [{employer}]
                     </div>
                     <div className="project-modal-content">
                         <ReactMarkdown>
-                            {project?.project?.Description}
+                            {description}
                         </ReactMarkdown>
                     </div>
                     <div className="modal-close-container" role="button" tabIndex={0} onClick={hide} title={t("close")}>

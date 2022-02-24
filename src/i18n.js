@@ -34,7 +34,7 @@ export const setLanguage = (lang) => {
     i18n.changeLanguage(lang);
 }
 
-export const loadLanguage = (dispatch) => {
+export const loadLanguage = () => {
     setLanguage(Cookies.get("lang"));
 }
 

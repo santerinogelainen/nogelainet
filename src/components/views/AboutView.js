@@ -5,7 +5,6 @@ import { useDidMountEffect } from "../../utils/reactUtils";
 
 const AboutView = ({
     text = "", 
-    image = "", 
     onComplete = null
 }) => {
 

@@ -4,7 +4,9 @@ import BlockButton from "../BlockButton";
 import { padStart } from "../../utils/stringUtils";
 import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
 import ProjectModal from "../ProjectModal";
+import { useTranslation } from "react-i18next";
 import _ from "lodash";
+import { Languages } from "../../models/languages";
 
 const ProjectsView = ({
     projects = [],
@@ -12,6 +14,7 @@ const ProjectsView = ({
 }) => {
 
     const speed = 250;
+    const { t, i18n } = useTranslation();
     const [activeProject, setActiveProject] = React.useState(null);
     const [activeRowKey, setActiveRowKey] = React.useState(null);
 
@@ -27,6 +30,9 @@ const ProjectsView = ({
     
     const items = _.orderBy(projects, x => x.Order || x.Name).map((project, index) => {
         const nr = padStart((index + 1).toString(), 2, "0");
+        const name = i18n.language === Languages.Fi ? 
+            project.NameFI || project.Name : 
+            project.Name;
         return (
             <div className="project-item" key={index}>
                 <div className="project-item-nr-mobile">
@@ -40,7 +46,7 @@ const ProjectsView = ({
                         onComplete={index === projects.length - 1 ? onComplete : null}>
                         <BlockButton 
                             onClick={(event) => selectProject(event, nr, project)}>
-                            <span className="project-item-nr">{nr + " / "}</span>{project.Name}
+                            <span className="project-item-nr">{nr + " / "}</span>{name}
                         </BlockButton>
                     </HighlightedWordAnimation>
                 </div>
