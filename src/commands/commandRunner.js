@@ -4,7 +4,7 @@ import store from "../state/store"
 import { themeActions } from "../state/slices/themeSlice";
 import { navigate } from "gatsby"
 import { mapToLanguage, mapToPage, mapToTheme } from "./commandMapper";
-import i18n from "../i18n";
+import { setLanguage } from "../i18n";
 
 export const runCommand = (command) => {
 
@@ -13,7 +13,7 @@ export const runCommand = (command) => {
     }
 
     function changeLanguage(lang) {
-        i18n.changeLanguage(lang);
+        setLanguage(lang);
     }
 
     switch (command.toLowerCase()) {

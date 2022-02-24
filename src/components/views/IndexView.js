@@ -3,7 +3,6 @@ import HiddenImage from "../HiddenImage";
 import WrittenTextAnimation from "../animations/WrittenTextAnimation";
 import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
 import { useTranslation } from "react-i18next";
-import { format } from "../../utils/stringUtils";
 import _ from "lodash";
 
 const IndexPosition = {

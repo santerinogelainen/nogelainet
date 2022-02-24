@@ -11,6 +11,7 @@ import { fetchData } from "../../state/slices/dataSlice";
 import store from "../../state/store";
 import Loader from "../Loader";
 import { useTranslation } from "react-i18next";
+import { loadLanguage } from "../../i18n";
 
 export const ConsoleContainer = ({
     visible = false,
@@ -30,6 +31,8 @@ export const ConsoleContainer = ({
     useDidMountEffect(() => {
         document.title = t("loading") + "...";
 
+        loadLanguage();
+        
         store.dispatch(fetchData).then(() => {
             setDataLoading(false);
         });
