@@ -18,11 +18,6 @@
   },
   "dependencies": {
     "@azure/data-tables": "^13.0.0",
-    "@fortawesome/fontawesome-free": "^5.15.4",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
     "@reduxjs/toolkit": "^1.7.1",
     "gatsby": "^4.4.0",
     "gatsby-plugin-manifest": "^4.6.0",
