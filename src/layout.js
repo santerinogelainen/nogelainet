@@ -40,11 +40,13 @@ const PageElementWithHooks = (props) => {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Santeri Nogelainen" />
                 <meta property="og:description" content="Software Developer from Helsinki" />
+                <meta property="og:url" content={location.href.toString()} />
                 <meta property="og:image" content={"/seo.PNG"} />
 
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:title" content="Santeri Nogelainen" />
                 <meta property="twitter:description" content="Software Developer from Helsinki" />
+                <meta property="twitter:url" content={location.href.toString()} />
                 <meta property="twitter:image" content={"/seo.PNG"} />
             </Helmet>
             <ConsoleContainer 
