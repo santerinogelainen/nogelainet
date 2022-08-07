@@ -1,3 +1,5 @@
+import { SBEnumControl } from "../utils/storybookUtils"
+
 export const Themes = {
     Dark: "theme-dark",
     Light: "theme-light",
@@ -6,10 +8,4 @@ export const Themes = {
     Hacker: "theme-hacker"
 }
 
-export const ThemesSBArgs = {
-    options: Themes,
-    mapping: Themes,
-    control: {
-        type: 'select'
-    },
-}
+export const ThemesSBArgs = SBEnumControl(Themes);

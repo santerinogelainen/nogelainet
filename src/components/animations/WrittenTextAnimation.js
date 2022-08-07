@@ -1,82 +1,96 @@
-
 import React from "react";
+import {useDidUpdateEffect} from "../../utils/reactUtils";
+
+export const WrittenTextAnimationState = {
+  Enabled: 'enabled',
+  DisabledHidden: 'disabled-hidden',
+  DisabledVisible: 'disabled-visible'
+}
+
+const createState = (visible, hidden) => ({
+  visible,
+  hidden
+});
+
+const getInitialState = (state, text) => {
+  const states = {
+    [WrittenTextAnimationState.Enabled]: createState("", text),
+    [WrittenTextAnimationState.DisabledHidden]: createState("", text),
+    [WrittenTextAnimationState.DisabledVisible]: createState(text, "")
+  };
+  return states[state];
+};
+
+export const useWrittenTextAnimationState = (initialState) => {
+  const [state, setState] = React.useState(initialState);
+  const enable = React.useCallback(() => {
+    setState(WrittenTextAnimationState.Enabled);
+  }, []);
+  const disable = React.useCallback((visible = false) => {
+    if (visible) {
+      setState(WrittenTextAnimationState.DisabledVisible);
+    } else {
+      setState(WrittenTextAnimationState.DisabledHidden);
+    }
+  }, []);
+  return {
+    state, 
+    enable, 
+    disable,
+    setState
+  }
+};
 
 const WrittenTextAnimation = ({
-    enabled = true,
-    finished = false,
-    loop = false,
-    delay = 0,
-    speed = 30,
-    text = "",
-    onStart = null,
-    onEnd = null
+  state = WrittenTextAnimationState.Enabled,
+  loop = false,
+  speed = 30,
+  text = "",
+  onEnd = null,
 }) => {
+  const [{visible, hidden}, setState] = React.useState(getInitialState(state, text));
 
-    const getInitialState = React.useCallback(() => {
-        return {
-            visible: finished ? text : "",
-            hidden: finished ? "" : text,
-            finished: finished
-        }
-    }, [text, finished]);
+  useDidUpdateEffect(() => setState(getInitialState(state, text)), [state, text]);
 
-    const [state, setState] = React.useState(getInitialState());
+  React.useEffect(() => {
+    if (state !== WrittenTextAnimationState.Enabled) {
+      return;
+    }
 
-    // reset position if text changes
-    React.useEffect(() => setState(getInitialState()), [getInitialState]);
+    const finished = visible === text;
 
-    React.useEffect(() => {
+    if (finished) {
+      if (loop) {
+        setState({
+          visible: "",
+          hidden: text
+        });
+      }
+      return;
+    }
 
-        if (state.visible === text) {
-            
-            const timeout = setTimeout(() => {
+    const timeout = setTimeout(() => {
+      const newText = visible + hidden.substring(0, 1);
+      
+      if (newText === text && onEnd) {
+        onEnd();
+      }
 
-                if (!state.finished && onEnd) {
-                    onEnd();
-                }
+      setState({
+        visible: newText,
+        hidden: hidden.substring(1)
+      });
+    }, speed);
 
-                setState({
-                    ...state,
-                    finished: true
-                });
+    return () => clearTimeout(timeout);
+  }, [visible, hidden, state, speed, text, onEnd, loop]);
 
-                if (loop) {
-                    setState(getInitialState());
-                }
-            }, delay);
-            
-            return () => clearTimeout(timeout);
-        }
-
-        if (enabled) {
-            
-            if (!state.visible && onStart) {
-                onStart();
-            }
-
-            const interval = setInterval(() => {
-                setState({
-                    visible: state.visible + state.hidden.substring(0, 1),
-                    hidden: state.hidden.substring(1)
-                });
-            }, speed);
-
-            return () => clearInterval(interval);
-        }
-
-    });
-
-    return (
-        <span className="written-text-container">
-            <span className="written-text-visible">
-                {state.visible}
-            </span>
-            <span className="written-text-hidden noselect">
-                {state.hidden}
-            </span>
-        </span>
-    );
-
-}
+  return (
+    <span className="written-text-container">
+      <span className="written-text-visible">{visible}</span>
+      <span className="written-text-hidden noselect">{hidden}</span>
+    </span>
+  );
+};
 
 export default WrittenTextAnimation;

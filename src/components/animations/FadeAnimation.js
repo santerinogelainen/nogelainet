@@ -13,24 +13,22 @@ const FadeAnimation = ({
     const container = React.useRef();
     const visibleByDefault = React.useRef(visible);
 
-    const animate = React.useCallback(() => {
+    useDidUpdateEffect(() => {
 
-        if (before) {
-            before();
-        }
+      if (before) {
+          before();
+      }
 
-        const options = {
-            duration: speed / 1000,
-            opacity: visible ? 1 : 0,
-            ease: Power2.easeInOut,
-            onComplete: after
-        };
+      const options = {
+          duration: speed / 1000,
+          opacity: visible ? 1 : 0,
+          ease: Power2.easeInOut,
+          onComplete: after
+      };
 
-        return gsap.to(container.current, options);
+      return gsap.to(container.current, options);
 
-    }, [visible]);
-    
-    useDidUpdateEffect(() => animate(), [animate]);
+  }, [visible]);
 
     return (
         <span ref={container} style={{opacity: visibleByDefault.current ? 1 : 0}} className="fade-animation-container">

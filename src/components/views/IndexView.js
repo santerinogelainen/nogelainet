@@ -1,6 +1,6 @@
 import * as React from "react"
 import HiddenImage from "../HiddenImage";
-import WrittenTextAnimation from "../animations/WrittenTextAnimation";
+import WrittenTextAnimation, { WrittenTextAnimationState } from "../animations/WrittenTextAnimation";
 import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
@@ -71,18 +71,26 @@ const IndexView = ({
         setPosition(nextPosition ?? IndexPosition.Finish);
     }, [position]);
 
-    const writtenText = (animPosition, text, delay, onEnd) => {
+    const writtenText = React.useCallback((animPosition, text, onEnd) => {
 
         const txt = text + "\u00A0";
+        const speed = 35;
+        let state = WrittenTextAnimationState.DisabledHidden;
+
+        if (position == animPosition) {
+          state = WrittenTextAnimationState.Enabled;
+        }
+
+        if (position > animPosition) {
+          state = WrittenTextAnimationState.DisabledVisible;
+        }
 
         return <WrittenTextAnimation 
-            enabled={position >= animPosition} 
-            speed={35}
-            delay={delay || 0}
+            state={state} 
+            speed={speed}
             onEnd={onEnd || nextPosition}
-            text={txt}
-            finished={position >= IndexPosition.Finish} />
-    }
+            text={txt} />
+    }, [nextPosition]);
 
     return (
         <div className="home">
@@ -105,7 +113,7 @@ const IndexView = ({
                     <span className="height-placeholder">&nbsp;</span>
                 </span>
                 <span className="break-lg home-line home-line-3">
-                    { writtenText(IndexPosition.Location, t("basedIn") + ".", 0, onComplete) }
+                    { writtenText(IndexPosition.Location, t("basedIn") + ".", onComplete) }
                     <span className="height-placeholder">&nbsp;</span>
                 </span>
             </div>

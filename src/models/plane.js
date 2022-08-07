@@ -1,4 +1,3 @@
-export const Plane = {
-    Vertical: "vertical",
-    Horizontal: "horizontal"
-}
+import { SBEnumControl } from "../utils/storybookUtils";
+
+export const Plane = SBEnumControl(Plane);

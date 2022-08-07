@@ -1,3 +1,5 @@
+import { SBEnumControl } from "../utils/storybookUtils"
+
 export const Pages = {
     Home: "/",
     About: "/about",
@@ -5,10 +7,4 @@ export const Pages = {
     Contact: "/contact",
 }
 
-export const PagesSBArgs = {
-    options: Pages,
-    mapping: Pages,
-    control: {
-        type: 'select'
-    },
-}
+export const PagesSBArgs = SBEnumControl(Pages);

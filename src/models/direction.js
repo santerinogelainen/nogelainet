@@ -1,3 +1,5 @@
+import { SBEnumControl } from "../utils/storybookUtils"
+
 export const Direction = {
     Top: "top",
     Bottom: "bottom",
@@ -5,10 +7,4 @@ export const Direction = {
     Right: "right"
 }
 
-export const DirectionSBArgs = {
-    options: Direction,
-    mapping: Direction,
-    control: {
-        type: 'select'
-    },
-}
+export const DirectionSBArgs = SBEnumControl(Direction);

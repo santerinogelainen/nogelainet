@@ -1,3 +1,5 @@
+import { SBEnumControl } from "../utils/storybookUtils"
+
 export const Commands = {
     Home: "home",
     Projects: "projects",
@@ -12,10 +14,4 @@ export const Commands = {
     English: "english"
 }
 
-export const CommandsSBArgs = {
-    options: Commands,
-    mapping: Commands,
-    control: {
-        type: 'select'
-    },
-}
+export const CommandsSBArgs = SBEnumControl(Commands);

@@ -1,3 +1,5 @@
+import { SBEnumControl } from "../utils/storybookUtils"
+
 export const Anchor = {
     TopLeft: "top-left",
     TopRight: "top-right",
@@ -6,10 +8,4 @@ export const Anchor = {
     Center: "center"
 }
 
-export const AnchorSBArgs = {
-    options: Anchor,
-    mapping: Anchor,
-    control: {
-        type: 'select'
-    },
-}
+export const AnchorSBArgs = SBEnumControl(Anchor);

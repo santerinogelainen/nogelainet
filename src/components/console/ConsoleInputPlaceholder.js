@@ -1,43 +1,72 @@
-
 import React from "react";
-import WrittenTextAnimation from "../animations/WrittenTextAnimation";
+import { useDidUpdateEffect } from "../../utils/reactUtils";
+import WrittenTextAnimation, {
+  useWrittenTextAnimationState,
+  WrittenTextAnimationState,
+} from "../animations/WrittenTextAnimation";
+
+const getInitialState = (enabled) =>
+  enabled
+    ? WrittenTextAnimationState.Enabled
+    : WrittenTextAnimationState.DisabledHidden;
 
 const ConsoleInputPlaceholder = ({
-    enabled = true,
-    delay = 6000,
-    helpTexts = [],
-    onComplete = null
+  enabled = true,
+  delay = 6000,
+  helpTexts = [],
+  onComplete = null,
 }) => {
+  const [index, setIndex] = React.useState(0);
+  const { state, enable, disable, setState } = useWrittenTextAnimationState(
+    getInitialState(enabled)
+  );
 
-    const [index, setIndex] = React.useState(0);
+  useDidUpdateEffect(() => setIndex(0), helpTexts);
 
-    const nextIndex = () => {
-        
-        if (enabled) {
+  useDidUpdateEffect(() => {
+    setState(getInitialState(enabled));
+  }, [enabled]);
 
-            if (onComplete) {
-                onComplete(index, getCurrentHelpText());
-            }
-
-            let newIndex = index + 1;
-
-            if (newIndex === helpTexts.length) {
-                newIndex = 0;
-            }
-
-            setIndex(newIndex);
-        }
+  useDidUpdateEffect(() => {
+    if (state !== WrittenTextAnimationState.DisabledVisible) {
+      return;
     }
+    const timeout = setTimeout(() => {
+      let newIndex = index + 1;
 
-    const getCurrentHelpText = () => {
-        return helpTexts[index] ?? "";
+      if (newIndex === helpTexts.length) {
+        newIndex = 0;
+      }
+
+      setIndex(newIndex);
+      enable();
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [state, index, delay, helpTexts]);
+
+  const getHelpText = React.useCallback(
+    (i) => {
+      return helpTexts[i] ?? "";
+    },
+    [helpTexts]
+  );
+
+  const endHandler = React.useCallback(() => {
+    if (onComplete) {
+      onComplete(index, getHelpText(index));
     }
+    return disable(true);
+  }, [onComplete, index, getHelpText]);
 
-    return (
-        <div className="console-input-placeholder large-text noselect">
-            <WrittenTextAnimation enabled={enabled} delay={delay} loop={false} text={getCurrentHelpText()} onEnd={nextIndex} />
-        </div>
-    );
-}
+  return (
+    <div className="console-input-placeholder large-text noselect">
+      <WrittenTextAnimation
+        state={state}
+        text={getHelpText(index)}
+        onEnd={endHandler}
+      />
+    </div>
+  );
+};
 
 export default ConsoleInputPlaceholder;

@@ -12,7 +12,7 @@ export const Default = Template.bind({});
 
 Default.args = {
     enabled: true,
-    delay: 6000,
+    delay: 1000,
     helpTexts: [
         "Help1 Help1 Help1 Help1 Help1 Help1 Help1 Help1",
         "Help2 Help2 Help2 Help2 Help2 Help2 Help2 Help2",
