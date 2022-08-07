@@ -56,7 +56,7 @@ const ConsoleInputPlaceholder = ({
       onComplete(index, getHelpText(index));
     }
     return disable(true);
-  }, [onComplete, index, getHelpText]);
+  }, [onComplete, index, getHelpText, disable]);
 
   return (
     <div className="console-input-placeholder large-text noselect">

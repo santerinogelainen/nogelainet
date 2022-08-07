@@ -59,7 +59,7 @@ const IndexView = ({
                 document.removeEventListener("click", finishAnimations);
             }
         }
-    }, [showImage, hideImage, finishAnimations]);
+    }, [showImage, hideImage, finishAnimations, position]);
 
     const nextPosition = React.useCallback(() => {
         if (position >= IndexPosition.Finish) {
@@ -77,7 +77,7 @@ const IndexView = ({
         const speed = 35;
         let state = WrittenTextAnimationState.DisabledHidden;
 
-        if (position == animPosition) {
+        if (position === animPosition) {
           state = WrittenTextAnimationState.Enabled;
         }
 
@@ -90,7 +90,7 @@ const IndexView = ({
             speed={speed}
             onEnd={onEnd || nextPosition}
             text={txt} />
-    }, [nextPosition]);
+    }, [nextPosition, position]);
 
     return (
         <div className="home">
