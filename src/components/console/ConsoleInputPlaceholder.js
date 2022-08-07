@@ -21,7 +21,7 @@ const ConsoleInputPlaceholder = ({
     getInitialState(enabled)
   );
 
-  useDidUpdateEffect(() => setIndex(0), helpTexts);
+  useDidUpdateEffect(() => setIndex(0), [helpTexts]);
 
   useDidUpdateEffect(() => {
     setState(getInitialState(enabled));

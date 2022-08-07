@@ -2,56 +2,62 @@ import React from "react";
 import { Anchor } from "../models/anchor";
 import MouseFollowingContainer from "./animations/MouseFollowingContainer";
 import FadeAnimation from "./animations/FadeAnimation";
+import { useTimeoutState } from "../utils/reactUtils";
 
 const HiddenContainer = ({
-    visible = false,
-    enabled = true,
-    rotate = true,
-    anchor = Anchor.Center,
-    onHide = null,
-    onShow = null,
-    zIndex = -1,
-    ...props
+  visible = false,
+  enabled = true,
+  rotate = true,
+  anchor = Anchor.Center,
+  onHide = null,
+  onShow = null,
+  speed = 400,
+  zIndex = -1,
+  ...props
 }) => {
+  const [following, setFollowing] = React.useState(visible);
+  const {set, clear} = useTimeoutState();
 
-    const [following, setFollowing] = React.useState(visible);
+  const start = React.useCallback(() => {
+    clear();
+    if (visible) {
+      if (onShow) {
+        onShow();
+      }
 
-    const start = () => {
-        if (visible) {
+      setFollowing(true);
+    }
+  }, [visible, onShow, clear]);
 
-            if (onShow) {
-                onShow();
-            }
+  const stop = React.useCallback(() => {
+    if (!visible) {
+      if (onHide) {
+        onHide();
+      }
 
-            setFollowing(true);
-        }
-    };
-    
-    const stop = () => {
-        if (!visible) {
+      set(() => {
+        setFollowing(false);
+      }, speed);
+    }
+  }, [visible, onHide, set, speed]);
 
-            if (onHide) {
-                onHide();
-            }
-
-            setFollowing(false);
-        }
-    };
-
-    return (
-        <MouseFollowingContainer
-            enabled={enabled && following}
-            rotate={rotate}
-            anchor={anchor}
-            zIndex={zIndex}>
-            <FadeAnimation 
-                visible={enabled && visible} 
-                before={start}
-                after={stop}>
-                {props.children}
-            </FadeAnimation>
-        </MouseFollowingContainer>
-    )
-}
+  return (
+    <MouseFollowingContainer
+      enabled={enabled && following}
+      rotate={rotate}
+      anchor={anchor}
+      zIndex={zIndex}
+    >
+      <FadeAnimation
+        visible={enabled && visible}
+        speed={speed}
+        before={start}
+        after={stop}
+      >
+        {props.children}
+      </FadeAnimation>
+    </MouseFollowingContainer>
+  );
+};
 
 export default HiddenContainer;

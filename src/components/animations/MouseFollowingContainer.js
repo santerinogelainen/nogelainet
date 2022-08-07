@@ -26,7 +26,6 @@ const MouseFollowingContainer = ({
         }
 
         const current = state.current;
-
         current.pos.x = current.pos.x + (current.mouse.x - current.pos.x) * ease;
         current.pos.y = current.pos.y + (current.mouse.y - current.pos.y) * ease;
 
@@ -79,7 +78,7 @@ const MouseFollowingContainer = ({
                 state.current.mouse.y -= div.current.offsetHeight / 2;
                 break;
         }
-    }, []);
+    }, [anchor]);
 
     React.useEffect(() => {
 
