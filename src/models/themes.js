@@ -5,7 +5,8 @@ export const Themes = {
     Light: "theme-light",
     Pride: "theme-pride",
     PowerShell: "theme-powershell",
-    Hacker: "theme-hacker"
+    Hacker: "theme-hacker",
+    CssColor: "theme-css-color"
 }
 
 export const ThemesSBArgs = SBEnumControl(Themes);

@@ -11,7 +11,8 @@ export const Commands = {
     PowerShell: "powershell",
     Hacker: "hacker",
     Finnish: "finnish",
-    English: "english"
+    English: "english",
+    CssColor: "css-color"
 }
 
 export const CommandsSBArgs = SBEnumControl(Commands);

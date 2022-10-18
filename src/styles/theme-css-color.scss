@@ -1,0 +1,359 @@
+@function get-opposite-color($color, $bw: true) {
+    $r: red($color);
+    $g: green($color);
+    $b: blue($color);
+
+    @if $bw {
+        @if ($r * 0.299 + $g * 0.587 + $b * 0.114) > 186 {
+            @return '#000000';
+        }
+        @return '#FFFFFF';
+    }
+    // invert color components
+    $r: 255 - $r;
+    $g: 255 - $g;
+    $b: 255 - $b;
+    @return rgb($r, $g, $b);
+}
+
+@function get-highlight-color($color, $amount: 10%) {
+    $lightness: lightness($color);
+    @if $lightness >= 50 {
+        @return darken($color, $amount);
+    }
+    @return lighten($color, $amount);
+}
+
+@mixin theme-css-color(
+    $color-background,
+    $color-text: ''
+) {
+
+    @if $color-text == '' {
+        $color-text: get-opposite-color($color-background, false);
+    }
+
+    $color-muted: rgba($color-text, 0.2);
+    $color-highlight: rgba($color-text, 0.5);
+
+    background-color: $color-background;
+    color: $color-text;
+    font-weight: normal !important;
+
+    .large-text,
+    .written-text-visible,
+    .project-item-nr,
+    .block-button,
+    .email-at,
+    .about-text,
+    .about-text p,
+    .about-text p strong {
+        color: $color-text;
+        font-weight: normal !important;
+    }
+
+    .console-input-wrapper {
+
+        .console-input-placeholder {
+            .written-text-visible {
+                color: $color-muted;
+            }
+        }
+
+        .console-input .console-input-suffix .console-input-autocomplete {
+            color: $color-muted;
+        }
+
+        .console-input-text {
+            color: $color-highlight;
+        }
+    }
+
+    .console-menu-wrapper {
+
+        .console-menu {
+
+            .console-menu-item {
+                
+                &.console-menu-item-active {
+                    .highlighted-word {
+                        color: $color-muted;
+                    }
+                }
+
+                &:hover:not(.console-menu-item-active) {
+                    .highlighted-word {
+                        color: $color-highlight;
+                    }
+                }
+            }
+        }
+    }
+
+    .console-menu-mobile-wrapper {
+        
+        .console-menu-mobile {
+
+            .console-menu-item {
+                
+                &:hover {
+                    .highlighted-word {
+                        color: $color-highlight;
+                    }
+                }
+            }
+        }
+
+        .console-menu-handle .console-menu-handle-line {
+            background-color: $color-text;
+        }
+    }
+
+    .console-input-caret {
+        background-color: $color-text;
+    }
+
+    span.name {
+        border-color: $color-text;
+        color: $color-text;
+    }
+
+    .slide-animation-container {
+
+        .slide-animation-bg {
+            background-color: $color-text;
+            color: $color-background;
+            
+            .block-button,
+            .project-item-nr,
+            .email-at {
+                color: $color-background;
+            }
+        }
+    
+        .slide-animation-content {
+            color: $color-text;
+        }
+    }
+
+    .socials {
+
+        .social-item {
+            color: $color-text;
+        }
+    
+        .social-item:hover {
+            color: $color-highlight;
+        }
+
+        .social-tooltip {
+            background-color: $color-background;
+            color: $color-text;
+        }
+    }
+
+    .console-menu-item:hover:not(.console-menu-item-active) .highlighted-word {
+        color: $color-highlight;
+    }
+
+    .highlighted-word-container .highlighted-word {
+        color: $color-text;
+    }
+
+    .about-text {
+        background-color: $color-background;
+    }
+
+    
+    .project-item {
+        .project-item-nr-mobile {
+            color: $color-muted;
+        }
+    }
+
+    
+    .modal { 
+        background-color: $color-background;
+    }
+
+    .project-modal {
+        .project-modal-employer {
+            color: $color-muted;
+        }
+
+        .modal-close-container {
+            background-color: $color-background;
+
+            .modal-close {
+                .modal-close-line {
+                    background-color: $color-text;
+                }
+            }
+        }
+    }
+}
+
+.theme-css-color {
+    &-black { @include theme-css-color(black) }
+    &-silver { @include theme-css-color(silver) }
+    &-gray { @include theme-css-color(gray, black) }
+    &-white { @include theme-css-color(white) }
+    &-maroon { @include theme-css-color(maroon) }
+    &-red { @include theme-css-color(red) }
+    &-purple { @include theme-css-color(purple) }
+    &-fuchsia { @include theme-css-color(fuchsia) }
+    &-green { @include theme-css-color(green) }
+    &-lime { @include theme-css-color(lime) }
+    &-olive { @include theme-css-color(olive) }
+    &-yellow { @include theme-css-color(yellow) }
+    &-navy { @include theme-css-color(navy) }
+    &-blue { @include theme-css-color(blue) }
+    &-teal { @include theme-css-color(teal) }
+    &-aqua { @include theme-css-color(aqua) }
+    &-aliceblue { @include theme-css-color(aliceblue) }
+    &-antiquewhite { @include theme-css-color(antiquewhite) }
+    &-aqua { @include theme-css-color(aqua) }
+    &-aquamarine { @include theme-css-color(aquamarine) }
+    &-azure { @include theme-css-color(azure) }
+    &-beige { @include theme-css-color(beige) }
+    &-bisque { @include theme-css-color(bisque) }
+    &-black { @include theme-css-color(black) }
+    &-blanchedalmond { @include theme-css-color(blanchedalmond) }
+    &-blue { @include theme-css-color(blue) }
+    &-blueviolet { @include theme-css-color(blueviolet) }
+    &-brown { @include theme-css-color(brown) }
+    &-burlywood { @include theme-css-color(burlywood) }
+    &-cadetblue { @include theme-css-color(cadetblue) }
+    &-chartreuse { @include theme-css-color(chartreuse) }
+    &-chocolate { @include theme-css-color(chocolate) }
+    &-coral { @include theme-css-color(coral) }
+    &-cornflowerblue { @include theme-css-color(cornflowerblue) }
+    &-cornsilk { @include theme-css-color(cornsilk) }
+    &-crimson { @include theme-css-color(crimson) }
+    &-cyan { @include theme-css-color(cyan) }
+    &-darkblue { @include theme-css-color(darkblue) }
+    &-darkcyan { @include theme-css-color(darkcyan) }
+    &-darkgoldenrod { @include theme-css-color(darkgoldenrod) }
+    &-darkgray { @include theme-css-color(darkgray) }
+    &-darkgreen { @include theme-css-color(darkgreen) }
+    &-darkgrey { @include theme-css-color(darkgrey) }
+    &-darkkhaki { @include theme-css-color(darkkhaki) }
+    &-darkmagenta { @include theme-css-color(darkmagenta) }
+    &-darkolivegreen { @include theme-css-color(darkolivegreen) }
+    &-darkorange { @include theme-css-color(darkorange) }
+    &-darkorchid { @include theme-css-color(darkorchid) }
+    &-darkred { @include theme-css-color(darkred) }
+    &-darksalmon { @include theme-css-color(darksalmon) }
+    &-darkseagreen { @include theme-css-color(darkseagreen) }
+    &-darkslateblue { @include theme-css-color(darkslateblue) }
+    &-darkslategray { @include theme-css-color(darkslategray) }
+    &-darkslategrey { @include theme-css-color(darkslategrey) }
+    &-darkturquoise { @include theme-css-color(darkturquoise) }
+    &-darkviolet { @include theme-css-color(darkviolet) }
+    &-deeppink { @include theme-css-color(deeppink) }
+    &-deepskyblue { @include theme-css-color(deepskyblue) }
+    &-dimgray { @include theme-css-color(dimgray) }
+    &-dimgrey { @include theme-css-color(dimgrey) }
+    &-dodgerblue { @include theme-css-color(dodgerblue) }
+    &-firebrick { @include theme-css-color(firebrick) }
+    &-floralwhite { @include theme-css-color(floralwhite) }
+    &-forestgreen { @include theme-css-color(forestgreen) }
+    &-fuchsia { @include theme-css-color(fuchsia) }
+    &-gainsboro { @include theme-css-color(gainsboro) }
+    &-ghostwhite { @include theme-css-color(ghostwhite) }
+    &-gold { @include theme-css-color(gold) }
+    &-goldenrod { @include theme-css-color(goldenrod) }
+    &-green { @include theme-css-color(green) }
+    &-greenyellow { @include theme-css-color(greenyellow) }
+    &-grey { @include theme-css-color(grey) }
+    &-honeydew { @include theme-css-color(honeydew) }
+    &-hotpink { @include theme-css-color(hotpink) }
+    &-indianred { @include theme-css-color(indianred) }
+    &-indigo { @include theme-css-color(indigo) }
+    &-ivory { @include theme-css-color(ivory) }
+    &-khaki { @include theme-css-color(khaki) }
+    &-lavender { @include theme-css-color(lavender) }
+    &-lavenderblush { @include theme-css-color(lavenderblush) }
+    &-lawngreen { @include theme-css-color(lawngreen) }
+    &-lemonchiffon { @include theme-css-color(lemonchiffon) }
+    &-lightblue { @include theme-css-color(lightblue) }
+    &-lightcoral { @include theme-css-color(lightcoral) }
+    &-lightcyan { @include theme-css-color(lightcyan) }
+    &-lightgoldenrodyellow { @include theme-css-color(lightgoldenrodyellow) }
+    &-lightgray { @include theme-css-color(lightgray) }
+    &-lightgreen { @include theme-css-color(lightgreen) }
+    &-lightgrey { @include theme-css-color(lightgrey) }
+    &-lightpink { @include theme-css-color(lightpink) }
+    &-lightsalmon { @include theme-css-color(lightsalmon) }
+    &-lightseagreen { @include theme-css-color(lightseagreen) }
+    &-lightskyblue { @include theme-css-color(lightskyblue) }
+    &-lightslategray { @include theme-css-color(lightslategray) }
+    &-lightslategrey { @include theme-css-color(lightslategrey) }
+    &-lightsteelblue { @include theme-css-color(lightsteelblue) }
+    &-lightyellow { @include theme-css-color(lightyellow) }
+    &-lime { @include theme-css-color(lime) }
+    &-limegreen { @include theme-css-color(limegreen) }
+    &-linen { @include theme-css-color(linen) }
+    &-magenta { @include theme-css-color(magenta) }
+    &-maroon { @include theme-css-color(maroon) }
+    &-mediumaquamarine { @include theme-css-color(mediumaquamarine) }
+    &-mediumblue { @include theme-css-color(mediumblue) }
+    &-mediumorchid { @include theme-css-color(mediumorchid) }
+    &-mediumpurple { @include theme-css-color(mediumpurple) }
+    &-mediumseagreen { @include theme-css-color(mediumseagreen) }
+    &-mediumslateblue { @include theme-css-color(mediumslateblue) }
+    &-mediumspringgreen { @include theme-css-color(mediumspringgreen) }
+    &-mediumturquoise { @include theme-css-color(mediumturquoise) }
+    &-mediumvioletred { @include theme-css-color(mediumvioletred) }
+    &-midnightblue { @include theme-css-color(midnightblue) }
+    &-mintcream { @include theme-css-color(mintcream) }
+    &-mistyrose { @include theme-css-color(mistyrose) }
+    &-moccasin { @include theme-css-color(moccasin) }
+    &-navajowhite { @include theme-css-color(navajowhite) }
+    &-navy { @include theme-css-color(navy) }
+    &-oldlace { @include theme-css-color(oldlace) }
+    &-olive { @include theme-css-color(olive) }
+    &-olivedrab { @include theme-css-color(olivedrab) }
+    &-orange { @include theme-css-color(orange) }
+    &-orangered { @include theme-css-color(orangered) }
+    &-orchid { @include theme-css-color(orchid) }
+    &-palegoldenrod { @include theme-css-color(palegoldenrod) }
+    &-palegreen { @include theme-css-color(palegreen) }
+    &-paleturquoise { @include theme-css-color(paleturquoise) }
+    &-palevioletred { @include theme-css-color(palevioletred) }
+    &-papayawhip { @include theme-css-color(papayawhip) }
+    &-peachpuff { @include theme-css-color(peachpuff) }
+    &-peru { @include theme-css-color(peru) }
+    &-pink { @include theme-css-color(pink) }
+    &-plum { @include theme-css-color(plum) }
+    &-powderblue { @include theme-css-color(powderblue) }
+    &-purple { @include theme-css-color(purple) }
+    &-red { @include theme-css-color(red) }
+    &-rosybrown { @include theme-css-color(rosybrown) }
+    &-royalblue { @include theme-css-color(royalblue) }
+    &-saddlebrown { @include theme-css-color(saddlebrown) }
+    &-salmon { @include theme-css-color(salmon) }
+    &-sandybrown { @include theme-css-color(sandybrown) }
+    &-seagreen { @include theme-css-color(seagreen) }
+    &-seashell { @include theme-css-color(seashell) }
+    &-sienna { @include theme-css-color(sienna) }
+    &-silver { @include theme-css-color(silver) }
+    &-skyblue { @include theme-css-color(skyblue) }
+    &-slateblue { @include theme-css-color(slateblue) }
+    &-slategray { @include theme-css-color(slategray) }
+    &-slategrey { @include theme-css-color(slategrey) }
+    &-snow { @include theme-css-color(snow) }
+    &-springgreen { @include theme-css-color(springgreen) }
+    &-steelblue { @include theme-css-color(steelblue) }
+    &-tan { @include theme-css-color(tan) }
+    &-teal { @include theme-css-color(teal) }
+    &-thistle { @include theme-css-color(thistle) }
+    &-tomato { @include theme-css-color(tomato) }
+    &-turquoise { @include theme-css-color(turquoise) }
+    &-violet { @include theme-css-color(violet) }
+    &-wheat { @include theme-css-color(wheat) }
+    &-white { @include theme-css-color(white) }
+    &-whitesmoke { @include theme-css-color(whitesmoke) }
+    &-yellow { @include theme-css-color(yellow) }
+    &-yellowgreen { @include theme-css-color(yellowgreen) }
+}

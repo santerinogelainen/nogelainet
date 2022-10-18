@@ -16,13 +16,15 @@ export const runCommand = (command) => {
         setLanguage(lang);
     }
 
-    switch (command.toLowerCase()) {
+    const commandType = command.Type.toLowerCase();
+
+    switch (commandType) {
 
         case Commands.Home:
         case Commands.Projects:
         case Commands.Contact:
         case Commands.About:
-            navigate(mapToPage(command.toLowerCase()));
+            navigate(mapToPage(commandType));
             break;
 
         case Commands.Dark:
@@ -30,12 +32,13 @@ export const runCommand = (command) => {
         case Commands.Pride:
         case Commands.PowerShell:
         case Commands.Hacker:
-            changeTheme(mapToTheme(command.toLowerCase()));
+        case Commands.CssColor:
+            changeTheme(mapToTheme(command));
             break;
 
         case Commands.English:
         case Commands.Finnish:
-            changeLanguage(mapToLanguage(command.toLowerCase()));
+            changeLanguage(mapToLanguage(commandType));
             break;
 
         default:

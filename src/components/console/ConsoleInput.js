@@ -114,7 +114,7 @@ const ConsoleInput = ({
 
     function runCommand(command, event) {
         if (onCommand) {
-            onCommand(command.Type, event);
+            onCommand(command, event);
         }
 
         setState({
