@@ -16,14 +16,6 @@
     @return rgb($r, $g, $b);
 }
 
-@function get-highlight-color($color, $amount: 10%) {
-    $lightness: lightness($color);
-    @if $lightness >= 50 {
-        @return darken($color, $amount);
-    }
-    @return lighten($color, $amount);
-}
-
 @mixin theme-css-color(
     $color-background,
     $color-text: ''
@@ -33,12 +25,12 @@
         $color-text: get-opposite-color($color-background, false);
     }
 
-    $color-muted: rgba($color-text, 0.2);
-    $color-highlight: rgba($color-text, 0.5);
+    $color-muted: rgba($color-text, 0.3);
+    $color-highlight: rgba($color-text, 0.6);
 
     background-color: $color-background;
     color: $color-text;
-    font-weight: 100;
+    font-weight: 200;
 
     .large-text,
     .written-text-visible,
@@ -49,6 +41,7 @@
     .about-text p,
     .about-text p strong {
         color: $color-text;
+        font-weight: 200;
     }
 
     .console-input-wrapper {
