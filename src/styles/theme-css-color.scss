@@ -264,7 +264,7 @@
     &-goldenrod { @include theme-css-color(goldenrod) }
     &-green { @include theme-css-color(green) }
     &-greenyellow { @include theme-css-color(greenyellow) }
-    &-grey { @include theme-css-color(grey) }
+    &-grey { @include theme-css-color(grey, black) }
     &-honeydew { @include theme-css-color(honeydew) }
     &-hotpink { @include theme-css-color(hotpink) }
     &-indianred { @include theme-css-color(indianred) }
