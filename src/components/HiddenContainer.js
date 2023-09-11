@@ -7,7 +7,7 @@ import { useTimeoutState } from "../utils/reactUtils";
 const HiddenContainer = ({
   visible = false,
   enabled = true,
-  rotate = true,
+  rotate = false,
   anchor = Anchor.Center,
   onHide = null,
   onShow = null,

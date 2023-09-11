@@ -23,6 +23,6 @@ export const Default = Template.bind({});
 
 Default.args = {
     enabled: true,
-    rotate: true,
+    rotate: false,
     anchor: Anchor.Center
 };
