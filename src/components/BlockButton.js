@@ -8,7 +8,6 @@ const BlockButton = ({
     onClick = null, 
     ...props
 }) => {
-
     const [slideOpen, setSlideOpen] = React.useState(forceOpen || false);
 
     return (

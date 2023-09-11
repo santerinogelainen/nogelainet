@@ -66,8 +66,6 @@ async function fetchArray(client, value) {
 
 async function fetchCommands(client) {
   const commands = await fetchDictionary(client, (x) => x.Name);
-
-  console.log(commands);
   for (const color of cssColors) {
     if (!commands[color]) {
       commands[color] = {

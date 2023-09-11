@@ -51,8 +51,6 @@ export const ConsoleContainer = ({
   ];
 
   const menuOnCommand = React.useCallback((command) => {
-    console.log(command);
-
     onCommand(commands[command]);
   }, [onCommand, commands]);
 

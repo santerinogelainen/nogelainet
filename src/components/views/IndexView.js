@@ -98,15 +98,15 @@ const IndexView = ({
                 <span className="break-lg home-line home-line-1">
                     { writtenText(IndexPosition.Hello, t("hello")) }
                     { writtenText(IndexPosition.MyNameIs, t("myNameIs")) }
-                        <HighlightedWordAnimation 
-                            start={position === IndexPosition.Name} 
-                            visible={position > IndexPosition.Name}
-                            speed={400} 
-                            onComplete={nextPosition}>
-                            <span className="name" ref={nameContainer}>
-                                {name}
-                            </span>
-                        </HighlightedWordAnimation>
+                    <HighlightedWordAnimation 
+                        start={position === IndexPosition.Name} 
+                        visible={position > IndexPosition.Name}
+                        speed={400} 
+                        onComplete={nextPosition}>
+                        <span className="name" ref={nameContainer}>
+                            {name}
+                        </span>
+                    </HighlightedWordAnimation>
                 </span>
                 <span className="break-lg home-line home-line-2">
                     { writtenText(IndexPosition.Title, t("imA")) }
