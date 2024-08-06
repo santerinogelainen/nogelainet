@@ -26,7 +26,11 @@ const FadeAnimation = ({
           onComplete: after
       };
 
-      return gsap.to(container.current, options);
+      const tween = gsap.to(container.current, options);
+
+      return () => {
+        tween.kill();
+      };
 
   }, [visible]);
 
