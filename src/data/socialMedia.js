@@ -1,6 +1,5 @@
 export default [
   {
-    PartitionKey: "SocialMedia",
     RowKey: "Discord",
     Name: "Discord",
     Order: "99",
@@ -8,7 +7,6 @@ export default [
     Username: "noge#4652",
   },
   {
-    PartitionKey: "SocialMedia",
     RowKey: "GitHub",
     Name: "GitHub",
     Order: "20",
@@ -16,7 +14,6 @@ export default [
     Username: "santerinogelainen",
   },
   {
-    PartitionKey: "SocialMedia",
     RowKey: "Instagram",
     Name: "Instagram",
     Order: "30",
@@ -24,7 +21,6 @@ export default [
     Username: "santerinogelainen",
   },
   {
-    PartitionKey: "SocialMedia",
     RowKey: "LinkedIn",
     Name: "LinkedIn",
     Order: "10",
