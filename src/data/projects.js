@@ -2,7 +2,6 @@ export default [
   {
     PartitionKey: "Project",
     RowKey: "card-registry",
-    Timestamp: "2022-02-25T17:44:08.8067505Z",
     Description:
       "Kilta Card registry allows organizations to keep track of their issued cards and qualifications. It consists of the base registry, course management module, online exam module and the mobile app for cards.\n\nWhat I worked on:\n- Implementation of:\n  - Course management module\n  - Course exam module\n  - Mobile card app (PWA)\n  - Billing and invoicing\n  - Netvisor integration\n  - E-taika integration\n  - Data transfers\n  - CI/CD pipelines",
     DescriptionFI:
@@ -15,7 +14,6 @@ export default [
   {
     PartitionKey: "Project",
     RowKey: "event-manager",
-    Timestamp: "2022-03-01T20:43:24.924922Z",
     Description:
       "Event manager is a module that can be installed on top of the Kilta registry for organizations that needed to manage their events, courses etc. \n\nWhat I worked on:\n- Productization of Event manager as a lead developer\n- Implementation of functionalities like:\n  - Event groups\n  - Event gatherings\n  - Event accommodations\n  - Event statistics and reports\n  - Enrollment form capabilities like\n    - questions under questions\n    - multiple forms for a single event\n  - English and swedish support\n  - Paytrail integration\n  - Netvisor integration\n  - Moodle integration\n  - Priima integration\n  - REST API\n  - CI/CD pipelines\n\n...and much more.",
     DescriptionFI:
@@ -28,7 +26,6 @@ export default [
   {
     PartitionKey: "Project",
     RowKey: "fund-raising",
-    Timestamp: "2022-03-01T20:44:00.0498672Z",
     Description:
       "Kilta Fund raising is a module that can be installed on top of the Kilta registry to manage fund raising for a non profit organization. \n\nWhat I worked on:\n- Designing and building the module as a lead developer\n- Implementation of functionalities like:\n  - Managing donator's information\n  - Managing campaign's information\n  - Invoicing and billing\n  - Donation forms\n  - Automations",
     DescriptionFI:
@@ -41,7 +38,6 @@ export default [
   {
     PartitionKey: "Project",
     RowKey: "mycats",
-    Timestamp: "2022-02-25T17:52:11.3000902Z",
     Description:
       "MyCats is a registry for Fif\u00e9 cats, cat shows, cattery names, members, events and invoicing.\n\nWhat I worked on:\n- Productization of MyCats as a lead developer\n- Implementation of functionalities like:\n  - Improved cat's health information\n  - Improved litter registration\n  - Improved EMS Code management\n  - Improved membership registration process\n  - Optimization of the show registry\n  - Danish, Latvian and Dutch support\n  - Mollie integration\n  - E-boekhouden integration\n  - REST API\n  - Data transfers\n  - CI/CD pipelines\n- Deployment for\n  - Suomen Kissaliitto, Finnish Federation\n  - NRR, Norwegian Federation\n  - Felis Danica, Danish Federation\n  - CFCA, Latvian Federation\n  - Mundikat, Dutch Federation",
     DescriptionFI:

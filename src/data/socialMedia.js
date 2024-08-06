@@ -2,7 +2,6 @@ export default [
   {
     PartitionKey: "SocialMedia",
     RowKey: "Discord",
-    Timestamp: "2022-03-01T20:58:25.3861843Z",
     Name: "Discord",
     Order: "99",
     Url: "https://discord.com/users/211860254646861824",
@@ -11,7 +10,6 @@ export default [
   {
     PartitionKey: "SocialMedia",
     RowKey: "GitHub",
-    Timestamp: "2022-03-01T20:58:42.4634475Z",
     Name: "GitHub",
     Order: "20",
     Url: "https://github.com/santerinogelainen",
@@ -20,7 +18,6 @@ export default [
   {
     PartitionKey: "SocialMedia",
     RowKey: "Instagram",
-    Timestamp: "2022-03-01T20:58:51.4253333Z",
     Name: "Instagram",
     Order: "30",
     Url: "https://www.instagram.com/santerinogelainen/",
@@ -29,7 +26,6 @@ export default [
   {
     PartitionKey: "SocialMedia",
     RowKey: "LinkedIn",
-    Timestamp: "2022-03-01T20:58:32.7859722Z",
     Name: "LinkedIn",
     Order: "10",
     Url: "https://www.linkedin.com/in/santerinogelainen/",
