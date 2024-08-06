@@ -71,7 +71,7 @@ const WrittenTextAnimation = ({
 
     const timeout = setTimeout(() => {
       const newText = visible + hidden.substring(0, 1);
-      
+
       if (newText === text && onEnd) {
         onEnd();
       }

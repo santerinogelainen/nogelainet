@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Direction } from "../../models/direction";
 import SlideAnimation from "./SlideAnimation";
 
@@ -14,15 +14,10 @@ const HighlightedWordAnimation = ({
     onComplete = null,
     ...props
 }) =>  {
-
-    const getInitialState = React.useCallback(() => {
-        return {
-            wordVisible: visible,
-            slideOpen: false
-        }
-    }, [visible]);
-
-    const [state, setState] = React.useState(getInitialState());
+    const [{slideOpen, wordVisible}, setState] = React.useState({
+        wordVisible: visible,
+        slideOpen: false
+    });
 
     const hideSlide = React.useCallback(() => {
         setState({
@@ -30,6 +25,12 @@ const HighlightedWordAnimation = ({
             slideOpen: false
         });
     }, []);
+
+    useEffect(() => {
+        if (visible) {
+            hideSlide();
+        }
+    }, [visible]);
     
     const showSlide = React.useCallback(() => {
         setState({
@@ -39,23 +40,13 @@ const HighlightedWordAnimation = ({
     }, []);
 
     React.useEffect(() => {
-
         if (start) {
-
             const timeout = setTimeout(() => {
-    
                 showSlide();
-    
             }, delay);
-
             return () => clearTimeout(timeout);
-
         }
-        else {
-            setState(getInitialState());
-        }
-
-    }, [start, delay, showSlide, getInitialState]);
+    }, [start, delay, showSlide]);
 
     return (
         <span className="highlighted-word-container">
@@ -63,9 +54,9 @@ const HighlightedWordAnimation = ({
                 speed={speed}
                 from={from}
                 to={to}
-                open={state.slideOpen}
-                after={state.slideOpen ? hideSlide : onComplete}>
-                <span className={"highlighted-word" + (state.wordVisible ? " highlighted-word-visible" : "")}>
+                open={slideOpen}
+                after={slideOpen ? hideSlide : onComplete}>
+                <span className={"highlighted-word" + (wordVisible ? " highlighted-word-visible" : "")}>
                     {word || props.children}
                 </span>
             </SlideAnimation>

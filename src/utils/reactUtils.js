@@ -74,3 +74,20 @@ export const useTimeoutState = () => {
     clear
   }
 }
+
+export const useCallbackRef = (callback) => {
+  const ref = React.useMemo(
+    () =>
+      Object.assign(
+        (node) => {
+          ref.current = node;
+          if (node) {
+            callback(node);
+          }
+        },
+        { current: null }
+      ),
+    []
+  );
+  return ref;
+};

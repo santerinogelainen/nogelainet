@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Direction } from "../../models/direction";
 import gsap, { Power3 } from "gsap";
 import { useDidUpdateEffect } from "../../utils/reactUtils";
+
+const insetOpen = "inset(0% 0% 0% 0%)";
+const getInset = (direction) => {
+    switch (direction) {
+        case Direction.Top:
+            return "inset(0% 0% 100% 0%)";
+
+        case Direction.Left:
+            return "inset(0% 100% 0% 0%)";
+
+        case Direction.Bottom:
+            return "inset(100% 0% 0% 0%)";
+
+        case Direction.Right:
+        default:
+            return "inset(0% 0% 0% 100%)";
+    }
+};
 
 const SlideAnimation = ({ 
     open = false, 
@@ -15,79 +33,39 @@ const SlideAnimation = ({
     const bg = React.useRef();
     const container = React.useRef();
     const openByDefault = React.useRef(open);
-    const anim = React.useRef(null);
-    const insetOpen = React.useRef("inset(0% 0% 0% 0%)");
+    const beforeRef = React.useRef(before);
+    const afterRef = React.useRef(after);
+    const timeline = React.useRef(gsap.timeline({delay: 0}));
 
-    const animateInset = React.useCallback((target, clipPath) => {
-
-        if (before) {
-            before();
-        }
-
-        const options = {
-            duration: speed / 1000,
-            ease: Power3.easeInOut,
-            clipPath: clipPath,
-            onComplete: after
-        };
-
-        return gsap.to(target, options);
-    }, [before, after, speed]);
-
-    const getInset = React.useCallback((direction) => {
-
-        switch (direction) {
-
-            case Direction.Top:
-                return "inset(0% 0% 100% 0%)";
-
-            case Direction.Left:
-                return "inset(0% 100% 0% 0%)";
-
-            case Direction.Bottom:
-                return "inset(100% 0% 0% 0%)";
-
-            case Direction.Right:
-            default:
-                return "inset(0% 0% 0% 100%)";
-        }
-
-    }, []);
-
-    const setInset = React.useCallback((target, clipPath) => {
-        const options = {
-            clipPath: clipPath
-        };
-        gsap.set(target, options);
-    }, []);
+    useEffect(() => { afterRef.current = after }, [after]);
+    useEffect(() => { beforeRef.current = before }, [before]);
     
-    const fromInset = React.useMemo(() => getInset(from), [from, getInset]);
-    const toInset = React.useMemo(() => getInset(to), [to, getInset]);
-
     useDidUpdateEffect(() => {
-
-        if (anim.current && anim.current.isActive()) {
-            anim.current.then(() => {
-                setInset(bg.current, open ? fromInset : insetOpen.current);
-                anim.current = animateInset(bg.current, open ? insetOpen.current : toInset);
-            });
+        if (bg.current) {
+            beforeRef.current?.();
+            const options = {
+                duration: speed / 1000,
+                ease: Power3.easeInOut,
+                clipPath: open ? insetOpen : getInset(to),
+                onComplete: () =>  {
+                    if (!open && !timeline.current?.isActive()) {
+                        timeline.current.clear();
+                    }
+                    afterRef.current?.();
+                }
+            };
+            if (open && timeline.current?.isActive()) {
+                timeline.current.clear();
+                timeline.current.to(bg.current, options);
+            } else {
+                timeline.current.fromTo(bg.current, { clipPath: open ? getInset(from) : insetOpen }, options);
+            }
         }
-        else {
-            setInset(bg.current, open ? fromInset : insetOpen.current);
-            anim.current = animateInset(bg.current, open ? insetOpen.current : toInset);
-        }
-
-    }, [open]);
-
-    useDidUpdateEffect(() => {
-        if (anim.current && anim.current.vars && anim.current.isActive()) {
-            anim.current.vars.onComplete = after;
-        }
-    }, [after]);
+    }, [open, speed, from, to]);
 
     return (
         <span ref={container} className="slide-animation-container">
-            <span ref={bg} className="slide-animation-bg" style={{ zIndex: 1, clipPath: openByDefault.current ? insetOpen.current : fromInset }}>
+            <span ref={bg} className="slide-animation-bg" style={{ zIndex: 1, clipPath: openByDefault.current ? insetOpen : getInset(from) }}>
                 {props.children}
             </span>
             <span className="slide-animation-content" style={{ zIndex: 0 }}>
