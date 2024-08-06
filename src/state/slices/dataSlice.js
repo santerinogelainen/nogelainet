@@ -10,7 +10,7 @@ import socialMedia from "../../data/socialMedia";
 const initialState = {
   commands: getCommands(),
   settings: getSettings(),
-  images: images.map(x => x.Url),
+  images,
   projects,
   employers: [],
   socials: socialMedia,
