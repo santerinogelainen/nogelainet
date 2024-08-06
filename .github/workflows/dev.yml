@@ -6,10 +6,6 @@ on:
   #    - dev
   workflow_dispatch:
 
-env:
-  GATSBY_AZURE_TABLES_ACCOUNT: ${{ secrets.DEV_AZURE_TABLES_ACCOUNT }}
-  GATSBY_AZURE_TABLES_SAS: ${{ secrets.DEV_AZURE_TABLES_SAS }}
-
 jobs:
   build_and_deploy_job:
     runs-on: ubuntu-latest
