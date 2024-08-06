@@ -22,11 +22,8 @@ export const ConsoleContainer = ({
   const content = React.useRef(null);
   const [inputVisible, setInputVisible] = React.useState(visible);
   const [menuVisible, setMenuVisible] = React.useState(visible);
-  const { t } = useTranslation();
-
+  
   useDidMountEffect(() => {
-    document.title = t("loading") + "...";
-
     loadLanguage();
 
     store.dispatch(loadTheme);

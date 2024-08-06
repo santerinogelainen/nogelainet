@@ -52,22 +52,6 @@ export const useDidMountEffect = (callback, inputs) => {
 };
 
 /**
- * Set document title
- */
-export const useTitle = (title) => {
-  const data = useSelector((x) => x.data);
-
-  React.useEffect(() => {
-    document.title = title;
-
-    if (data.settings.FirstName && data.settings.LastName) {
-      document.title +=
-        " | " + data.settings.FirstName + " " + data.settings.LastName;
-    }
-  }, [title, data.settings.FirstName, data.settings.LastName]);
-};
-
-/**
  * Use and cleanup an interval
  */
 export const useIntervalEffect = (callback, speed, inputs) => {

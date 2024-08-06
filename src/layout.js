@@ -6,7 +6,6 @@ import { useLocation } from "@reach/router";
 import { useSelector } from "react-redux";
 import { mapPageToCommand } from "./commands/commandMapper";
 import { runCommand } from "./commands/commandRunner";
-import Helmet from "react-helmet"
 import "./i18n";
 import "./styles/global.scss";
 import "./styles/theme-dark.scss";
@@ -24,6 +23,44 @@ export const RootElement = ({ element }) => {
     );
 }
 
+export const HeadLayout = (props) => {
+
+    const data = useSelector((x) => x.data);
+
+    const title = React.useMemo(() => {
+        let title = props.title;
+
+        if (data.settings.FirstName && data.settings.LastName) {
+            title +=  " | " + data.settings.FirstName + " " + data.settings.LastName;
+        }
+
+        return title;
+    }, [data.settings.FirstName, data.settings.LastName])
+
+    return (
+        <>
+            <title>{title}</title>
+            <meta charSet="utf-8" />
+            <meta name="title" content="Santeri Nogelainen" />
+            <meta name="description" content="Software Developer from Helsinki" />
+
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="Santeri Nogelainen" />
+            <meta property="og:description" content="Software Developer from Helsinki" />
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:locale:alternate" content="fi_FI" />
+            <meta property="og:url" content="https://nogelai.net/" />
+            <meta property="og:image" content="https://nogelai.net/seo.PNG" />
+
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:title" content="Santeri Nogelainen" />
+            <meta property="twitter:description" content="Software Developer from Helsinki" />
+            <meta property="twitter:url" content="https://nogelai.net/" />
+            <meta property="twitter:image" content="https://nogelai.net/seo.PNG" />
+        </>
+    )
+}
+
 const PageElementWithHooks = (props) => {
     
     const data = useSelector(x => x.data);
@@ -33,25 +70,6 @@ const PageElementWithHooks = (props) => {
 
     return (
         <div className="app">
-            <Helmet>
-                <meta charSet="utf-8" />
-                <meta name="title" content="Santeri Nogelainen" />
-                <meta name="description" content="Software Developer from Helsinki" />
-
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Santeri Nogelainen" />
-                <meta property="og:description" content="Software Developer from Helsinki" />
-                <meta property="og:locale" content="en_US" />
-                <meta property="og:locale:alternate" content="fi_FI" />
-                <meta property="og:url" content="https://nogelai.net/" />
-                <meta property="og:image" content="https://nogelai.net/seo.PNG" />
-
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:title" content="Santeri Nogelainen" />
-                <meta property="twitter:description" content="Software Developer from Helsinki" />
-                <meta property="twitter:url" content="https://nogelai.net/" />
-                <meta property="twitter:image" content="https://nogelai.net/seo.PNG" />
-            </Helmet>
             <ConsoleContainer 
                 visible={view.controlsVisible}
                 commands={data.commands}

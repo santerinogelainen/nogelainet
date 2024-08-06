@@ -8,8 +8,7 @@ module.exports = {
     title: "nogelainet",
   },
   plugins: [
-    "gatsby-plugin-sass", 
-    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sass",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
