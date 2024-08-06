@@ -20,7 +20,7 @@ const ProjectsView = ({
 
     const selectProject = React.useCallback((event, nr, project)=> {
         const pos = event.target.getBoundingClientRect();
-        setActiveRowKey(project?.rowKey);
+        setActiveRowKey(project?.RowKey);
         setActiveProject({
             nr: nr,
             project: project,
@@ -38,7 +38,7 @@ const ProjectsView = ({
                 <div className="project-item-nr-mobile">
                     {nr}
                 </div>
-                <div className="project-item-content" style={{opacity: activeRowKey === project.rowKey ? 0 : 1}}>
+                <div className="project-item-content" style={{opacity: activeRowKey === project.RowKey ? 0 : 1}}>
                     <HighlightedWordAnimation 
                         start={true} 
                         delay={(index * speed) / 1.5} 

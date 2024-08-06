@@ -70,9 +70,6 @@ const ConsoleInput = ({
       return;
     }
 
-    console.log(isShortcut);
-    console.log(event.key);
-
     if (event.key === KeyCode.CODE_CONTROL_LEFT || 
       event.key === KeyCode.CODE_CONTROL_RIGHT || 
       event.key === KeyCode.CODE_META_LEFT || 

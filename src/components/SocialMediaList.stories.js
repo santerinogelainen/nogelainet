@@ -17,7 +17,7 @@ export const Default = Template.bind({});
 Default.args = {
     socials: [
         {
-            rowKey: "instagram",
+            RowKey: "instagram",
             Name: "Instagram",
             Url: "https://www.instagram.com/santerinogelainen/",
             Username: "santerinogelainen"

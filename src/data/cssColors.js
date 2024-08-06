@@ -1,4 +1,4 @@
-export const cssColors = [
+export default [
   "black",
   "silver",
   "gray",

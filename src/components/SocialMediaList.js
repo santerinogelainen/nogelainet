@@ -9,7 +9,7 @@ const SocialMediaList = ({
 
     return <div className="socials">
         {_.orderBy(socials, x => x.Order || x.Name).map(social => {
-            return <SocialMediaItem key={social.rowKey} social={social} />
+            return <SocialMediaItem key={social.RowKey} social={social} />
         })}
     </div>
 }

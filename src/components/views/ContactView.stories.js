@@ -18,7 +18,7 @@ Default.args = {
     email: "santeri.nogelainen@gmail.com",
     socials: [
         {
-            rowKey: "instagram",
+            RowKey: "instagram",
             name: "Instagram",
             url: "https://www.instagram.com/santerinogelainen/",
             username: "santerinogelainen"

@@ -1,84 +1,59 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { DataContext } from "../../data/dataContext";
 import { Commands } from "../../models/commands";
-import { cssColors } from "../../utils/cssColors";
+import cssColors from "../../data/cssColors";
+import commands from "../../data/commands";
+import images from "../../data/images";
+import projects from "../../data/projects";
+import settings from "../../data/settings";
+import socialMedia from "../../data/socialMedia";
 
 const initialState = {
-  commands: {},
-  settings: {},
-  images: [],
-  projects: [],
+  commands: getCommands(),
+  settings: getSettings(),
+  images: images.map(x => x.Url),
+  projects,
   employers: [],
-  socials: [],
+  socials: socialMedia,
 };
 
 const slice = createSlice({
   name: "data",
   // `createSlice` will infer the state type from the `initialState` argument
-  initialState: initialState,
-  reducers: {
-    set: (state, action) => {
-      return action.payload || initialState;
-    },
-  },
+  initialState: initialState
 });
 
-export async function fetchData(dispatch) {
-  const context = new DataContext();
-
-  const data = {
-    commands: await fetchCommands(context.commands),
-    settings: await fetchDictionary(
-      context.settings,
-      (x) => x.rowKey,
-      (x) => x.Value
-    ),
-    images: await fetchArray(context.images, (x) => x.Url),
-    projects: await fetchArray(context.projects),
-    //employers: await fetchArray(context.employers),
-    socials: await fetchArray(context.socials),
-  };
-
-  dispatch(slice.actions.set(data));
-}
-
-async function fetchDictionary(client, key, value) {
+function createDictionary(array, key, value) {
   const results = {};
-  const entities = client.listEntities();
 
-  for await (const entity of entities) {
-    results[key(entity)] = value ? value(entity) : entity;
+  for (const item of array) {
+    results[key(item)] = value ? value(item) : item;
   }
 
   return results;
 }
 
-async function fetchArray(client, value) {
-  const results = [];
-  const entities = client.listEntities();
-
-  for await (const entity of entities) {
-    results.push(value ? value(entity) : entity);
-  }
-
-  return results;
+function getSettings() {
+  return createDictionary(
+    settings,
+    (x) => x.RowKey,
+    (x) => x.Value
+  )
 }
 
-async function fetchCommands(client) {
-  const commands = await fetchDictionary(client, (x) => x.Name);
+function getCommands() {
+  const dict = createDictionary(commands, (x) => x.Name);
 
-  console.log(commands);
   for (const color of cssColors) {
-    if (!commands[color]) {
-      commands[color] = {
+    if (!dict[color]) {
+      dict[color] = {
         Alias: true,
         Name: color,
-        Type: Commands.CssColor
+        Type: Commands.CssColor,
       };
     }
   }
 
-  return commands;
+  return dict;
 }
 
 export const settingActions = slice.actions;

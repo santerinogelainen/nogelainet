@@ -1,5 +1,4 @@
 import React from "react";
-import { DataContext } from "../data/dataContext";
 import { useSelector } from "react-redux";
 
 /**
@@ -50,49 +49,6 @@ export const useDidMountEffect = (callback, inputs) => {
 
     loaded.current = true;
   }, inputs);
-};
-
-/**
- * Load entities from TableClient to a ref (once)
- */
-export const useFetchEntitiesEffect = (
-  getTableClients,
-  entities,
-  setEntities
-) => {
-  const fetchAll = async () => {
-    const context = new DataContext();
-    const clients = getTableClients(context);
-
-    if (clients instanceof Array) {
-      const results = [];
-
-      for (const client of clients) {
-        results.push(await fetch(client));
-      }
-
-      setEntities(results);
-    } else {
-      setEntities(await fetch(clients));
-    }
-  };
-
-  const fetch = async (client) => {
-    const result = [];
-    const entities = client.listEntities();
-
-    for await (const entity of entities) {
-      result.push(entity);
-    }
-
-    return result;
-  };
-
-  React.useEffect(() => {
-    if (!entities) {
-      fetchAll();
-    }
-  });
 };
 
 /**

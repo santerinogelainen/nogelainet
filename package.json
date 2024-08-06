@@ -17,7 +17,6 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@azure/data-tables": "^13.1.2",
     "@reduxjs/toolkit": "^1.8.3",
     "gatsby": "^4.20.0",
     "gatsby-plugin-manifest": "^4.20.0",
