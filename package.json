@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
+    "@babel/preset-react": "^7.24.7",
     "@storybook/addon-actions": "^8.2.7",
     "@storybook/addon-essentials": "^8.2.7",
     "@storybook/addon-links": "^8.2.7",
