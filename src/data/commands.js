@@ -93,8 +93,8 @@ export default [
     Priority: "999",
   },
   {
-    RowKey: "h\u00e4kkeri",
-    Name: "h\u00e4kkeri",
+    RowKey: "häkkeri",
+    Name: "häkkeri",
     Type: "Hacker",
   },
   {
@@ -130,8 +130,8 @@ export default [
     Priority: "99",
   },
   {
-    RowKey: "min\u00e4",
-    Name: "min\u00e4",
+    RowKey: "minä",
+    Name: "minä",
     Type: "About",
   },
   {
@@ -178,8 +178,8 @@ export default [
     Priority: "99",
   },
   {
-    RowKey: "s\u00e4hk\u00f6posti",
-    Name: "s\u00e4hk\u00f6posti",
+    RowKey: "sähköposti",
+    Name: "sähköposti",
     Type: "Contact",
   },
   {
