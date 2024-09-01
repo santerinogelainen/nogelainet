@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Commands } from "../../models/commands";
 import cssColors from "../../data/cssColors";
 import commands from "../../data/commands";
-import images from "../../data/images";
 import projects from "../../data/projects";
 import settings from "../../data/settings";
 import socialMedia from "../../data/socialMedia";
@@ -10,7 +9,6 @@ import socialMedia from "../../data/socialMedia";
 const initialState = {
   commands: getCommands(),
   settings: getSettings(),
-  images,
   projects,
   employers: [],
   socials: socialMedia,

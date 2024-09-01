@@ -9,11 +9,16 @@ import { HeadLayout } from "../layout";
 const IndexPage = () => {
     const data = useSelector(x => x.data);
     const dispatch = useDispatch();
+
+    const images = [
+        "/images/me2.jpg",
+        "/images/me3.jpg"
+    ]
     
     return (
         <IndexView
             name={data.settings.FirstName}
-            images={data.images ?? []}
+            images={images}
             onComplete={() => dispatch(viewActions.setControlsVisible(true))} />
 
     )
