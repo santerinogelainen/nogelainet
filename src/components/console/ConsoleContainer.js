@@ -35,7 +35,6 @@ export const ConsoleContainer = ({
   }, [visible]);
 
   const menuItems = [
-    Commands.Projects,
     Commands.About,
     Commands.Contact,
     activeTheme === Themes.Dark ? Commands.Light : Commands.Dark,

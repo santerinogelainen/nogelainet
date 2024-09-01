@@ -16,7 +16,6 @@ const ConsoleInput = ({
   const { t } = useTranslation();
 
   const helpTexts = [
-    t("projectsHelpText"),
     t("aboutHelpText"),
     t("contactHelpText"),
   ];
