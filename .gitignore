@@ -8,3 +8,4 @@ storybook-static/
 .yarn
 .pnp.cjs
 package-lock.json
+*storybook.log
