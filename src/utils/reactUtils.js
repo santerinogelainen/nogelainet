@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 /**
  * Add an event listened to a ref that is also cleaned up afterwards
@@ -71,9 +70,9 @@ export const useTimeoutState = () => {
   }, [timeoutPointer]);
   return {
     set,
-    clear
-  }
-}
+    clear,
+  };
+};
 
 export const useCallbackRef = (callback) => {
   const ref = React.useMemo(
@@ -85,9 +84,9 @@ export const useCallbackRef = (callback) => {
             callback(node);
           }
         },
-        { current: null }
+        { current: null },
       ),
-    []
+    [],
   );
   return ref;
 };
