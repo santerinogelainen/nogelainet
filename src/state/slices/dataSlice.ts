@@ -15,10 +15,14 @@ const slice = createSlice({
   name: "data",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState: initialState,
-  reducers: {}
+  reducers: {},
 });
 
-function createDictionary(array, key, value?: (item: any) => any) {
+function createDictionary<T>(
+  array: Array<T>,
+  key: (item: T) => string,
+  value?: (item: any) => any,
+): Record<string, T> {
   const results = {};
 
   for (const item of array) {
@@ -29,14 +33,14 @@ function createDictionary(array, key, value?: (item: any) => any) {
 }
 
 function getCommands() {
-  const dict = createDictionary(commands, (x) => x.Name);
+  const dict = createDictionary(commands, (x) => x.name);
 
   for (const color of cssColors) {
     if (!dict[color]) {
       dict[color] = {
-        Alias: true,
-        Name: color,
-        Type: Commands.CssColor,
+        key: `css-${color}`,
+        name: color,
+        type: Commands.CssColor,
       };
     }
   }

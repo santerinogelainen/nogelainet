@@ -1,24 +1,29 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import * as KeyCode from "keycode-js";
 import ConsoleInputPlaceholder from "./ConsoleInputPlaceholder";
 import ConsoleInputCaret from "./ConsoleInputCaret";
 import { ShakeAnimation } from "../animations/ShakeAnimation";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
+import { Command } from "../../types";
 
-const ConsoleInput = ({
+type ConsoleInputProps = {
+  visible: boolean;
+  commands?: Record<string, Command | null>;
+  onCommand?: (command: Command | null, event: any) => void;
+  onHelpTextComplete?: () => void;
+};
+
+const ConsoleInput: React.FC<ConsoleInputProps> = ({
   visible = true,
   commands = {},
-  onCommand = null,
-  onHelpTextComplete = null,
+  onCommand,
+  onHelpTextComplete,
 }) => {
   const wrapper = React.useRef(null);
   const { t } = useTranslation();
 
-  const helpTexts = [
-    t("aboutHelpText"),
-    t("contactHelpText"),
-  ];
+  const helpTexts = [t("aboutHelpText"), t("contactHelpText")];
 
   const [isShortcut, setIsShortcut] = React.useState(false);
   const [state, setState] = React.useState({
@@ -42,12 +47,14 @@ const ConsoleInput = ({
   }
 
   function onKeyUp(event) {
-    if (event.key === KeyCode.CODE_CONTROL_LEFT || 
-      event.key === KeyCode.CODE_CONTROL_RIGHT || 
-      event.key === KeyCode.CODE_META_LEFT || 
+    if (
+      event.key === KeyCode.CODE_CONTROL_LEFT ||
+      event.key === KeyCode.CODE_CONTROL_RIGHT ||
+      event.key === KeyCode.CODE_META_LEFT ||
       event.key === KeyCode.CODE_META_RIGHT ||
       event.key === "Control" ||
-      event.key === "Meta") {
+      event.key === "Meta"
+    ) {
       setIsShortcut(false);
       return;
     }
@@ -69,22 +76,30 @@ const ConsoleInput = ({
       return;
     }
 
-    if (event.key === KeyCode.CODE_CONTROL_LEFT || 
-      event.key === KeyCode.CODE_CONTROL_RIGHT || 
-      event.key === KeyCode.CODE_META_LEFT || 
+    if (
+      event.key === KeyCode.CODE_CONTROL_LEFT ||
+      event.key === KeyCode.CODE_CONTROL_RIGHT ||
+      event.key === KeyCode.CODE_META_LEFT ||
       event.key === KeyCode.CODE_META_RIGHT ||
       event.key === "Control" ||
-      event.key === "Meta") {
+      event.key === "Meta"
+    ) {
       setIsShortcut(true);
       return;
     }
 
-    if (isShortcut && (event.key === KeyCode.CODE_C || event.key.toLowerCase() === "c")) {
+    if (
+      isShortcut &&
+      (event.key === KeyCode.CODE_C || event.key.toLowerCase() === "c")
+    ) {
       onCopy(event);
       return;
     }
 
-    if (isShortcut && (event.key === KeyCode.CODE_V || event.key.toLowerCase() === "v")) {
+    if (
+      isShortcut &&
+      (event.key === KeyCode.CODE_V || event.key.toLowerCase() === "v")
+    ) {
       onPaste(event);
       return;
     }
@@ -174,8 +189,8 @@ const ConsoleInput = ({
     });
 
     if (Object.keys(cmds).length) {
-      const ordered = _.orderBy(cmds, (x) => x.Priority || 0, "desc");
-      return ordered[0]?.Name;
+      const ordered = _.orderBy(cmds, (x) => x?.priority || 0, "desc");
+      return ordered[0]?.name || "";
     }
 
     return "";
@@ -194,7 +209,10 @@ const ConsoleInput = ({
       helpTexts={helpTexts}
     />
   );
-  const style = visible ? undefined : { visibility: "hidden" };
+
+  const style: CSSProperties | undefined = visible
+    ? undefined
+    : { visibility: "hidden" };
 
   return (
     <div

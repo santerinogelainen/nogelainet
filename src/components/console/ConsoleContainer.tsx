@@ -7,22 +7,29 @@ import { Themes } from "../../models/themes";
 import { useDidMountEffect } from "../../utils/reactUtils";
 import { loadTheme } from "../../state/slices/themeSlice";
 import store from "../../state/store";
-import Loader from "../Loader";
-import { useTranslation } from "react-i18next";
 import { loadLanguage } from "../../i18n";
+import { Command } from "../../types";
 
-export const ConsoleContainer = ({
-  visible = false,
+type ConsoleContainerProps = React.PropsWithChildren<{
+  visible: boolean;
+  activePage?: string;
+  activeTheme?: string;
+  commands?: Record<string, Command | null>;
+  onCommand?: (command: Command | null) => void;
+}>;
+
+export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
+  visible,
   activePage = Commands.Home,
   activeTheme = Themes.Dark,
   commands = {},
   onCommand = null,
-  ...props
+  children,
 }) => {
   const content = React.useRef(null);
   const [inputVisible, setInputVisible] = React.useState(visible);
   const [menuVisible, setMenuVisible] = React.useState(visible);
-  
+
   useDidMountEffect(() => {
     loadLanguage();
 
@@ -41,14 +48,17 @@ export const ConsoleContainer = ({
     Commands.Home,
   ];
 
-  const menuOnCommand = React.useCallback((command) => {
-    onCommand(commands[command]);
-  }, [onCommand, commands]);
+  const menuOnCommand = React.useCallback(
+    (command) => {
+      onCommand?.(commands[command]);
+    },
+    [onCommand, commands],
+  );
 
   return (
     <div className="console-view">
       <div className="console-view-content" ref={content}>
-        {props.children}
+        {children}
       </div>
       <div className="console-view-controls">
         <ConsoleInput

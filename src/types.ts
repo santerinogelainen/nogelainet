@@ -23,3 +23,10 @@ export type SocialMedia = {
   url: string;
   username: string;
 };
+
+export type Command = {
+  key: string;
+  name: string;
+  type: string;
+  priority?: string;
+};

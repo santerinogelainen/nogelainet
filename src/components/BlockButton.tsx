@@ -14,7 +14,7 @@ const BlockButton: React.FC<BlockButtonProps> = ({
   onClick,
   children,
 }) => {
-  const [slideOpen, setSlideOpen] = React.useState(forceOpen || false);
+  const [slideOpen, setSlideOpen] = React.useState(forceOpen ?? false);
 
   return (
     <div
@@ -24,7 +24,7 @@ const BlockButton: React.FC<BlockButtonProps> = ({
       onClick={onClick}
     >
       <SlideAnimation
-        open={forceOpen !== null ? forceOpen : slideOpen}
+        open={forceOpen !== undefined ? forceOpen : slideOpen}
         from={Direction.Left}
         to={Direction.Right}
       >

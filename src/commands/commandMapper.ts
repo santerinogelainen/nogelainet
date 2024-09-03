@@ -2,8 +2,9 @@ import { Commands } from "../models/commands";
 import { Pages } from "../models/pages";
 import { Themes } from "../models/themes";
 import { Languages } from "../models/languages";
+import { Command } from "../types";
 
-export function mapToPage(command) {
+export function mapToPage(command: string) {
   switch (command) {
     case Commands.Home:
       return Pages.Home;
@@ -22,8 +23,8 @@ export function mapToPage(command) {
   }
 }
 
-export function mapToTheme(command) {
-  switch (command.Type.toLowerCase()) {
+export function mapToTheme(command: Command) {
+  switch (command.type.toLowerCase()) {
     case Commands.Dark:
       return Themes.Dark;
 
@@ -40,14 +41,14 @@ export function mapToTheme(command) {
       return Themes.Hacker;
 
     case Commands.CssColor:
-      return Themes.CssColor + '-' + command.Name.toLowerCase();
+      return Themes.CssColor + "-" + command.name.toLowerCase();
 
     default:
-      throw new Error("Could not map command to theme: " + command);
+      throw new Error("Could not map command to theme: " + command.name);
   }
 }
 
-export function mapToLanguage(command) {
+export function mapToLanguage(command: string): string {
   switch (command) {
     case Commands.Finnish:
       return Languages.Fi;
@@ -60,7 +61,7 @@ export function mapToLanguage(command) {
   }
 }
 
-export function mapPageToCommand(page) {
+export function mapPageToCommand(page: string): string {
   if (page.startsWith(Pages.About)) {
     return Commands.About;
   }
@@ -80,7 +81,7 @@ export function mapPageToCommand(page) {
   throw new Error("Unkown page: " + page);
 }
 
-export function nextCommand(command) {
+export function nextCommand(command: string): string {
   switch (command) {
     case Commands.Home:
       return Commands.Projects;
@@ -96,7 +97,7 @@ export function nextCommand(command) {
 
     default:
       throw new Error(
-        "Could not determine the next page for command: " + command
+        "Could not determine the next page for command: " + command,
       );
   }
 }
