@@ -23,7 +23,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
   activePage = Commands.Home,
   activeTheme = Themes.Dark,
   commands = {},
-  onCommand = null,
+  onCommand,
   children,
 }) => {
   const content = React.useRef(null);
@@ -49,7 +49,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
   ];
 
   const menuOnCommand = React.useCallback(
-    (command) => {
+    (command: string) => {
       onCommand?.(commands[command]);
     },
     [onCommand, commands],

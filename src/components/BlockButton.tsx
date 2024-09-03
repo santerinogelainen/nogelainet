@@ -3,7 +3,7 @@ import SlideAnimation from "./animations/SlideAnimation";
 import { Direction } from "../models/direction";
 
 type BlockButtonProps = React.PropsWithChildren<{
-  text: string;
+  text?: string;
   forceOpen?: boolean;
   onClick?: () => void;
 }>;
