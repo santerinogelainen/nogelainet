@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   siteMetadata: {
     siteUrl: "https://nogelai.net/",
     title: "nogelainet",
