@@ -2,8 +2,8 @@ import React from "react";
 import { Languages } from "../models/languages";
 import LanguageView from "../components/views/LanguageView";
 
-const FiPage = () => {
-    return <LanguageView lang={Languages.Fi} />;
-}
+const EnPage = () => {
+  return <LanguageView lang={Languages.En} />;
+};
 
-export default FiPage;
+export default EnPage;

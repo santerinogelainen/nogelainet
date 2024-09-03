@@ -1,9 +1,8 @@
 import React from "react"
 import {Provider} from "react-redux"
-import store from "./state/store";
+import store, { useAppSelector } from "./state/store";
 import ConsoleContainer from "./components/console/ConsoleContainer";
 import { useLocation } from "@reach/router";
-import { useSelector } from "react-redux";
 import { mapPageToCommand } from "./commands/commandMapper";
 import { runCommand } from "./commands/commandRunner";
 import "./i18n";
@@ -14,6 +13,7 @@ import "./styles/theme-pride.scss";
 import "./styles/theme-powershell.scss";
 import "./styles/theme-hacker.scss";
 import "./styles/theme-css-color.scss";
+import { settings } from "./constants";
 
 export const RootElement = ({ element }) => {
     return (
@@ -25,17 +25,7 @@ export const RootElement = ({ element }) => {
 
 export const HeadLayout = (props) => {
 
-    const data = useSelector((x) => x.data);
-
-    const title = React.useMemo(() => {
-        let title = props.title;
-
-        if (data.settings.FirstName && data.settings.LastName) {
-            title +=  " | " + data.settings.FirstName + " " + data.settings.LastName;
-        }
-
-        return title;
-    }, [data.settings.FirstName, data.settings.LastName])
+    const title = `${props.title} | ${settings.full_name()}`;
 
     return (
         <>
@@ -63,9 +53,9 @@ export const HeadLayout = (props) => {
 
 const PageElementWithHooks = (props) => {
     
-    const data = useSelector(x => x.data);
-    const theme = useSelector(x => x.theme);
-    const view = useSelector(x => x.view);
+    const data = useAppSelector(x => x.data);
+    const theme = useAppSelector(x => x.theme);
+    const view = useAppSelector(x => x.view);
     const location = useLocation();
 
     return (

@@ -3,24 +3,22 @@ import { Commands } from "../../models/commands";
 import cssColors from "../../data/cssColors";
 import commands from "../../data/commands";
 import projects from "../../data/projects";
-import settings from "../../data/settings";
 import socialMedia from "../../data/socialMedia";
 
 const initialState = {
   commands: getCommands(),
-  settings: getSettings(),
   projects,
-  employers: [],
   socials: socialMedia,
 };
 
 const slice = createSlice({
   name: "data",
   // `createSlice` will infer the state type from the `initialState` argument
-  initialState: initialState
+  initialState: initialState,
+  reducers: {}
 });
 
-function createDictionary(array, key, value) {
+function createDictionary(array, key, value?: (item: any) => any) {
   const results = {};
 
   for (const item of array) {
@@ -28,14 +26,6 @@ function createDictionary(array, key, value) {
   }
 
   return results;
-}
-
-function getSettings() {
-  return createDictionary(
-    settings,
-    (x) => x.RowKey,
-    (x) => x.Value
-  )
 }
 
 function getCommands() {

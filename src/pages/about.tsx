@@ -1,12 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
 import AboutView from "../components/views/AboutView";
 import { viewActions } from "../state/slices/viewSlice";
 import { HeadLayout } from "../layout";
+import { useAppDispatch } from "../state/store";
 
 const AboutPage = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <AboutView
