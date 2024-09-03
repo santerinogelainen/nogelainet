@@ -5,20 +5,27 @@ import WrittenTextAnimation, {
   WrittenTextAnimationState,
 } from "../animations/WrittenTextAnimation";
 
+type ConsoleInputPlaceholderProps = {
+  enabled?: boolean;
+  delay?: number;
+  helpTexts?: Array<string>;
+  onComplete?: (index: number, text: string) => void;
+};
+
 const getInitialState = (enabled) =>
   enabled
     ? WrittenTextAnimationState.Enabled
     : WrittenTextAnimationState.DisabledHidden;
 
-const ConsoleInputPlaceholder = ({
+const ConsoleInputPlaceholder: React.FC<ConsoleInputPlaceholderProps> = ({
   enabled = true,
   delay = 6000,
   helpTexts = [],
-  onComplete = null,
+  onComplete,
 }) => {
   const [index, setIndex] = React.useState(0);
   const { state, enable, disable, setState } = useWrittenTextAnimationState(
-    getInitialState(enabled)
+    getInitialState(enabled),
   );
 
   useDidUpdateEffect(() => setIndex(0), [helpTexts]);
@@ -48,7 +55,7 @@ const ConsoleInputPlaceholder = ({
     (i) => {
       return helpTexts[i] ?? "";
     },
-    [helpTexts]
+    [helpTexts],
   );
 
   const endHandler = React.useCallback(() => {
