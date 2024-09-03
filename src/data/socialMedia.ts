@@ -1,30 +1,30 @@
-export default [
+import { SocialMedia } from "../types";
+
+const socials: Array<SocialMedia> = [
   {
-    RowKey: "Discord",
-    Name: "Discord",
-    Order: "99",
-    Url: "https://discord.com/users/211860254646861824",
-    Username: "noge#4652",
+    key: "LinkedIn",
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/santerinogelainen/",
+    username: "santerinogelainen",
   },
   {
-    RowKey: "GitHub",
-    Name: "GitHub",
-    Order: "20",
-    Url: "https://github.com/santerinogelainen",
-    Username: "santerinogelainen",
+    key: "GitHub",
+    name: "GitHub",
+    url: "https://github.com/santerinogelainen",
+    username: "santerinogelainen",
   },
   {
-    RowKey: "Instagram",
-    Name: "Instagram",
-    Order: "30",
-    Url: "https://www.instagram.com/santerinogelainen/",
-    Username: "santerinogelainen",
+    key: "Instagram",
+    name: "Instagram",
+    url: "https://www.instagram.com/santerinogelainen/",
+    username: "santerinogelainen",
   },
   {
-    RowKey: "LinkedIn",
-    Name: "LinkedIn",
-    Order: "10",
-    Url: "https://www.linkedin.com/in/santerinogelainen/",
-    Username: "santerinogelainen",
+    key: "Discord",
+    name: "Discord",
+    url: "https://discord.com/users/211860254646861824",
+    username: "noge#4652",
   },
 ];
+
+export default socials;

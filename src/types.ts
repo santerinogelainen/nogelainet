@@ -16,3 +16,10 @@ export type ActiveProject = null | {
   project: Project;
   pos: DOMRect;
 };
+
+export type SocialMedia = {
+  key: string;
+  name: string;
+  url: string;
+  username: string;
+};
