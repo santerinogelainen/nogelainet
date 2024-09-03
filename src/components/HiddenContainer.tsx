@@ -4,7 +4,18 @@ import MouseFollowingContainer from "./animations/MouseFollowingContainer";
 import FadeAnimation from "./animations/FadeAnimation";
 import { useTimeoutState } from "../utils/reactUtils";
 
-const HiddenContainer = ({
+type HiddenContainerProps = React.PropsWithChildren<{
+  visible?: boolean;
+  enabled?: boolean;
+  rotate?: boolean;
+  anchor?: string;
+  onHide?: () => void;
+  onShow?: () => void;
+  speed?: number;
+  zIndex?: number;
+}>;
+
+const HiddenContainer: React.FC<HiddenContainerProps> = ({
   visible = false,
   enabled = true,
   rotate = false,
@@ -13,10 +24,10 @@ const HiddenContainer = ({
   onShow = null,
   speed = 400,
   zIndex = -1,
-  ...props
+  children,
 }) => {
   const [following, setFollowing] = React.useState(visible);
-  const {set, clear} = useTimeoutState();
+  const { set, clear } = useTimeoutState();
 
   const start = React.useCallback(() => {
     clear();
@@ -54,7 +65,7 @@ const HiddenContainer = ({
         before={start}
         after={stop}
       >
-        {props.children}
+        {children}
       </FadeAnimation>
     </MouseFollowingContainer>
   );
