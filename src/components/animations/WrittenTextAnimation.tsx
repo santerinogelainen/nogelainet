@@ -1,22 +1,30 @@
 import React from "react";
-import {useDidUpdateEffect} from "../../utils/reactUtils";
+import { useDidUpdateEffect } from "../../utils/reactUtils";
+
+type WrittenTextAnimationProps = {
+  state?: string;
+  loop?: boolean;
+  speed?: number;
+  text?: string;
+  onEnd?: () => void;
+};
 
 export const WrittenTextAnimationState = {
-  Enabled: 'enabled',
-  DisabledHidden: 'disabled-hidden',
-  DisabledVisible: 'disabled-visible'
-}
+  Enabled: "enabled",
+  DisabledHidden: "disabled-hidden",
+  DisabledVisible: "disabled-visible",
+};
 
 const createState = (visible, hidden) => ({
   visible,
-  hidden
+  hidden,
 });
 
 const getInitialState = (state, text) => {
   const states = {
     [WrittenTextAnimationState.Enabled]: createState("", text),
     [WrittenTextAnimationState.DisabledHidden]: createState("", text),
-    [WrittenTextAnimationState.DisabledVisible]: createState(text, "")
+    [WrittenTextAnimationState.DisabledVisible]: createState(text, ""),
   };
   return states[state];
 };
@@ -34,23 +42,28 @@ export const useWrittenTextAnimationState = (initialState) => {
     }
   }, []);
   return {
-    state, 
-    enable, 
+    state,
+    enable,
     disable,
-    setState
-  }
+    setState,
+  };
 };
 
-const WrittenTextAnimation = ({
+const WrittenTextAnimation: React.FC<WrittenTextAnimationProps> = ({
   state = WrittenTextAnimationState.Enabled,
   loop = false,
   speed = 30,
   text = "",
-  onEnd = null,
+  onEnd,
 }) => {
-  const [{visible, hidden}, setState] = React.useState(getInitialState(state, text));
+  const [{ visible, hidden }, setState] = React.useState(
+    getInitialState(state, text),
+  );
 
-  useDidUpdateEffect(() => setState(getInitialState(state, text)), [state, text]);
+  useDidUpdateEffect(
+    () => setState(getInitialState(state, text)),
+    [state, text],
+  );
 
   React.useEffect(() => {
     if (state !== WrittenTextAnimationState.Enabled) {
@@ -63,7 +76,7 @@ const WrittenTextAnimation = ({
       if (loop) {
         setState({
           visible: "",
-          hidden: text
+          hidden: text,
         });
       }
       return;
@@ -78,7 +91,7 @@ const WrittenTextAnimation = ({
 
       setState({
         visible: newText,
-        hidden: hidden.substring(1)
+        hidden: hidden.substring(1),
       });
     }, speed);
 
