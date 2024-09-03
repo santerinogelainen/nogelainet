@@ -5,3 +5,6 @@ public
 .env.production
 storybook-static/
 .DS_Store
+.yarn
+.pnp.cjs
+package-lock.json
