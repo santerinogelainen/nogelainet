@@ -4,7 +4,11 @@ import { useTranslation } from "react-i18next";
 import { useDidMountEffect } from "../../utils/reactUtils";
 import { Languages } from "../../models/languages";
 
-const AboutView = ({ onComplete = null }) => {
+type AboutViewProps = {
+  onComplete?: () => void;
+};
+
+const AboutView: React.FC<AboutViewProps> = ({ onComplete }) => {
   const [visible, setVisible] = React.useState(false);
   const { i18n } = useTranslation();
 
