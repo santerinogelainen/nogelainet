@@ -2,13 +2,13 @@ import React from "react";
 import gsap from "gsap";
 
 export const useQuickTo = (properties) => {
-  const animations = React.useRef();
+  const animations = React.useRef<any>();
 
   const initialize = React.useCallback(
     (node) => {
       const entries = Object.entries(properties);
       entries.forEach(([key, v]) => {
-        const value = typeof v === 'function' ? v(node) : v;
+        const value = typeof v === "function" ? v(node) : v;
         const quickTo = gsap.quickTo(node, key, value);
         if (!animations.current) {
           animations.current = {};
@@ -16,15 +16,15 @@ export const useQuickTo = (properties) => {
         animations.current[key] = quickTo;
       });
     },
-    [properties]
+    [properties],
   );
-  
+
   const quickTo = React.useCallback((values) => {
     const entries = Object.keys(values);
     entries.forEach((key) => {
       const value = values[key];
       const quickTo = animations.current?.[key];
-      if (typeof value === 'number') {
+      if (typeof value === "number") {
         // To
         quickTo?.(value);
       } else {
@@ -35,7 +35,10 @@ export const useQuickTo = (properties) => {
     });
   }, []);
 
-  const getTween = React.useCallback((key) => animations.current?.[key]?.tween, []);
+  const getTween = React.useCallback(
+    (key) => animations.current?.[key]?.tween,
+    [],
+  );
 
   return React.useMemo(
     () => ({
@@ -43,6 +46,6 @@ export const useQuickTo = (properties) => {
       quickTo,
       getTween,
     }),
-    [initialize, quickTo]
+    [initialize, quickTo],
   );
 };

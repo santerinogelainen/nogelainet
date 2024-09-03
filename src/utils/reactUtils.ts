@@ -61,7 +61,7 @@ export const useIntervalEffect = (callback, speed, inputs) => {
 };
 
 export const useTimeoutState = () => {
-  const [timeoutPointer, setTimeoutPointer] = React.useState(null);
+  const [timeoutPointer, setTimeoutPointer] = React.useState<any>(null);
   const set = React.useCallback((callback, delay) => {
     setTimeoutPointer(setTimeout(callback, delay));
   }, []);
