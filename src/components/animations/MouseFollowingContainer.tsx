@@ -96,7 +96,8 @@ const MouseFollowingContainer: React.FC<MouseFollowingContainerProps> = ({
       return;
     }
     let initialized = false;
-    const move = (e) => {
+
+    const move = (e: Event) => {
       if (!ref.current) {
         return;
       }
@@ -124,7 +125,9 @@ const MouseFollowingContainer: React.FC<MouseFollowingContainerProps> = ({
       }
     };
     window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    return () => {
+      window.removeEventListener("mousemove", move);
+    };
   }, [quickTo, ref, enabled, getRotation, getPosition]);
 
   return (

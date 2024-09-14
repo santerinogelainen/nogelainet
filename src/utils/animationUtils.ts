@@ -19,7 +19,7 @@ export const useQuickTo = (properties) => {
     [properties],
   );
 
-  const quickTo = React.useCallback((values) => {
+  const quickTo = React.useCallback((values: gsap.TweenVars) => {
     const entries = Object.keys(values);
     entries.forEach((key) => {
       const value = values[key];
