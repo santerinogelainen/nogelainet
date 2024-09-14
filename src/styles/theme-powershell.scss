@@ -1,156 +1,16 @@
-$color-background: rgb(1, 36, 86);
-$color-text: rgb(238, 237, 240);
-$color-muted: rgba(238, 237, 240, 0.25);
-$color-highlight: rgb(255, 255, 20);
 
 .theme-powershell {
-    
-    background-color: $color-background;
-    color: $color-text;
-    font-weight: 100;
-
-    .large-text,
-    .written-text-visible,
-    .project-item-nr,
-    .block-button,
-    .email-at,
-    .about-text,
-    .about-text p,
-    .about-text p b {
-        color: $color-text;
-    }
+    --text-color: rgb(238, 237, 240);
+    --text-color-highlight: rgb(255, 255, 20);
+    --text-color-link: rgb(255, 255, 20);
+    --text-color-link-hover: rgb(255, 255, 20);
+    --text-color-muted: rgba(238, 237, 240, 0.25);
+    --background-color: rgb(1, 36, 86);
+    --caret-color: rgb(255, 255, 20);
 
     .console-input-wrapper {
-
-        .console-input-placeholder {
-            .written-text-visible {
-                color: $color-muted;
-            }
-        }
-
-        .console-input .console-input-suffix .console-input-autocomplete {
-            color: $color-muted;
-        }
-
         .console-input-text {
-            color: $color-highlight;
-        }
-    }
-
-    .console-menu-wrapper {
-
-        .console-menu {
-
-            .console-menu-item {
-                
-                &.console-menu-item-active {
-                    .highlighted-word {
-                        color: $color-muted;
-                    }
-                }
-
-                &:hover:not(.console-menu-item-active) {
-                    .highlighted-word {
-                        color: $color-highlight;
-                    }
-                }
-            }
-        }
-    }
-
-    .console-menu-mobile-wrapper {
-        
-        .console-menu-mobile {
-
-            .console-menu-item {
-                
-                &:hover {
-                    .highlighted-word {
-                        color: $color-highlight;
-                    }
-                }
-            }
-        }
-
-        .console-menu-handle .console-menu-handle-line {
-            background-color: $color-text;
-        }
-    }
-
-    .console-input-caret {
-        background-color: $color-text;
-    }
-
-    span.name {
-        border-color: $color-text;
-        color: $color-text;
-    }
-
-    .slide-animation-container {
-
-        .slide-animation-bg {
-            background-color: $color-text;
-            color: $color-background;
-            
-            .block-button,
-            .project-item-nr,
-            .email-at {
-                color: $color-background;
-            }
-        }
-    
-        .slide-animation-content {
-            color: $color-text;
-        }
-    }
-
-    .socials {
-
-        .social-item {
-            color: $color-text;
-        }
-    
-        .social-item:hover {
-            color: $color-highlight;
-        }
-
-        .social-tooltip {
-            background-color: $color-background;
-            color: $color-text;
-        }
-    }
-
-    .console-menu-item:hover:not(.console-menu-item-active) .highlighted-word {
-        color: $color-highlight;
-    }
-
-    .highlighted-word-container .highlighted-word {
-        color: $color-text;
-    }
-
-    .project-item {
-        .project-item-nr-mobile {
-            color: $color-muted;
-        }
-    }
-
-    .modal { 
-        background-color: $color-background;
-    }
-
-    .project-modal {
-        .project-modal-employer {
-            color: $color-muted;
-        }
-
-        .modal-close-container {
-            background-color: $color-background;
-
-            .modal-close {
-                .modal-close-line {
-                    background-color: $color-text;
-                }
-            }
+            color: var(--text-color-highlight);
         }
     }
 }

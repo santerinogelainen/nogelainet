@@ -20,158 +20,20 @@
     100% {background-color: darken(#CCCC52, 20%);}
 }
 
-$color-background: #0B0B0B;
-$color-text: #F2EFE9;
-$color-muted: rgba(208, 205, 200, 0.25);
-$color-highlight: rgba(208, 205, 200, 0.25);
-
 .theme-pride {
+    --text-color: #f2efe9;
+    --text-color-highlight: rgba(208, 205, 200, 0.25);
+    --text-color-link: #f2efe9;
+    --text-color-link-hover: #f2efe9;
+    --text-color-muted: rgba(208, 205, 200, 0.25);
+    --background-color: #0b0b0b;
+    --caret-color: rgba(242, 239, 233, 0.75);
     
-    background-color: $color-background;
     -webkit-animation: background-bg 55s infinite;
     animation: background-bg 55s infinite;
-    color: $color-text;
-    font-weight: 200;
 
-    .large-text,
-    .written-text-visible,
-    .project-item-nr,
-    .block-button,
-    .email-at,
-    .about-text,
-    .about-text p,
-    .about-text p b {
-        color: $color-text;
-    }
-
-    .console-input-wrapper {
-
-        .console-input-placeholder {
-            .written-text-visible {
-                color: $color-muted;
-            }
-        }
-
-        .console-input .console-input-suffix .console-input-autocomplete {
-            color: $color-muted;
-        }
-    }
-
-    .console-menu-wrapper {
-
-        .console-menu {
-
-            .console-menu-item {
-                
-                &.console-menu-item-active {
-                    .highlighted-word {
-                        color: $color-muted;
-                    }
-                }
-
-                &:hover:not(.console-menu-item-active) {
-                    .highlighted-word {
-                        color: $color-highlight;
-                    }
-                }
-            }
-        }
-    }
-
-    .console-menu-mobile-wrapper {
-        
-        .console-menu-mobile {
-
-            .console-menu-item {
-                
-                &:hover {
-                    .highlighted-word {
-                        color: $color-highlight;
-                    }
-                }
-            }
-        }
-
-        .console-menu-handle .console-menu-handle-line {
-            background-color: $color-text;
-        }
-    }
-
-    .console-input-caret {
-        background-color: $color-text;
-    }
-
-    span.name {
-        border-color: $color-text;
-        color: $color-text;
-    }
-
-    .slide-animation-container {
-
-        .slide-animation-bg {
-            background-color: $color-text;
-            color: $color-background;
-            
-            .block-button,
-            .project-item-nr,
-            .email-at {
-                color: $color-background;
-            }
-        }
-    
-        .slide-animation-content {
-            color: $color-text;
-        }
-    }
-
-    .socials {
-
-        .social-item {
-            color: $color-text;
-        }
-    
-        .social-item:hover {
-            color: $color-highlight;
-        }
-
-        .social-tooltip {
-            background-color: transparent;
-            color: $color-text;
-        }
-    }
-
-    .console-menu-item:hover:not(.console-menu-item-active) .highlighted-word {
-        color: $color-highlight;
-    }
-
-    .highlighted-word-container .highlighted-word {
-        color: $color-text;
-    }
-
-    .project-item {
-        .project-item-nr-mobile {
-            color: $color-muted;
-        }
-    }
-
-    
     .modal { 
-        background-color: $color-background;
         -webkit-animation: background-bg 55s infinite;
         animation: background-bg 55s infinite;
-    }
-
-    .project-modal {
-        .project-modal-employer {
-            color: $color-muted;
-        }
-
-        .modal-close-container {
-            .modal-close {
-                .modal-close-line {
-                    background-color: $color-text;
-                }
-            }
-        }
     }
 }

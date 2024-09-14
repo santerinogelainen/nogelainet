@@ -20,7 +20,6 @@
     $color-background,
     $color-text: ''
 ) {
-
     @if $color-text == '' {
         $color-text: get-opposite-color($color-background, false);
     }
@@ -28,175 +27,21 @@
     $color-muted: rgba($color-text, 0.3);
     $color-highlight: rgba($color-text, 0.6);
 
-    background-color: $color-background;
-    color: $color-text;
+    --text-color: #{$color-text};
+    --text-color-highlight: #{$color-highlight};
+    --text-color-link: #{$color-text};
+    --text-color-link-hover: #{$color-text};
+    --text-color-muted: #{$color-muted};
+    --background-color: #{$color-background};
+    --caret-color: #{$color-text};
+
     font-weight: 200;
-
-    .large-text,
-    .written-text-visible,
-    .project-item-nr,
-    .block-button,
-    .email-at,
-    .about-text,
-    .about-text p,
-    .about-text p b {
-        color: $color-text;
-        font-weight: 200;
-    }
-
-    .console-input-wrapper {
-
-        .console-input-placeholder {
-            .written-text-visible {
-                color: $color-muted;
-            }
-        }
-
-        .console-input .console-input-suffix .console-input-autocomplete {
-            color: $color-muted;
-        }
-
-        .console-input-text {
-            color: $color-highlight;
-        }
-    }
-
-    .console-menu-wrapper {
-
-        .console-menu {
-
-            .console-menu-item {
-                
-                &.console-menu-item-active {
-                    .highlighted-word {
-                        color: $color-muted;
-                    }
-                }
-
-                &:hover:not(.console-menu-item-active) {
-                    .highlighted-word {
-                        color: $color-highlight;
-                    }
-                }
-            }
-        }
-    }
-
-    .console-menu-mobile-wrapper {
-        
-        .console-menu-mobile {
-
-            .console-menu-item {
-                
-                &:hover {
-                    .highlighted-word {
-                        color: $color-highlight;
-                    }
-                }
-            }
-        }
-
-        .console-menu-handle .console-menu-handle-line {
-            background-color: $color-text;
-        }
-    }
-
-    .console-input-caret {
-        background-color: $color-text;
-    }
-
-    span.name {
-        border-color: $color-text;
-        color: $color-text;
-    }
-
-    .slide-animation-container {
-
-        .slide-animation-bg {
-            background-color: $color-text;
-            color: $color-background;
-            
-            .block-button,
-            .project-item-nr,
-            .email-at {
-                color: $color-background;
-            }
-        }
-    
-        .slide-animation-content {
-            color: $color-text;
-        }
-    }
-
-    .socials {
-
-        .social-item {
-            color: $color-text;
-        }
-    
-        .social-item:hover {
-            color: $color-highlight;
-        }
-
-        .social-tooltip {
-            background-color: $color-background;
-            color: $color-text;
-        }
-    }
-
-    .console-menu-item:hover:not(.console-menu-item-active) .highlighted-word {
-        color: $color-highlight;
-    }
-
-    .highlighted-word-container .highlighted-word {
-        color: $color-text;
-    }
-
-    .project-item {
-        .project-item-nr-mobile {
-            color: $color-muted;
-        }
-    }
-
-    
-    .modal { 
-        background-color: $color-background;
-    }
-
-    .project-modal {
-        .project-modal-employer {
-            color: $color-muted;
-        }
-
-        .modal-close-container {
-            background-color: $color-background;
-
-            .modal-close {
-                .modal-close-line {
-                    background-color: $color-text;
-                }
-            }
-        }
-    }
 }
 
 .theme-css-color {
-    &-black { @include theme-css-color(black) }
-    &-silver { @include theme-css-color(silver) }
     &-gray { @include theme-css-color(gray, black) }
-    &-white { @include theme-css-color(white) }
-    &-maroon { @include theme-css-color(maroon) }
-    &-red { @include theme-css-color(red) }
     &-purple { @include theme-css-color(purple) }
-    &-fuchsia { @include theme-css-color(fuchsia) }
-    &-green { @include theme-css-color(green) }
-    &-lime { @include theme-css-color(lime) }
-    &-olive { @include theme-css-color(olive) }
-    &-yellow { @include theme-css-color(yellow) }
-    &-navy { @include theme-css-color(navy) }
-    &-blue { @include theme-css-color(blue) }
-    &-teal { @include theme-css-color(teal) }
-    &-aqua { @include theme-css-color(aqua) }
+    &-fuchsia { @include theme-css-color(fuchsia, maroon) }
     &-aliceblue { @include theme-css-color(aliceblue) }
     &-antiquewhite { @include theme-css-color(antiquewhite) }
     &-aqua { @include theme-css-color(aqua) }
@@ -245,7 +90,6 @@
     &-firebrick { @include theme-css-color(firebrick) }
     &-floralwhite { @include theme-css-color(floralwhite) }
     &-forestgreen { @include theme-css-color(forestgreen) }
-    &-fuchsia { @include theme-css-color(fuchsia) }
     &-gainsboro { @include theme-css-color(gainsboro) }
     &-ghostwhite { @include theme-css-color(ghostwhite) }
     &-gold { @include theme-css-color(gold) }
@@ -314,7 +158,6 @@
     &-pink { @include theme-css-color(pink) }
     &-plum { @include theme-css-color(plum) }
     &-powderblue { @include theme-css-color(powderblue) }
-    &-purple { @include theme-css-color(purple) }
     &-red { @include theme-css-color(red) }
     &-rosybrown { @include theme-css-color(rosybrown) }
     &-royalblue { @include theme-css-color(royalblue) }
