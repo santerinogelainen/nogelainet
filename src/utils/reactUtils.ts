@@ -1,4 +1,4 @@
-import React, { MutableRefObject, Ref, RefObject } from "react";
+import React, { MutableRefObject, Ref, RefObject, useEffect } from "react";
 
 /**
  * Add an event listened to a ref that is also cleaned up afterwards
@@ -53,8 +53,12 @@ export const useDidMountEffect = (callback, inputs) => {
 /**
  * Use and cleanup an interval
  */
-export const useIntervalEffect = (callback, speed, inputs) => {
-  React.useEffect(() => {
+export const useIntervalEffect = (
+  callback: () => void,
+  speed: number,
+  inputs: Array<any>,
+) => {
+  useEffect(() => {
     const interval = setInterval(callback, speed);
     return () => clearInterval(interval);
   }, inputs);

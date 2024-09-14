@@ -3,7 +3,6 @@ import ConsoleInputPlaceholder from "./ConsoleInputPlaceholder";
 import ConsoleInputCaret from "./ConsoleInputCaret";
 import { ShakeAnimation } from "../animations/ShakeAnimation";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
 import { CommandName, commands } from "../../commands/commands";
 
 type ConsoleInputProps = {

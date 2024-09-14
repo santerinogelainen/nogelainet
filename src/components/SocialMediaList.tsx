@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import HiddenContainer from "./HiddenContainer";
 import { Anchor } from "../models/anchor";
-import _ from "lodash";
 import { SocialMedia } from "../types";
 
 type SocialMediaListProps = {

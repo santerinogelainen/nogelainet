@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useIntervalEffect } from "../utils/reactUtils";
-import _ from "lodash";
 
 type LoaderProps = {
   speed?: number;
@@ -9,13 +8,17 @@ type LoaderProps = {
 
 const Loader: React.FC<LoaderProps> = ({ speed = 180 }) => {
   const { t } = useTranslation();
-  const [dots, setDots] = useState(0);
+  const [dots, setDots] = useState("");
 
-  useIntervalEffect(() => {
-    setDots(dots === 3 ? 0 : dots + 1);
-  }, [speed]);
+  useIntervalEffect(
+    () => {
+      setDots(dots.length === 3 ? "" : ".".repeat(dots.length + 1));
+    },
+    speed,
+    [speed, dots],
+  );
 
-  return <div className="loader">{t("loading") + _.repeat(".", dots)}</div>;
+  return <div className="loader">{t("loading") + dots}</div>;
 };
 
 export default Loader;

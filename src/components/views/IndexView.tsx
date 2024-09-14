@@ -5,7 +5,6 @@ import WrittenTextAnimation, {
 } from "../animations/WrittenTextAnimation";
 import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type IndexViewProps = {
@@ -73,8 +72,10 @@ const IndexView: React.FC<IndexViewProps> = ({
       return;
     }
 
-    const futurePositions = _.filter(IndexPosition, (x) => x > position);
-    const nextPosition = _.min(futurePositions);
+    const futurePositions = Object.values(IndexPosition).filter(
+      (x) => x > position,
+    );
+    const nextPosition = Math.min(...futurePositions);
     setPosition(nextPosition ?? IndexPosition.Finish);
   }, [position]);
 

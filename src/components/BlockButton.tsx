@@ -5,7 +5,7 @@ import { Direction } from "../models/direction";
 type BlockButtonProps = React.PropsWithChildren<{
   text?: string;
   forceOpen?: boolean;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }>;
 
 const BlockButton: React.FC<BlockButtonProps> = ({

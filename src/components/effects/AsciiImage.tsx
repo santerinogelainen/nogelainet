@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import IJS from "image-js";
-import _ from "lodash";
 
 // https://marmelab.com/blog/2018/02/20/convert-image-to-ascii-art-masterpiece.html
 
@@ -105,7 +104,7 @@ const AsciiImage: React.FC<AsciiImageProps> = ({
   const loadResult = React.useCallback(() => {
     if (animate && ascii && index < maxIndex) {
       let lines = ascii.split("\n");
-      lines = _.map(lines, (line, i) => {
+      lines = lines.map((line, i) => {
         let position = index - i;
 
         if (position >= line.length) {
@@ -113,11 +112,11 @@ const AsciiImage: React.FC<AsciiImageProps> = ({
         }
 
         if (position < 0) {
-          return _.repeat(" ", line.length);
+          return " ".repeat(line.length);
         }
 
         const visible = line.substring(0, position);
-        return visible + _.repeat(" ", line.length - visible.length);
+        return visible + " ".repeat(line.length - visible.length);
       });
 
       setResult(lines.join("\n"));
