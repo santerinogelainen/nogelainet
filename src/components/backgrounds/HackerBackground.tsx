@@ -4,6 +4,7 @@ type HackerBackgroundProps = {
   speed?: number;
   letters?: string;
   randomizeStart?: boolean;
+  fontSize?: number;
 };
 
 // https://codepen.io/yaclive/pen/EayLYO
@@ -12,6 +13,7 @@ const HackerBackground: React.FC<HackerBackgroundProps> = ({
   speed = 33,
   letters = "ABCDEFGHIJKLMNOPQRSTUVXYZ",
   randomizeStart,
+  fontSize = 12,
 }) => {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -25,7 +27,6 @@ const HackerBackground: React.FC<HackerBackgroundProps> = ({
     // Initialising the canvas
     const ctx = canvas.getContext("2d");
     const drops: number[] = [];
-    const fontSize = 10;
 
     // Resetting the canvas
     const reset = () => {
@@ -76,7 +77,7 @@ const HackerBackground: React.FC<HackerBackgroundProps> = ({
       window.removeEventListener("resize", reset);
       clearInterval(interval);
     };
-  }, [speed, letters, randomizeStart]);
+  }, [speed, letters, randomizeStart, fontSize]);
 
   return <canvas ref={ref} className="background"></canvas>;
 };
