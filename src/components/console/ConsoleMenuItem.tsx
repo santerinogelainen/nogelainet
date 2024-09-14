@@ -1,14 +1,15 @@
 import React from "react";
 import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
+import { CommandName } from "../../commands/commands";
 
 type ConsoleMenuItemProps = {
   visible: boolean;
   delay?: number;
   speed?: number;
   name?: string;
-  command?: string;
   active?: boolean;
-  onClick?: (command: string, event: any) => void;
+  command: CommandName;
+  onClick?: (command: CommandName) => void;
 };
 
 const ConsoleMenuItem: React.FC<ConsoleMenuItemProps> = ({
@@ -16,7 +17,7 @@ const ConsoleMenuItem: React.FC<ConsoleMenuItemProps> = ({
   delay = 0,
   speed = 250,
   name = "",
-  command = "",
+  command,
   active = false,
   onClick,
 }) => {
@@ -25,7 +26,7 @@ const ConsoleMenuItem: React.FC<ConsoleMenuItemProps> = ({
   if (active) className += " console-menu-item-active";
 
   return (
-    <div className={className} onClick={(e) => onClick?.(command, e)}>
+    <div className={className} onClick={(e) => onClick?.(command)}>
       <HighlightedWordAnimation
         word={name}
         start={visible}

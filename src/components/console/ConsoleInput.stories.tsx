@@ -10,12 +10,5 @@ export default meta;
 type Story = StoryObj<typeof ConsoleInput>;
 
 export const Default: Story = {
-  args: {
-    commands: {
-      home: null,
-      projects: null,
-      about: null,
-      contact: null,
-    },
-  },
+  args: {},
 };

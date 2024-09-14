@@ -1,28 +1,28 @@
 import React from "react";
 import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
 import { useTranslation } from "react-i18next";
-import { Commands } from "../../models/commands";
 import ConsoleMenuItem from "./ConsoleMenuItem";
+import { CommandName } from "../../commands/commands";
 
 type ConsoleMenuProps = {
   visible: boolean;
-  items?: Array<string>;
-  activeItem?: string;
-  onCommand?: (command: string, event: any) => void;
+  items?: Array<CommandName>;
+  activeItem?: CommandName;
+  onCommand?: (command: CommandName) => void;
 };
 
 const ConsoleMenu: React.FC<ConsoleMenuProps> = ({
   visible = false,
   items = [],
-  activeItem = Commands.Home,
+  activeItem = "home",
   onCommand,
 }) => {
   const speed = 200;
   const { t } = useTranslation();
 
-  const runCommand = (command, event) => {
+  const runCommand = (command: CommandName) => {
     if (onCommand) {
-      onCommand(command, event);
+      onCommand(command);
     }
   };
 

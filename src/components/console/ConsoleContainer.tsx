@@ -2,27 +2,23 @@ import React from "react";
 import ConsoleInput from "./ConsoleInput";
 import ConsoleMenu from "./ConsoleMenu";
 import ConsoleMenuMobile from "./ConsoleMenuMobile";
-import { Commands } from "../../models/commands";
-import { Themes } from "../../models/themes";
 import { useDidMountEffect } from "../../utils/reactUtils";
 import { loadTheme } from "../../state/slices/themeSlice";
 import store from "../../state/store";
 import { loadLanguage } from "../../i18n";
-import { Command } from "../../types";
+import { CommandName } from "../../commands/commands";
 
 type ConsoleContainerProps = React.PropsWithChildren<{
   visible: boolean;
-  activePage?: string;
-  activeTheme?: string;
-  commands?: Record<string, Command | null>;
-  onCommand?: (command: Command | null) => void;
+  activePage?: CommandName;
+  activeTheme?: CommandName;
+  onCommand?: (command: CommandName | null) => void;
 }>;
 
 export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
   visible,
-  activePage = Commands.Home,
-  activeTheme = Themes.Dark,
-  commands = {},
+  activePage = "home",
+  activeTheme = "dark",
   onCommand,
   children,
 }) => {
@@ -41,19 +37,12 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
     setMenuVisible(visible);
   }, [visible]);
 
-  const menuItems = [
-    Commands.About,
-    Commands.Contact,
-    activeTheme === Themes.Dark ? Commands.Light : Commands.Dark,
-    Commands.Home,
+  const menuItems: Array<CommandName> = [
+    "about",
+    "contact",
+    activeTheme === "dark" ? "light" : "dark",
+    "home",
   ];
-
-  const menuOnCommand = React.useCallback(
-    (command: string) => {
-      onCommand?.(commands[command]);
-    },
-    [onCommand, commands],
-  );
 
   return (
     <div className="console-view">
@@ -61,22 +50,18 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
         {children}
       </div>
       <div className="console-view-controls">
-        <ConsoleInput
-          visible={inputVisible}
-          commands={commands}
-          onCommand={onCommand}
-        />
+        <ConsoleInput visible={inputVisible} onCommand={onCommand} />
         <ConsoleMenu
           activeItem={activePage}
           items={menuItems}
           visible={menuVisible}
-          onCommand={menuOnCommand}
+          onCommand={onCommand}
         />
         <ConsoleMenuMobile
           activeItem={activePage}
           items={menuItems}
           visible={menuVisible}
-          onCommand={menuOnCommand}
+          onCommand={onCommand}
         />
       </div>
     </div>

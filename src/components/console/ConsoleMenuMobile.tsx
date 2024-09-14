@@ -1,7 +1,7 @@
 import React from "react";
-import { Commands } from "../../models/commands";
 import { useTranslation } from "react-i18next";
 import ConsoleMenuItem from "./ConsoleMenuItem";
+import { CommandName } from "../../commands/commands";
 import FadeAnimation from "../animations/FadeAnimation";
 import gsap, { Power2 } from "gsap";
 import {
@@ -11,15 +11,15 @@ import {
 
 type ConsoleMenuMobileProps = {
   visible: boolean;
-  items?: Array<string>;
-  activeItem?: string;
-  onCommand?: (command: string, event: any) => void;
+  items?: Array<CommandName>;
+  activeItem?: CommandName;
+  onCommand?: (command: CommandName) => void;
 };
 
 const ConsoleMenuMobile: React.FC<ConsoleMenuMobileProps> = ({
   visible,
   items = [],
-  activeItem = Commands.Home,
+  activeItem = "home",
   onCommand,
 }) => {
   const menu = React.useRef(null);
@@ -43,9 +43,9 @@ const ConsoleMenuMobile: React.FC<ConsoleMenuMobileProps> = ({
     }
   };
 
-  const runCommand = (command, event) => {
+  const runCommand = (command: CommandName) => {
     if (onCommand) {
-      onCommand(command, event);
+      onCommand(command);
     }
 
     // close mobile menu

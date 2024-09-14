@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import store, { useAppSelector } from "./state/store";
 import ConsoleContainer from "./components/console/ConsoleContainer";
 import { useLocation } from "@reach/router";
-import { mapPageToCommand } from "./commands/commandMapper";
+import { mapPageToCommand, mapThemeToCommand } from "./commands/commandMapper";
 import { runCommand } from "./commands/commandRunner";
 import "./i18n";
 import "./styles/global.scss";
@@ -53,7 +53,6 @@ export const HeadLayout = (props) => {
 };
 
 const PageElementWithHooks = (props) => {
-  const data = useAppSelector((x) => x.data);
   const theme = useAppSelector((x) => x.theme);
   const view = useAppSelector((x) => x.view);
   const location = useLocation();
@@ -62,9 +61,8 @@ const PageElementWithHooks = (props) => {
     <div className="app">
       <ConsoleContainer
         visible={view.controlsVisible}
-        commands={data.commands}
         activePage={mapPageToCommand(location.pathname)}
-        activeTheme={theme}
+        activeTheme={mapThemeToCommand(theme)}
         onCommand={runCommand}
       >
         {props.children}

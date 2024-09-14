@@ -5,18 +5,16 @@ import ConsoleInputCaret from "./ConsoleInputCaret";
 import { ShakeAnimation } from "../animations/ShakeAnimation";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
-import { Command } from "../../types";
+import { CommandName, commands } from "../../commands/commands";
 
 type ConsoleInputProps = {
   visible: boolean;
-  commands?: Record<string, Command | null>;
-  onCommand?: (command: Command | null, event: any) => void;
+  onCommand?: (command: CommandName | null, event: any) => void;
   onHelpTextComplete?: () => void;
 };
 
 const ConsoleInput: React.FC<ConsoleInputProps> = ({
   visible = true,
-  commands = {},
   onCommand,
   onHelpTextComplete,
 }) => {
@@ -116,9 +114,9 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
   }
 
   function onEnter(event) {
-    const command = commands[state.value];
+    const command = state.value as CommandName;
 
-    if (command) {
+    if (commands.all.has(command)) {
       runCommand(command, event);
     } else {
       shake();
@@ -184,21 +182,16 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
   function determineAutocompleteCommand(value) {
     if (!value || value.length <= 1) return "";
 
-    const cmds = _.pickBy(commands, function (val, key) {
-      return _.startsWith(key.toUpperCase(), value.toUpperCase());
-    });
+    const cmd = [...commands.all.values()].find((x) =>
+      x.toLowerCase().startsWith(value.toLowerCase()),
+    );
 
-    if (Object.keys(cmds).length) {
-      const ordered = _.orderBy(cmds, (x) => x?.priority || 0, "desc");
-      return ordered[0]?.name || "";
-    }
-
-    return "";
+    return cmd || "";
   }
 
   const shake = () => {
     // shake animation for invalid command / autocompletion
-    const animation = new ShakeAnimation(wrapper.current);
+    const animation = new ShakeAnimation(wrapper.current, false);
     animation.start();
   };
 

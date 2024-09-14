@@ -1,50 +1,91 @@
-import { Commands } from "../models/commands";
 import store from "../state/store";
 import { themeActions } from "../state/slices/themeSlice";
 import { navigate } from "gatsby";
-import { mapToLanguage, mapToPage, mapToTheme } from "./commandMapper";
 import { setLanguage } from "../i18n";
-import { Command } from "../types";
+import { CommandName, commands } from "./commands";
+import { Themes } from "../models/themes";
+import { Pages } from "../models/pages";
+import { Languages } from "../models/languages";
 
-export const runCommand = (command: Command | null) => {
+export const runCommand = (command: CommandName | null) => {
   if (!command) {
     return;
   }
 
-  function changeTheme(theme: string) {
+  const changeTheme = (theme: string) => {
     store.dispatch(themeActions.changeTheme(theme));
-  }
+  };
 
-  function changeLanguage(lang: string) {
+  const changeLanguage = (lang: string) => {
     setLanguage(lang);
+  };
+
+  // ----- NAVIGATION ------
+
+  if (commands.sets.home.has(command)) {
+    navigate(Pages.Home);
+    return;
   }
 
-  const commandType = command.type.toLowerCase();
-
-  switch (commandType) {
-    case Commands.Home:
-    case Commands.Projects:
-    case Commands.Contact:
-    case Commands.About:
-      navigate(mapToPage(commandType));
-      break;
-
-    case Commands.Dark:
-    case Commands.Light:
-    case Commands.Pride:
-    case Commands.PowerShell:
-    case Commands.Hacker:
-    case Commands.CssColor:
-      changeTheme(mapToTheme(command));
-      break;
-
-    case Commands.English:
-    case Commands.Finnish:
-      changeLanguage(mapToLanguage(commandType));
-      break;
-
-    default:
-      console.error(command);
-      throw new Error("No command processor for command " + command.name);
+  if (commands.sets.contact.has(command)) {
+    navigate(Pages.Contact);
+    return;
   }
+
+  if (commands.sets.about.has(command)) {
+    navigate(Pages.About);
+    return;
+  }
+
+  if (commands.sets.projects.has(command)) {
+    navigate(Pages.Projects);
+    return;
+  }
+
+  // ----- LANGUAGES ------
+
+  if (commands.sets.english.has(command)) {
+    changeLanguage(Languages.En);
+    return;
+  }
+
+  if (commands.sets.finnish.has(command)) {
+    changeLanguage(Languages.Fi);
+    return;
+  }
+
+  // ----- THEMES ------
+
+  if (commands.sets.dark.has(command)) {
+    changeTheme(Themes.Dark);
+    return;
+  }
+
+  if (commands.sets.light.has(command)) {
+    changeTheme(Themes.Light);
+    return;
+  }
+
+  if (commands.sets.hacker.has(command)) {
+    changeTheme(Themes.Hacker);
+    return;
+  }
+
+  if (commands.sets.pride.has(command)) {
+    changeTheme(Themes.Pride);
+    return;
+  }
+
+  if (commands.sets.powershell.has(command)) {
+    changeTheme(Themes.PowerShell);
+    return;
+  }
+
+  if (commands.sets.cssColors.has(command)) {
+    changeTheme(`${Themes.CssColor}-${command}`);
+    return;
+  }
+
+  console.error(command);
+  throw new Error("No command processor for command " + command);
 };
