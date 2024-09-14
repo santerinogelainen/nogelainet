@@ -2,6 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import store, { useAppSelector } from "./state/store";
 import ConsoleContainer from "./components/console/ConsoleContainer";
+import ThemeProvider from "./components/ThemeProvider";
 import { useLocation } from "@reach/router";
 import { mapPageToCommand, mapThemeToCommand } from "./commands/commandMapper";
 import { runCommand } from "./commands/commandRunner";
@@ -58,16 +59,18 @@ const PageElementWithHooks = (props) => {
   const location = useLocation();
 
   return (
-    <div className="app">
-      <ConsoleContainer
-        visible={view.controlsVisible}
-        activePage={mapPageToCommand(location.pathname)}
-        activeTheme={mapThemeToCommand(theme)}
-        onCommand={runCommand}
-      >
-        {props.children}
-      </ConsoleContainer>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="app">
+        <ConsoleContainer
+          visible={view.controlsVisible}
+          activePage={mapPageToCommand(location.pathname)}
+          activeTheme={mapThemeToCommand(theme)}
+          onCommand={runCommand}
+        >
+          {props.children}
+        </ConsoleContainer>
+      </div>
+    </ThemeProvider>
   );
 };
 

@@ -10,8 +10,6 @@ const slice = createSlice({
     changeTheme: (state, action) => {
       const theme = action.payload || Themes.Dark;
       Cookies.set("theme", theme);
-      const body = document.getElementsByTagName("body")[0];
-      body.className = "theme " + theme;
       return theme;
     },
   },
