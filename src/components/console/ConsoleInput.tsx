@@ -1,5 +1,4 @@
-import React, { CSSProperties } from "react";
-import * as KeyCode from "keycode-js";
+import React, { CSSProperties, useRef } from "react";
 import ConsoleInputPlaceholder from "./ConsoleInputPlaceholder";
 import ConsoleInputCaret from "./ConsoleInputCaret";
 import { ShakeAnimation } from "../animations/ShakeAnimation";
@@ -20,10 +19,8 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
 }) => {
   const wrapper = React.useRef(null);
   const { t } = useTranslation();
-
   const helpTexts = [t("aboutHelpText"), t("contactHelpText")];
-
-  const [isShortcut, setIsShortcut] = React.useState(false);
+  const textContainer = useRef<HTMLDivElement>(null);
   const [state, setState] = React.useState({
     value: "",
     autocompleteCommand: "",
@@ -31,10 +28,8 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
 
   React.useEffect(() => {
     document.addEventListener("keydown", onKeyDown);
-    document.addEventListener("keyup", onKeyUp);
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      document.removeEventListener("keyup", onKeyUp);
     };
   });
 
@@ -44,67 +39,41 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
     return state.autocompleteCommand.substring(state.value.length);
   }
 
-  function onKeyUp(event) {
-    if (
-      event.key === KeyCode.CODE_CONTROL_LEFT ||
-      event.key === KeyCode.CODE_CONTROL_RIGHT ||
-      event.key === KeyCode.CODE_META_LEFT ||
-      event.key === KeyCode.CODE_META_RIGHT ||
-      event.key === "Control" ||
-      event.key === "Meta"
-    ) {
-      setIsShortcut(false);
-      return;
-    }
-  }
+  function onKeyDown(event: KeyboardEvent) {
+    const key = event.key.toLowerCase();
 
-  function onKeyDown(event) {
-    if (event.key === KeyCode.CODE_ENTER) {
+    if (key === "enter") {
       onEnter(event);
       return;
     }
 
-    if (event.key === KeyCode.CODE_BACK_SPACE) {
+    if (key === "backspace") {
       onBackspace(event);
       return;
     }
 
-    if (event.key === KeyCode.CODE_TAB) {
+    if (key === "tab") {
       onTab(event);
       return;
     }
 
-    if (
-      event.key === KeyCode.CODE_CONTROL_LEFT ||
-      event.key === KeyCode.CODE_CONTROL_RIGHT ||
-      event.key === KeyCode.CODE_META_LEFT ||
-      event.key === KeyCode.CODE_META_RIGHT ||
-      event.key === "Control" ||
-      event.key === "Meta"
-    ) {
-      setIsShortcut(true);
-      return;
-    }
-
-    if (
-      isShortcut &&
-      (event.key === KeyCode.CODE_C || event.key.toLowerCase() === "c")
-    ) {
+    if ((event.metaKey || event.ctrlKey) && key === "c") {
       onCopy(event);
       return;
     }
 
-    if (
-      isShortcut &&
-      (event.key === KeyCode.CODE_V || event.key.toLowerCase() === "v")
-    ) {
+    if ((event.metaKey || event.ctrlKey) && key === "v") {
       onPaste(event);
       return;
     }
 
-    if (event.key.length === 1) {
-      const newValue =
-        state.value + String.fromCharCode(event.keyCode).toLowerCase();
+    if ((event.metaKey || event.ctrlKey) && key === "a") {
+      onSelectAll(event);
+      return;
+    }
+
+    if (key.length === 1) {
+      const newValue = state.value + key;
 
       setState({
         value: newValue,
@@ -113,7 +82,7 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
     }
   }
 
-  function onEnter(event) {
+  function onEnter(event: KeyboardEvent) {
     const command = state.value as CommandName;
 
     if (commands.all.has(command)) {
@@ -123,13 +92,44 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
     }
   }
 
-  function onBackspace(event) {
+  const getUnselectedText = () => {
+    const selection = window.getSelection?.();
+    const container = textContainer.current;
+
+    if (!selection || !container) {
+      return undefined;
+    }
+
+    for (let i = 0; i < selection.rangeCount; i++) {
+      const range = selection.getRangeAt(i);
+      if (range.commonAncestorContainer.parentElement !== container) {
+        continue;
+      }
+      // Is text-node
+      if (range.commonAncestorContainer.nodeType !== 3) {
+        continue;
+      }
+      if (!state.value.includes(range.toString())) {
+        continue;
+      }
+      range.deleteContents();
+    }
+
+    if (container.textContent !== state.value) {
+      return container.textContent;
+    }
+
+    return undefined;
+  };
+
+  function onBackspace(event: KeyboardEvent) {
     event.preventDefault();
     event.stopPropagation();
 
     if (!state.value) return;
 
-    const newValue = state.value.substring(0, state.value.length - 1);
+    const newValue =
+      getUnselectedText() ?? state.value.substring(0, state.value.length - 1);
 
     setState({
       value: newValue,
@@ -137,13 +137,13 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
     });
   }
 
-  async function onCopy(event) {
+  async function onCopy(event: KeyboardEvent) {
     event.preventDefault();
     event.stopPropagation();
     await navigator.clipboard.writeText(state.value);
   }
 
-  async function onPaste(event) {
+  async function onPaste(event: KeyboardEvent) {
     event.preventDefault();
     event.stopPropagation();
     const text = await navigator.clipboard.readText();
@@ -151,6 +151,22 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
       value: state.value + text,
       autocompleteCommand: determineAutocompleteCommand(text),
     });
+  }
+
+  async function onSelectAll(event: KeyboardEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (
+      textContainer.current?.firstChild &&
+      window.getSelection &&
+      document.createRange
+    ) {
+      const sel = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(textContainer.current.firstChild);
+      sel?.removeAllRanges();
+      sel?.addRange(range);
+    }
   }
 
   function onTab(event) {
@@ -215,7 +231,9 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
     >
       {placeholder}
       <div className="console-input">
-        <div className="console-input-text">{state.value}</div>
+        <div className="console-input-text" ref={textContainer}>
+          {state.value}
+        </div>
         <div className="console-input-suffix">
           <div className="console-input-autocomplete">
             {getAutoCompletePlaceholder()}

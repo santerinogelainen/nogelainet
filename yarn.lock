@@ -11625,13 +11625,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keycode-js@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "keycode-js@npm:3.1.0"
-  checksum: 10c0/38b8c5b6a6a15e635a635c2cde2b8e92f475208544a6262f3da57b9ba8b61076412cfddf1f3316286c6be031fed52755ec5f6b4697746fb41bf53c1accc2dbe8
-  languageName: node
-  linkType: hard
-
 "keyv@npm:^4.0.0, keyv@npm:^4.5.3":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -13508,7 +13501,6 @@ __metadata:
     i18next: "npm:^23.12.2"
     image-js: "npm:^0.35.6"
     js-cookie: "npm:^3.0.5"
-    keycode-js: "npm:^3.1.0"
     lodash: "npm:^4.17.21"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
