@@ -21,12 +21,7 @@ const HiddenImage: React.FC<HiddenImageProps> = ({
 
   return (
     <HiddenContainer enabled={enabled} visible={visible} onHide={nextImage}>
-      <img
-        className="hidden-image"
-        src={images[index]}
-        style={{ zIndex: -2 }}
-        alt="hidden"
-      />
+      <img className="hidden-image" src={images[index]} alt="hidden" />
     </HiddenContainer>
   );
 };

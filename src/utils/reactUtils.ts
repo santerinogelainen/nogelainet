@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MutableRefObject, Ref, RefObject } from "react";
 
 /**
  * Add an event listened to a ref that is also cleaned up afterwards
@@ -74,8 +74,8 @@ export const useTimeoutState = () => {
   };
 };
 
-export const useCallbackRef = (callback) => {
-  const ref = React.useMemo(
+export const useCallbackRef = <T>(callback) => {
+  const ref = React.useMemo<MutableRefObject<T | null>>(
     () =>
       Object.assign(
         (node) => {

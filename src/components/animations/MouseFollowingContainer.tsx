@@ -23,7 +23,7 @@ const MouseFollowingContainer: React.FC<MouseFollowingContainerProps> = ({
 }) => {
   const tweenVars = {
     duration,
-    ease: Back.easeOut.config(1.25),
+    ease: Back.easeOut.config(3),
   };
   const { initialize, quickTo } = useQuickTo({
     left: tweenVars,
@@ -31,7 +31,7 @@ const MouseFollowingContainer: React.FC<MouseFollowingContainerProps> = ({
     rotationX: tweenVars,
     rotationY: tweenVars,
   });
-  const ref = useCallbackRef(initialize);
+  const ref = useCallbackRef<HTMLDivElement>(initialize);
 
   const getPosition = React.useCallback(
     (e) => {
@@ -71,7 +71,7 @@ const MouseFollowingContainer: React.FC<MouseFollowingContainerProps> = ({
     (pos) => {
       const rot = new Position();
 
-      if (!rotate) {
+      if (!rotate || !ref.current) {
         return rot;
       }
 
