@@ -61,7 +61,7 @@ const Modal: React.FC<ModalProps> = ({
         display: visibleByDefault.current ? "block" : "none",
       }}
     >
-      <div className="modal-content">{children}</div>
+      <div className="modal-content">{visible ? children : undefined}</div>
     </div>
   );
 };

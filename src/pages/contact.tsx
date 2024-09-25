@@ -4,8 +4,7 @@ import ContactView from "../components/views/ContactView";
 import { viewActions } from "../state/slices/viewSlice";
 import { HeadLayout } from "../layout";
 import { useAppDispatch } from "../state/store";
-import { settings } from "../constants";
-import socials from "../data/socials";
+import { settings, socials } from "../constants";
 
 const ContactPage = () => {
   const dispatch = useAppDispatch();

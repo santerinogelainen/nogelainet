@@ -2,7 +2,7 @@ import React from "react";
 import { useDidUpdateEffect } from "../../utils/reactUtils";
 
 type WrittenTextAnimationProps = {
-  state?: string;
+  state?: "enabled" | "disabled-hidden" | "disabled-visible";
   loop?: boolean;
   speed?: number;
   text?: string;

@@ -38,6 +38,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
   }, [visible]);
 
   const menuItems: Array<CommandName> = [
+    "projects",
     "about",
     "contact",
     activeTheme === "dark" ? "light" : "dark",

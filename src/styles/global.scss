@@ -611,12 +611,8 @@ span.name {
   }
 
   .project-modal-title {
-    margin-left: 50px;
-    margin-top: 50px;
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    left: 0;
+    margin-top: 0;
+    margin-bottom: 1em;
   }
 
   .modal-content {
@@ -627,7 +623,6 @@ span.name {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-top: 65px;
 
     .project-modal-employer {
       color: var(--text-color-muted);
@@ -719,7 +714,7 @@ span.name {
 
   .project-modal {
     .project-modal-container {
-      padding-top: 52px;
+      padding-top: 1em;
     }
   }
 }
@@ -775,13 +770,6 @@ span.name {
 
   .modal {
     padding: 25px;
-  }
-
-  .project-modal {
-    .project-modal-title {
-      margin-left: 25px;
-      margin-top: 25px;
-    }
   }
 
   .large-text {
@@ -878,12 +866,6 @@ span.name {
         margin-block-start: 1em;
         margin-block-end: 1em;
       }
-    }
-  }
-
-  .project-modal {
-    .project-modal-container {
-      padding-top: 10vw;
     }
   }
 
