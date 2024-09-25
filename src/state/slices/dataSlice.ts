@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import projects from "../../data/projects";
-import socialMedia from "../../data/socialMedia";
 
 const initialState = {
   projects,
-  socials: socialMedia,
 };
 
 const slice = createSlice({

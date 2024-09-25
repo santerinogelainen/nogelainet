@@ -23,7 +23,7 @@ const socials: Array<SocialMedia> = [
     key: "Discord",
     name: "Discord",
     url: "https://discord.com/users/211860254646861824",
-    username: "noge#4652",
+    username: "noge#nogee",
   },
 ];
 
