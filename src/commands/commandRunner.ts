@@ -81,6 +81,16 @@ export const runCommand = (command: CommandName | null) => {
     return;
   }
 
+  if (commands.sets.ball.has(command)) {
+    changeTheme(Themes.Ball);
+    return;
+  }
+
+  if (commands.sets.wireframe.has(command)) {
+    changeTheme(Themes.Wireframe);
+    return;
+  }
+
   if (commands.sets.cssColors.has(command)) {
     changeTheme(`${Themes.CssColor}-${command}`);
     return;

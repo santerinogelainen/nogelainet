@@ -32,6 +32,8 @@ export const commands = new Commands({
   pride: ["hlbt", "hlbtq", "lgbt", "lgbtq", "pride"] as const,
   hacker: ["hacker", "häkkeri"] as const,
   powershell: ["powershell", "windows"] as const,
+  ball: ["ball", "pallo"] as const,
+  wireframe: ["wireframe"] as const,
   cssColors: [
     "aliceblue",
     "antiquewhite",

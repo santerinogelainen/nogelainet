@@ -27,6 +27,8 @@ export function mapThemeToCommand(theme: string): CommandName | undefined {
     [Themes.Dark]: "dark",
     [Themes.Light]: "light",
     [Themes.Hacker]: "hacker",
+    [Themes.Ball]: "ball",
+    [Themes.Wireframe]: "wireframe",
     [Themes.PowerShell]: "powershell",
     [Themes.Pride]: "pride",
   };

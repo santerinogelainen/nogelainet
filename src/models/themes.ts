@@ -7,6 +7,8 @@ export const Themes = {
   PowerShell: "theme-powershell",
   Hacker: "theme-hacker",
   CssColor: "theme-css-color",
+  Ball: "theme-ball",
+  Wireframe: "theme-wireframe",
 };
 
 export const ThemesSBArgs = SBEnumControl(Themes);

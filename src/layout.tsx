@@ -13,6 +13,8 @@ import "./styles/theme-light.scss";
 import "./styles/theme-pride.scss";
 import "./styles/theme-powershell.scss";
 import "./styles/theme-hacker.scss";
+import "./styles/theme-wireframe.scss";
+import "./styles/theme-ball.scss";
 import "./styles/theme-css-color.scss";
 import { settings } from "./constants";
 
