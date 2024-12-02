@@ -618,77 +618,6 @@ span.name {
   z-index: 99;
 }
 
-.project-modal {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-
-  .modal {
-    overflow: hidden;
-  }
-
-  .project-modal-title {
-    margin-top: 0;
-    margin-bottom: 1em;
-  }
-
-  .modal-content {
-    height: 100%;
-  }
-
-  .project-modal-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-
-    .project-modal-employer {
-      color: var(--text-color-muted);
-    }
-
-    .project-modal-content {
-      overflow-y: auto;
-      flex-grow: 1;
-      max-width: 65%;
-      margin-bottom: 15px;
-    }
-
-    .modal-close-container {
-      padding: 10px;
-      overflow: visible;
-      cursor: pointer;
-
-      .modal-close {
-        box-sizing: content-box;
-        width: 35px;
-        height: 15px;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-
-        .modal-close-line {
-          height: 2px;
-          background-color: var(--text-color);
-          width: 100%;
-
-          &:nth-child(1) {
-            transform: rotate(45deg) translateY(9px);
-          }
-
-          &:nth-child(2) {
-            transform: rotate(-45deg) translateY(-9px);
-          }
-        }
-      }
-    }
-  }
-
-  .block-button-container {
-    margin-top: -5px;
-  }
-}
-
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 // Small devices (landscape phones, 576px and up)
@@ -730,12 +659,6 @@ span.name {
       font-size: 2rem;
     }
   }
-
-  .project-modal {
-    .project-modal-container {
-      padding-top: 1em;
-    }
-  }
 }
 // X-Large devices (large desktops, 1200px and up)
 @media (max-width: 1000px) {
@@ -756,25 +679,6 @@ span.name {
       p {
         margin-block-start: 1.5em;
         margin-block-end: 1.5em;
-      }
-    }
-  }
-
-  .project-modal {
-    .project-modal-container {
-      .project-modal-content {
-        max-width: 80%;
-      }
-    }
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (max-width: 800px) {
-  .project-modal {
-    .project-modal-container {
-      .project-modal-content {
-        max-width: 100%;
       }
     }
   }
