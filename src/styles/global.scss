@@ -516,7 +516,21 @@ span.name {
 
 .project-image {
   width: 100%;
-  height: 75vh;
+  height: 80vh;
+  display: flex;
+
+  * {
+    flex-grow: 1;
+    display: flex;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    float: left;
+    flex-grow: 1;
+  }
 }
 
 .about {

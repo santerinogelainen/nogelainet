@@ -5,9 +5,10 @@ import { useIsMobile } from "../../utils/window";
 
 type ProjectImageProps = {
   src: string;
+  alt?: string;
 };
 
-const ProjectImage: React.FC<ProjectImageProps> = ({ src }) => {
+const ProjectImage: React.FC<ProjectImageProps> = ({ src, alt }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const visible = useElementVisible(ref, {
@@ -17,7 +18,7 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ src }) => {
   return (
     <div className="project-image" ref={ref}>
       <HighlightAnimation start={visible}>
-        <img src={src} />
+        <img src={src} alt={alt} />
       </HighlightAnimation>
     </div>
   );
