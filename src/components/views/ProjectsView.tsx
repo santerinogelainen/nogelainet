@@ -9,17 +9,22 @@ type ProjectsViewProps = {
 };
 
 const ProjectsView: React.FC<ProjectsViewProps> = ({ onComplete }) => {
-  const projects = [
+  const projects = {
     KiltaFundRaising,
     KiltaEventManager,
     KiltaCardRegistry,
     MyCats,
-  ];
+  };
+  const entries = Object.entries(projects);
 
-  const items = projects.map((Project, index) => {
-    const isLast = index === projects.length - 1;
+  const items = entries.map(([key, Project], index) => {
+    const isLast = index === entries.length - 1;
     return (
-      <Project index={index} onComplete={isLast ? onComplete : undefined} />
+      <Project
+        index={index}
+        key={key}
+        onComplete={isLast ? onComplete : undefined}
+      />
     );
   });
 
