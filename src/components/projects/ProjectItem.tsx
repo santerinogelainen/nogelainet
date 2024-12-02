@@ -3,9 +3,6 @@ import HighlightAnimation from "../animations/HighlightAnimation";
 import BlockButton from "../BlockButton";
 import { padStart } from "../../utils/stringUtils";
 import ProjectItemModal from "./ProjectItemModal";
-import { Localized } from "../../types";
-import { useTranslation } from "react-i18next";
-import { Languages } from "../../models/languages";
 
 export type ProjectItemProps = {
   index: number;
