@@ -1,9 +1,10 @@
 import * as React from "react";
 import HiddenImage from "../HiddenImage";
 import WrittenTextAnimation, {
+  WrittenTextAnimationProps,
   WrittenTextAnimationState,
 } from "../animations/WrittenTextAnimation";
-import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
+import HighlightAnimation from "../animations/HighlightAnimation";
 import { useTranslation } from "react-i18next";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -83,7 +84,8 @@ const IndexView: React.FC<IndexViewProps> = ({
     (animPosition: number, text: string, onEnd?: () => void) => {
       const txt = text + "\u00A0";
       const speed = 35;
-      let state = WrittenTextAnimationState.DisabledHidden;
+      let state: WrittenTextAnimationProps["state"] =
+        WrittenTextAnimationState.DisabledHidden;
 
       if (position === animPosition) {
         state = WrittenTextAnimationState.Enabled;
@@ -111,7 +113,7 @@ const IndexView: React.FC<IndexViewProps> = ({
         <span className="break-lg home-line home-line-1">
           {writtenText(IndexPosition.Hello, t("hello"))}
           {writtenText(IndexPosition.MyNameIs, t("myNameIs"))}
-          <HighlightedWordAnimation
+          <HighlightAnimation
             start={position === IndexPosition.Name}
             visible={position > IndexPosition.Name}
             speed={400}
@@ -120,7 +122,7 @@ const IndexView: React.FC<IndexViewProps> = ({
             <span className="name" ref={nameContainer}>
               {name}
             </span>
-          </HighlightedWordAnimation>
+          </HighlightAnimation>
         </span>
         <span className="break-lg home-line home-line-2">
           {writtenText(IndexPosition.Title, t("imA"))}

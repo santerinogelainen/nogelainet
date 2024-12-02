@@ -1,5 +1,5 @@
 import React from "react";
-import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
+import HighlightAnimation from "../animations/HighlightAnimation";
 import { CommandName } from "../../commands/commands";
 
 type ConsoleMenuItemProps = {
@@ -27,7 +27,7 @@ const ConsoleMenuItem: React.FC<ConsoleMenuItemProps> = ({
 
   return (
     <div className={className} onClick={(e) => onClick?.(command)}>
-      <HighlightedWordAnimation
+      <HighlightAnimation
         word={name}
         start={visible}
         delay={delay}

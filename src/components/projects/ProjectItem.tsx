@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
+import HighlightAnimation from "../animations/HighlightAnimation";
 import BlockButton from "../BlockButton";
 import { padStart } from "../../utils/stringUtils";
 import ProjectItemModal from "./ProjectItemModal";
@@ -38,7 +38,7 @@ const ProjectItem: React.FC<InternalProjectItemProps> = ({
           className="project-item-content"
           style={{ opacity: active ? 0 : 1 }}
         >
-          <HighlightedWordAnimation
+          <HighlightAnimation
             start={true}
             delay={(index * speed) / 1.5}
             speed={speed}
@@ -48,7 +48,7 @@ const ProjectItem: React.FC<InternalProjectItemProps> = ({
               <span className="project-item-nr">{nr + " / "}</span>
               {name}
             </BlockButton>
-          </HighlightedWordAnimation>
+          </HighlightAnimation>
         </div>
       </div>
       <ProjectItemModal

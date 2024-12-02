@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Direction } from "../../models/direction";
 import SlideAnimation from "./SlideAnimation";
 
-type HighlightedWordAnimationProps = React.PropsWithChildren<{
+type HighlightAnimationProps = React.PropsWithChildren<{
   word?: string;
   speed?: number;
   start?: boolean;
@@ -13,7 +13,7 @@ type HighlightedWordAnimationProps = React.PropsWithChildren<{
   onComplete?: () => void;
 }>;
 
-const HighlightedWordAnimation: React.FC<HighlightedWordAnimationProps> = ({
+const HighlightAnimation: React.FC<HighlightAnimationProps> = ({
   word = "",
   speed = 600,
   start = true,
@@ -80,4 +80,4 @@ const HighlightedWordAnimation: React.FC<HighlightedWordAnimationProps> = ({
   );
 };
 
-export default HighlightedWordAnimation;
+export default HighlightAnimation;

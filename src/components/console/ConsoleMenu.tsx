@@ -1,5 +1,5 @@
 import React from "react";
-import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
+import HighlightAnimation from "../animations/HighlightAnimation";
 import { useTranslation } from "react-i18next";
 import ConsoleMenuItem from "./ConsoleMenuItem";
 import { CommandName } from "../../commands/commands";
@@ -45,7 +45,7 @@ const ConsoleMenu: React.FC<ConsoleMenuProps> = ({
     <div className="console-menu-wrapper">
       <div className="console-menu">
         <div className="console-menu-help">
-          <HighlightedWordAnimation
+          <HighlightAnimation
             word={t("tryTyping") + ":"}
             start={visible}
             speed={speed}

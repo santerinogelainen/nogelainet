@@ -1,18 +1,18 @@
 import React from "react";
 import { useDidUpdateEffect } from "../../utils/reactUtils";
 
-type WrittenTextAnimationProps = {
-  state?: "enabled" | "disabled-hidden" | "disabled-visible";
-  loop?: boolean;
-  speed?: number;
-  text?: string;
-  onEnd?: () => void;
-};
-
 export const WrittenTextAnimationState = {
   Enabled: "enabled",
   DisabledHidden: "disabled-hidden",
   DisabledVisible: "disabled-visible",
+} as const;
+
+export type WrittenTextAnimationProps = {
+  state?: (typeof WrittenTextAnimationState)[keyof typeof WrittenTextAnimationState];
+  loop?: boolean;
+  speed?: number;
+  text?: string;
+  onEnd?: () => void;
 };
 
 const createState = (visible, hidden) => ({

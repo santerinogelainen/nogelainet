@@ -2,7 +2,7 @@ import React from "react";
 import SocialMediaList from "../SocialMediaList";
 import BlockButton from "../BlockButton";
 import { useTranslation } from "react-i18next";
-import HighlightedWordAnimation from "../animations/HighlightedWordAnimation";
+import HighlightAnimation from "../animations/HighlightAnimation";
 import { SocialMedia } from "../../types";
 
 type ContactViewProps = {
@@ -39,13 +39,9 @@ const ContactView: React.FC<ContactViewProps> = ({
     <div className="contacts">
       <div className="contact-email">
         <div className="large-text">{t("feelFreeToContactMe")}</div>
-        <HighlightedWordAnimation
-          start={true}
-          speed={speed}
-          onComplete={onComplete}
-        >
+        <HighlightAnimation start={true} speed={speed} onComplete={onComplete}>
           <BlockButton onClick={sendEmail}>{emailJsx}</BlockButton>
-        </HighlightedWordAnimation>
+        </HighlightAnimation>
       </div>
       <SocialMediaList socials={socials} />
     </div>
