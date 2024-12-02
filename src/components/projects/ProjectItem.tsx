@@ -21,7 +21,7 @@ const ProjectItem: React.FC<InternalProjectItemProps> = ({
   href,
   onComplete,
 }) => {
-  const speed = 250;
+  const speed = 300;
   const nr = padStart((index + 1).toString(), 2, "0");
 
   return (
