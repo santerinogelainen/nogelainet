@@ -4,10 +4,10 @@
 .console-view {
   position: relative;
   padding: variables.$app-padding;
+  padding-bottom: calc(12.5em + variables.$app-padding);
 
   .console-view-content {
     transition: filter 0.3s ease-in-out;
-    padding: 0 0 12.5em 0;
   }
 
   .console-view-controls {

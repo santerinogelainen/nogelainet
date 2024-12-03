@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Ref } from "react";
 
 export type ElementIsVisibleThresholds = {
   top?: number;
@@ -14,12 +14,18 @@ export type ScrollEvent = (args: ScrollEventArgs) => void;
 export const useScrollEvent = (
   event: ScrollEvent,
   deps: React.DependencyList = [],
+  element?: React.RefObject<HTMLElement>,
 ) => {
   useEffect(() => {
     const eventHandler = () => event({ y: window.scrollY });
     eventHandler();
-    window.addEventListener("scroll", eventHandler);
-    return () => window.removeEventListener("scroll", eventHandler);
+    const container = element?.current || window;
+    container.addEventListener("scroll", eventHandler);
+    window.addEventListener("resize", eventHandler);
+    return () => {
+      container.removeEventListener("scroll", eventHandler);
+      window.removeEventListener("resize", eventHandler);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps]);
 };

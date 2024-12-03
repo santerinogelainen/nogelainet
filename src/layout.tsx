@@ -65,6 +65,7 @@ const PageElementWithHooks = (props) => {
       <div className="app">
         <ConsoleContainer
           visible={view.controlsVisible}
+          location={location.pathname}
           activePage={mapPageToCommand(location.pathname)}
           activeTheme={mapThemeToCommand(theme)}
           onCommand={runCommand}
