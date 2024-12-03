@@ -64,7 +64,7 @@ const AboutView: React.FC<AboutViewProps> = ({ onComplete }) => {
       </p>
 
       <p>
-        Teknologioista tutuimmat ovat <b>C#</b>, <b>JS/React/Vue</b> ja{" "}
+        Teknologioista tutuimmat ovat <b>C#</b>, <b>JS/TS/React/Vue</b> ja{" "}
         <b>relaatio tietokannat</b>. Sen lisäksi minulla on{" "}
         <b>Microsoftin sertifikaatti Azuresta</b>. Olen myös työskennellyt
         Pythonin ja NoSQL tietokantojen kanssa vapaa-ajan projektien ja
