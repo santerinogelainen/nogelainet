@@ -12,13 +12,11 @@ const Page = () => {
 
   return (
     <ProjectView
+      name="project.cardregistry"
+      employer="Kehätieto"
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
-        <h1 className="project-title">
-          <WrittenTextAnimation text="Kilta Card Registry" />
-        </h1>
-        <p className="project-employer">@Kehätieto</p>
         <p>
           Kilta Card registry allows organizations to keep track of their issued
           cards and qualifications. It consists of the base registry, course
@@ -38,10 +36,6 @@ const Page = () => {
       </Language>
 
       <Language lang="fi">
-        <h1 className="project-title">
-          <WrittenTextAnimation text="Kilta Korttirekisteri" />
-        </h1>
-        <p className="project-employer">@Kehätieto</p>
         <p>
           Kilta Korttirekisteri antaa organisaatioille mahdollisuuden
           hallinnoida heidän jakamia kortteja ja pätevyyksiä. Se koostuu perus

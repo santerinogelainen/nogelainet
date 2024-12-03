@@ -12,13 +12,11 @@ const Page = () => {
 
   return (
     <ProjectView
+      name="project.mycats"
+      employer="Kehätieto"
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
-        <h1 className="project-title">
-          <WrittenTextAnimation text="MyCats" />
-        </h1>
-        <p className="project-employer">@Kehätieto</p>
         <p>
           MyCats is a registry for FIFe cats, cat shows, cattery names, members,
           events and invoicing.
@@ -44,10 +42,6 @@ const Page = () => {
       </Language>
 
       <Language lang="fi">
-        <h1 className="project-title">
-          <WrittenTextAnimation text="MyCats" />
-        </h1>
-        <p className="project-employer">@Kehätieto</p>
         <p>
           MyCats on rekisteri FIFe kissoille, näyttelyille, kasvattajanimille,
           jäsenille, tapahtumille ja laskutuksille.

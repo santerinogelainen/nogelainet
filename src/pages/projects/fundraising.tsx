@@ -12,13 +12,11 @@ const Page = () => {
 
   return (
     <ProjectView
+      name="project.fundraising"
+      employer="Kehätieto"
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
-        <h1 className="project-title">
-          <WrittenTextAnimation text="Kilta fund raising module" />
-        </h1>
-        <p className="project-employer">@Kehätieto</p>
         <p>
           Kilta Fund raising is a module that can be installed on top of the
           Kilta registry to manage fund raising for a non profit organization.
@@ -38,10 +36,6 @@ const Page = () => {
       </Language>
 
       <Language lang="fi">
-        <h1 className="project-title">
-          <WrittenTextAnimation text="Kilta Varainhankinta" />
-        </h1>
-        <p className="project-employer">@Kehätieto</p>
         <p>
           Kilta Varainhankita on moduuli, jolla organisaatiot pystyvät
           hallinnoimaan esim. kampanjoita, lahjoittajia, viestintää ja

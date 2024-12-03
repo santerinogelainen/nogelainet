@@ -12,13 +12,11 @@ const Page = () => {
 
   return (
     <ProjectView
+      name="project.eventmanager"
+      employer="Kehätieto"
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
-        <h1 className="project-title">
-          <WrittenTextAnimation text="Kilta Event Manager" />
-        </h1>
-        <p className="project-employer">@Kehätieto</p>
         <p>
           Event manager is a module that can be installed on top of the Kilta
           registry for organizations that needed to manage their events, courses
@@ -46,10 +44,6 @@ const Page = () => {
       </Language>
 
       <Language lang="fi">
-        <h1 className="project-title">
-          <WrittenTextAnimation text="Kilta Tapahtumahallinta" />
-        </h1>
-        <p className="project-employer">@Kehätieto</p>
         <p>
           Kilta Tapahtumienhallinta on moduuli, jolla liitot, järjestöt ja
           yhdistykset pystyvät hallinoimaan tapahtumia, osallistujia, kursseja
