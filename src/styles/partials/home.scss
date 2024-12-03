@@ -1,0 +1,40 @@
+@use "mixins";
+
+span.name {
+  display: inline-block;
+  border-bottom: 1px solid var(--text-color);
+  color: var(--text-color);
+  cursor: grab;
+}
+
+.home {
+  .home-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@include mixins.media-breakpoint-down(md) {
+  .home-line-1 {
+    margin-bottom: 1em;
+  }
+
+  .home {
+    max-width: 80%;
+
+    .home-line {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .height-placeholder {
+      display: none;
+    }
+
+    .console-input-caret {
+      display: none !important;
+    }
+  }
+}

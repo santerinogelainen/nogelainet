@@ -1,0 +1,94 @@
+
+
+.line-animation {
+  position: relative;
+  display: inline-block;
+
+  .line {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    background-color: var(--text-color);
+  }
+}
+
+.slide-animation-container {
+  position: relative;
+  display: inline-block;
+
+  .slide-animation-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--text-color);
+    color: var(--background-color);
+
+    .block-button,
+    .project-item-nr,
+    .email-at {
+      color: var(--background-color);
+    }
+  }
+
+  .slide-animation-content {
+    position: relative;
+  }
+}
+
+.fade-animation-container {
+  display: inline-block;
+}
+
+.mouse-following-container {
+  position: fixed;
+  pointer-events: none;
+  width: auto;
+  height: auto;
+}
+
+
+.highlighted-word-container {
+  position: relative;
+  display: inline-block;
+
+  .slide-animation-content {
+    .highlighted-word-visible {
+      opacity: 1;
+    }
+  }
+
+  .highlighted-word {
+    opacity: 0;
+    color: var(--text-color);
+  }
+}
+
+.written-text-container {
+  .written-text-hidden {
+    opacity: 0;
+  }
+}
+
+.hidden-image {
+  max-width: 350px;
+  max-height: 350px;
+}
+
+.ascii-art {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5vh;
+  letter-spacing: 0.2em;
+  line-height: 0.75em;
+}
+
+.written-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.written-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

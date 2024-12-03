@@ -1,0 +1,228 @@
+@use "mixins";
+
+.console-menu-wrapper {
+  .console-menu {
+    display: flex;
+    font-weight: normal;
+    background-color: transparent;
+
+    .console-menu-help {
+      margin: 0 42px 0 5px;
+    }
+
+    .console-menu-item {
+      position: relative;
+      margin: 0 42px;
+      cursor: pointer;
+      min-width: 52px;
+      text-align: center;
+
+      &.console-menu-item-active {
+        .highlighted-word {
+          color: var(--text-color-muted);
+        }
+      }
+
+      &:hover:not(.console-menu-item-active) {
+        .highlighted-word {
+          color: var(--text-color-highlight);
+        }
+      }
+    }
+  }
+}
+
+.console-menu-mobile-wrapper {
+  display: none;
+  position: absolute;
+  align-items: flex-end;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+
+  .console-menu-mobile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    bottom: 50px;
+    margin: 35px 25px;
+    left: 0;
+
+    .console-menu-item {
+      cursor: pointer;
+
+      &:hover {
+        .highlighted-word {
+          color: var(--text-color-highlight);
+        }
+      }
+    }
+  }
+
+  .console-menu-handle {
+    width: 35px;
+    height: 15px;
+    cursor: pointer;
+    margin: 30px 25px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .console-menu-handle-line {
+      height: 2px;
+      background-color: var(--text-color);
+      width: 100%;
+    }
+  }
+}
+
+.console-input-wrapper {
+  position: relative;
+  height: 5rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  .console-input-placeholder,
+  .console-input,
+  .console-input:focus,
+  .console-input:focus-visible {
+    position: absolute;
+    background-color: transparent;
+    max-width: 90%;
+    outline: none;
+    border: 0;
+    top: 0;
+    left: 0;
+  }
+
+  .console-input-text {
+    color: var(--text-color);
+  }
+
+  .console-input-text,
+  .console-input-autocomplete {
+    font-size: 2.5rem;
+  }
+
+  .console-input-placeholder {
+    text-overflow: ellipsis;
+    font-size: 2.5rem;
+    left: 40px;
+
+    .written-text-container {
+      max-width: 100%;
+      display: inline-block;
+
+      .written-text-visible {
+        max-width: 100%;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .written-text-visible {
+      color: var(--text-color-muted);
+    }
+  }
+
+  .console-input {
+    display: flex;
+
+    .console-input-suffix {
+      position: relative;
+      display: inline-block;
+
+      .console-input-autocomplete,
+      .console-input-caret {
+        position: absolute;
+      }
+
+      .console-input-autocomplete {
+        color: var(--text-color-muted);
+      }
+    }
+  }
+}
+
+.console-input-caret {
+  height: 1em;
+  width: 0.4em;
+  margin: 0 4px;
+  background-color: var(--caret-color);
+  opacity: 0;
+  display: inline-block;
+
+  &.console-input-caret-visible {
+    opacity: 1;
+  }
+}
+
+.console-view {
+  .console-view-content {
+    transition: filter 0.3s ease-in-out;
+  }
+
+  .console-view-controls {
+    .console-input-wrapper {
+      margin: 60px 0 40px 0;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(xl) {
+  .console-menu {
+    .console-menu-help {
+      margin: 0 30px 0 5px;
+    }
+
+    .console-menu-item {
+      margin: 0 30px;
+    }
+  }
+
+  .console-input-wrapper {
+    height: 3rem;
+
+    .console-input-text,
+    .console-input-autocomplete {
+      font-size: 2rem;
+    }
+
+    .console-input-placeholder {
+      font-size: 2rem;
+    }
+  }
+}
+// X-Large devices (large desktops, 1200px and up)
+@media (max-width: 1000px) {
+  .console-menu {
+    .console-menu-help {
+      display: none;
+    }
+
+    .console-menu-item:nth-child(2) {
+      margin-left: 5px;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@include mixins.media-breakpoint-down(md) {
+  .console-input-wrapper {
+    display: none;
+  }
+
+  .console-menu-wrapper {
+    display: none;
+  }
+
+  .console-menu-mobile-wrapper {
+    display: flex;
+
+    .console-menu-item {
+      font-size: 8vw;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+@use "mixins";
+
+.btn {
+  border-radius: 0;
+  height: 40px;
+  padding: 0.5rem 1rem;
+  margin-right: 5px;
+
+  &.btn-primary {
+    border: 1px solid transparent;
+    background-color: var(--text-color-muted);
+  }
+
+  &.btn-primary:hover {
+    background-color: var(--text-color-muted);
+    border: 1px solid var(--text-color);
+  }
+
+  &.btn-secondary,
+  &.btn-action {
+    background-color: transparent;
+    border: 1px solid transparent;
+  }
+
+  &.btn-secondary:hover {
+    background-color: transparent;
+    border: 1px solid var(--text-color);
+  }
+
+  &.btn-action {
+    display: inline-block;
+    color: var(--text-color-muted);
+    font-size: 0.8em;
+    text-align: center;
+    vertical-align: middle;
+    height: auto;
+    width: 1.5em;
+    padding: 0 0.25em;
+  }
+}
+
+.block-button-container {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: -15px;
+
+  .block-button {
+    font-size: 3rem;
+    font-weight: 100;
+    padding: 5px 15px;
+  }
+}
+
+@include mixins.media-breakpoint-down(xl) {
+  .block-button-container {
+    margin-left: -10px;
+    .block-button {
+      font-size: 2.5rem;
+      padding: 5px 10px;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(md) {
+  .block-button-container {
+    margin-left: -10px;
+    .block-button {
+      font-size: 8vw;
+      padding: 4px 8px;
+    }
+  }
+}
