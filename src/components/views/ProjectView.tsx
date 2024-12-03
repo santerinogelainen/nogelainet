@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import WrittenTextAnimation from "../animations/WrittenTextAnimation";
+import WrittenTextAnimation, {
+  WrittenTextAnimationState,
+} from "../animations/WrittenTextAnimation";
 import FadeAnimation from "../animations/FadeAnimation";
 import { useTranslation } from "react-i18next";
 import ProjectTag from "../projects/ProjectTag";
@@ -41,21 +43,36 @@ const ProjectView: React.FC<ProjectViewProps> = ({
     if (animationStep === ProjectViewAnimationStep.Finished) {
       onComplete?.();
     }
+
+    if (animationStep < ProjectViewAnimationStep.Finished) {
+      document.addEventListener("click", onContentFinished);
+      return () => document.removeEventListener("click", onContentFinished);
+    }
   }, [animationStep, onComplete]);
 
   return (
     <div className="project">
       <h1 className="project-title">
         <WrittenTextAnimation
+          state={
+            animationStep > ProjectViewAnimationStep.Title
+              ? WrittenTextAnimationState.DisabledVisible
+              : WrittenTextAnimationState.Enabled
+          }
           text={name ? t(name) + " @ " + employer : "-"}
           onEnd={onTitleFinished}
         />
       </h1>
       <div className="project-tags">
         {tags?.map((x, i) => {
-          const start =
-            animationStep >= ProjectViewAnimationStep.TagsAndContent;
-          return <ProjectTag key={x} text={x} index={i} start={start} />;
+          return (
+            <ProjectTag
+              key={x}
+              text={x}
+              index={i}
+              start={animationStep >= ProjectViewAnimationStep.TagsAndContent}
+            />
+          );
         })}
       </div>
       <div className="project-content">

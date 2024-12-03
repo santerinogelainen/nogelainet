@@ -5,6 +5,7 @@ type ProjectTagProps = {
   index: number;
   text: string;
   start: boolean;
+  visible?: boolean;
   onComplete?: () => void;
 };
 
@@ -14,6 +15,7 @@ const ProjectTag: React.FC<ProjectTagProps> = ({
   index,
   text,
   start,
+  visible,
   onComplete,
 }) => {
   return (
@@ -21,6 +23,7 @@ const ProjectTag: React.FC<ProjectTagProps> = ({
       delay={index * speed}
       speed={speed}
       start={start}
+      visible={visible}
       onComplete={onComplete}
     >
       <div className="project-tag">{text}</div>
