@@ -23,8 +23,11 @@ html,
 body,
 #___gatsby,
 #gatsby-focus-wrapper,
-.theme {
-  height: 100%;
+.theme,
+.app {
+  display: flex;
+  flex: 1 0 100%;
+  min-height: 100%;
   line-height: 1.4;
 }
 
@@ -47,11 +50,8 @@ body {
 }
 
 .app {
-  padding: 50px;
-  display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 100%;
 }
 
 .container {
@@ -77,12 +77,4 @@ body {
 .about-text p,
 .about-text p b {
   color: var(--text-color);
-}
-
-// Medium devices (tablets, 768px and up)
-@include mixins.media-breakpoint-down(md) {
-  .app {
-    padding: 25px;
-    padding-bottom: 85px;
-  }
 }

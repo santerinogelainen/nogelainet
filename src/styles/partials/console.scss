@@ -1,4 +1,26 @@
 @use "mixins";
+@use "variables";
+
+.console-view {
+  position: relative;
+  padding: variables.$app-padding;
+
+  .console-view-content {
+    transition: filter 0.3s ease-in-out;
+    padding: 0 0 12.5em 0;
+  }
+
+  .console-view-controls {
+    position: fixed;
+    bottom: variables.$app-padding;
+    left: variables.$app-padding;
+    width: calc(100% - variables.$app-padding * 2);
+
+    .console-input-wrapper {
+      margin: 60px 0 40px 0;
+    }
+  }
+}
 
 .console-menu-wrapper {
   .console-menu {
@@ -161,18 +183,6 @@
   }
 }
 
-.console-view {
-  .console-view-content {
-    transition: filter 0.3s ease-in-out;
-  }
-
-  .console-view-controls {
-    .console-input-wrapper {
-      margin: 60px 0 40px 0;
-    }
-  }
-}
-
 @include mixins.media-breakpoint-down(xl) {
   .console-menu {
     .console-menu-help {
@@ -225,6 +235,21 @@
 
     .console-menu-item {
       font-size: 8vw;
+    }
+  }
+
+  .console-view {
+    padding: variables.$app-padding-mobile;
+    padding-bottom: 85px;
+
+    .console-view-content {
+      padding-bottom: 0;
+    }
+
+    .console-view-controls {
+      left: 0;
+      bottom: 0;
+      width: 100%;
     }
   }
 }

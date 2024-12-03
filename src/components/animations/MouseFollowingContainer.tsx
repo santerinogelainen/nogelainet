@@ -3,7 +3,7 @@ import { Position } from "../../models/position";
 import gsap, { Back } from "gsap";
 import { Anchor } from "../../models/anchor";
 import { useCallbackRef } from "../../utils/reactUtils";
-import { useQuickTo } from "../../utils/animationUtils";
+import { useQuickTo } from "../../utils/animations";
 
 type MouseFollowingContainerProps = React.PropsWithChildren<{
   enabled?: boolean;

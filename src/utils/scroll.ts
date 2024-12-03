@@ -11,27 +11,15 @@ export type ScrollEventArgs = {
 
 export type ScrollEvent = (args: ScrollEventArgs) => void;
 
-export const scroller = {
-  listeners: [] as ScrollEvent[],
-  addEventListener: (event: ScrollEvent) => {
-    scroller.listeners.push(event);
-  },
-  removeEventListener: (event: ScrollEvent) => {
-    const index = scroller.listeners.indexOf(event);
-    if (index >= 0) {
-      scroller.listeners.splice(index, 1);
-    }
-  },
-};
-
 export const useScrollEvent = (
   event: ScrollEvent,
   deps: React.DependencyList = [],
 ) => {
   useEffect(() => {
-    event({ y: window.scrollY });
-    scroller.addEventListener(event);
-    return () => scroller.removeEventListener(event);
+    const eventHandler = () => event({ y: window.scrollY });
+    eventHandler();
+    window.addEventListener("scroll", eventHandler);
+    return () => window.removeEventListener("scroll", eventHandler);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps]);
 };

@@ -7,6 +7,7 @@ import { loadTheme } from "../../state/slices/themeSlice";
 import store from "../../state/store";
 import { loadLanguage } from "../../i18n";
 import { CommandName } from "../../commands/commands";
+import { useScrollEvent } from "../../utils/scroll";
 
 type ConsoleContainerProps = React.PropsWithChildren<{
   visible: boolean;
