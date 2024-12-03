@@ -22,10 +22,10 @@ const AboutView: React.FC<AboutViewProps> = ({ onComplete }) => {
     <>
       <p>
         I started my coding journey at age 16 when I learned HTML so I could
-        create a theme my back then blog. I fell in love with the creativity and
-        problem solving aspects and it lead to me studying software development.
-        In 2018 I graduated from my studies and landed my first job in the
-        field.
+        create a theme for my back then blog. I fell in love with the creativity
+        and problem solving aspects and it lead to me studying software
+        development. In 2018 I graduated from my studies and landed my first job
+        in the field.
       </p>
       <p>
         Since then, I've worked on many different types of systems; from full
