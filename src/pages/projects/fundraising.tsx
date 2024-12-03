@@ -14,6 +14,15 @@ const Page = () => {
     <ProjectView
       name="project.fundraising"
       employer="Kehätieto"
+      tags={[
+        ".NET",
+        "C#",
+        "Vue",
+        "JavaScript",
+        "TypeScript",
+        "SQL Server",
+        "Azure Devops",
+      ]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">

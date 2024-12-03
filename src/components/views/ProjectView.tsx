@@ -55,15 +55,17 @@ const ProjectView: React.FC<ProjectViewProps> = ({
         {tags?.map((x, i) => {
           const start =
             animationStep >= ProjectViewAnimationStep.TagsAndContent;
-          return <ProjectTag text={x} index={i} start={start} />;
+          return <ProjectTag key={x} text={x} index={i} start={start} />;
         })}
       </div>
-      <FadeAnimation
-        visible={animationStep >= ProjectViewAnimationStep.TagsAndContent}
-        after={onContentFinished}
-      >
-        {children}
-      </FadeAnimation>
+      <div className="project-content">
+        <FadeAnimation
+          visible={animationStep >= ProjectViewAnimationStep.TagsAndContent}
+          after={onContentFinished}
+        >
+          {children}
+        </FadeAnimation>
+      </div>
     </div>
   );
 };

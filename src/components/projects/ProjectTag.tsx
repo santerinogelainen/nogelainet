@@ -8,6 +8,8 @@ type ProjectTagProps = {
   onComplete?: () => void;
 };
 
+const speed = 200;
+
 const ProjectTag: React.FC<ProjectTagProps> = ({
   index,
   text,
@@ -16,8 +18,8 @@ const ProjectTag: React.FC<ProjectTagProps> = ({
 }) => {
   return (
     <HighlightAnimation
-      delay={index * 200}
-      speed={400}
+      delay={index * speed}
+      speed={speed}
       start={start}
       onComplete={onComplete}
     >

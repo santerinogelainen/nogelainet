@@ -14,6 +14,7 @@ const Page = () => {
     <ProjectView
       name="project.eventmanager"
       employer="Kehätieto"
+      tags={[".NET", "C#", "SQL Server", "REST", "Azure Devops"]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">

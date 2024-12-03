@@ -33,6 +33,7 @@
 
 .project-tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
 
   .project-tag {
@@ -43,6 +44,28 @@
 
 .project-title {
   margin-bottom: 1rem;
+}
+
+.project-content {
+  p {
+    max-width: 55%;
+  }
+}
+
+@include mixins.media-breakpoint-down(xl) {
+  .project-content {
+    p {
+      max-width: 70%;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(lg) {
+  .project-content {
+    p {
+      max-width: 80%;
+    }
+  }
 }
 
 @include mixins.media-breakpoint-down(md) {
@@ -58,6 +81,12 @@
       margin-top: -5px;
       margin-left: -15px;
       margin-bottom: -8px;
+    }
+  }
+
+  .project-content {
+    p {
+      max-width: none;
     }
   }
 }

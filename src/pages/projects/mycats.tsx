@@ -13,7 +13,7 @@ const Page = () => {
     <ProjectView
       name="project.mycats"
       employer="Kehätieto"
-      tags={[".NET", "SQL Server"]}
+      tags={[".NET", "C#", "SQL Server", "REST", "Azure Devops"]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
