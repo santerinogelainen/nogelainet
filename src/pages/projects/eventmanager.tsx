@@ -82,7 +82,7 @@ const Page = () => {
 export const Head = () => {
   const { t } = useTranslation();
 
-  return <HeadLayout title={t("eventManager")} />;
+  return <HeadLayout title={t("project.eventmanager")} />;
 };
 
 export default Page;

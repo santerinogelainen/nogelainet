@@ -68,7 +68,7 @@ const Page = () => {
 export const Head = () => {
   const { t } = useTranslation();
 
-  return <HeadLayout title={t("fundRaising")} />;
+  return <HeadLayout title={t("project.fundraising")} />;
 };
 
 export default Page;

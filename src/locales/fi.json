@@ -15,5 +15,11 @@
     "contactHelpText": "Kokeile kirjoittaa 'yhteystiedot'",
     "feelFreeToContactMe": "Ota ihmeessä yhteyttä!",
     "loading": "Ladataan",
-    "close": "Sulje"
+    "close": "Sulje",
+    "project": {
+      "mycats": "MyCats",
+      "fundraising": "Varainhankinta",
+      "cardregistry": "Korttirekisteri",
+      "eventmanager": "Tapahtumahallinta"
+    }
 }
