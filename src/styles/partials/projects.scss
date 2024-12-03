@@ -31,6 +31,20 @@
   }
 }
 
+.project-tags {
+  display: flex;
+  gap: 1em;
+
+  .project-tag {
+    padding: .2em .5em;
+    border: 1px solid var(--text-color-muted);
+  }
+}
+
+.project-title {
+  margin-bottom: 1rem;
+}
+
 @include mixins.media-breakpoint-down(md) {
   .project-item-nr {
     display: none;

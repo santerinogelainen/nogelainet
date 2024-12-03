@@ -5,7 +5,6 @@ import { HeadLayout } from "../../layout";
 import ProjectView from "../../components/views/ProjectView";
 import Language from "../../components/Language";
 import { useAppDispatch } from "../../state/store";
-import WrittenTextAnimation from "../../components/animations/WrittenTextAnimation";
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +13,7 @@ const Page = () => {
     <ProjectView
       name="project.mycats"
       employer="Kehätieto"
+      tags={[".NET", "SQL Server"]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
