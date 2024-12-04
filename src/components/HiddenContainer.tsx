@@ -3,6 +3,7 @@ import { Anchor } from "../models/anchor";
 import MouseFollowingContainer from "./animations/MouseFollowingContainer";
 import FadeAnimation from "./animations/FadeAnimation";
 import { useTimeoutState } from "../utils/reactUtils";
+import { createPortal } from "react-dom";
 
 type HiddenContainerProps = React.PropsWithChildren<{
   visible?: boolean;
@@ -52,7 +53,7 @@ const HiddenContainer: React.FC<HiddenContainerProps> = ({
     }
   }, [visible, onHide, set, speed]);
 
-  return (
+  return createPortal(
     <MouseFollowingContainer
       enabled={enabled && following}
       rotate={rotate}
@@ -67,7 +68,8 @@ const HiddenContainer: React.FC<HiddenContainerProps> = ({
       >
         {children}
       </FadeAnimation>
-    </MouseFollowingContainer>
+    </MouseFollowingContainer>,
+    document.body,
   );
 };
 
