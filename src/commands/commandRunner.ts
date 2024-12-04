@@ -7,7 +7,6 @@ import { Themes } from "../models/themes";
 import { Pages } from "../models/pages";
 import { Languages } from "../models/languages";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { viewActions } from "../state/slices/viewSlice";
 
 type FoundCommands = {

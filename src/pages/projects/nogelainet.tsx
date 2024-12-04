@@ -32,7 +32,7 @@ const Page = () => {
     >
       <Language lang="en">
         <p>This website!</p>
-        <p>Try some easter egg commands:</p>
+        <p>Try some easter eggs:</p>
         <ul>
           <li>powershell</li>
           <li>hacker</li>
