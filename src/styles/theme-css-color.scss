@@ -34,7 +34,7 @@
     --text-color-muted: #{$color-muted};
     --background-color: #{$color-background};
     --caret-color: #{$color-text};
-    --controls-background-color: #{$color-background};
+    --controls-background-color: transparent;
 
     font-weight: 200;
 }
