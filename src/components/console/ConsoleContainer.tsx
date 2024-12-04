@@ -9,6 +9,7 @@ import { loadLanguage } from "../../i18n";
 import { CommandName } from "../../commands/commands";
 import { useScrollEvent } from "../../utils/scroll";
 import ConsoleScrollArrow from "./ConsoleScrollArrow";
+import { useIsMobile } from "../../utils/window";
 
 type ConsoleContainerProps = React.PropsWithChildren<{
   visible: boolean;
@@ -31,6 +32,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
   const [inputVisible, setInputVisible] = useState(visible);
   const [menuVisible, setMenuVisible] = useState(visible);
   const [inset, setInset] = useState(0);
+  const isMobile = useIsMobile();
 
   useDidMountEffect(() => {
     loadLanguage();
@@ -62,7 +64,9 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
       const scrollDiff = scrollHeight - offsetHeight - scrollTop;
       setInset(scrollDiff);
 
-      if (scrollDiff === 0) {
+      if (isMobile) {
+        setArrow(null);
+      } else if (scrollDiff === 0) {
         setArrow("up");
       } else if (scrollTop === 0) {
         setArrow("down");

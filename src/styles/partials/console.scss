@@ -240,6 +240,11 @@ $console-controls-height: 12.5rem;
       font-size: 2rem;
     }
   }
+
+
+  .console-view {
+    padding-bottom: calc($console-controls-height + variables.$app-padding-mobile);
+  }
 }
 // X-Large devices (large desktops, 1200px and up)
 @media (max-width: 1000px) {
@@ -273,10 +278,10 @@ $console-controls-height: 12.5rem;
   }
 
   .console-view {
-    padding: variables.$app-padding-mobile;
     padding-bottom: 85px;
 
     .console-view-content {
+      padding: variables.$app-padding-mobile;
       padding-bottom: 0;
     }
 

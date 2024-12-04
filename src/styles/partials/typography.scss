@@ -71,6 +71,6 @@ span.break-lg {
 
 @include mixins.media-breakpoint-down(md) {
   .large-text {
-    font-size: 8vw;
+    font-size: 6vw;
   }
 }
