@@ -18,7 +18,7 @@ const Page = () => {
   return (
     <ProjectView
       name="project.nogelainet"
-      employer="Freelance"
+      employer="Freetime"
       tags={[
         "React",
         "Gatsby",
@@ -28,8 +28,34 @@ const Page = () => {
       ]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
-      <Language lang="en"></Language>
-      <Language lang="fi"></Language>
+      <Language lang="en">
+        <p>This website! Try some easter egg commands:</p>
+        <ul>
+          <li>powershell</li>
+          <li>hacker</li>
+          <li>pride</li>
+          <li>ball</li>
+          <li>wireframe</li>
+          <li>
+            red/green/blue or any other predefined css color name (my favourite
+            is pink!)
+          </li>
+        </ul>
+      </Language>
+      <Language lang="fi">
+        <p>Tämä sivu! Kokeile easter egg komentoja:</p>
+        <ul>
+          <li>powershell</li>
+          <li>häkkeri</li>
+          <li>pride</li>
+          <li>pallo</li>
+          <li>wireframe</li>
+          <li>
+            red/green/blue tai muu ennalta määritetty css värinimi (mun suosikki
+            on pink!)
+          </li>
+        </ul>
+      </Language>
     </ProjectView>
   );
 };
