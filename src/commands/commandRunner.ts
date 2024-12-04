@@ -46,12 +46,11 @@ export const saveFoundCommand = (command: CommandName) => {
   getLocalStorage()?.setItem("found-commands", JSON.stringify(found));
 };
 
-const uniqueAll = Object.values(commands.sets);
-const uniqueTotal = uniqueAll.length;
-const aliasTotal = commands.all.size;
-
 export const useFoundCommandStats = (): FoundCommandStats => {
   const [found, setFound] = useState(getFoundCommands());
+  const uniqueAll = Object.values(commands.sets);
+  const uniqueTotal = uniqueAll.length;
+  const aliasTotal = commands.all.size;
   const unique = uniqueAll.filter((value) =>
     value.keys?.()?.some((x) => found[x]),
   ).length;
