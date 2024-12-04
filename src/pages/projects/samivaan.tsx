@@ -28,8 +28,43 @@ const Page = () => {
       ]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
-      <Language lang="en"></Language>
-      <Language lang="fi"></Language>
+      <Language lang="en">
+        <p>
+          Samivaan.com is a portfolio website I developed for my friend Sami.
+          While Sami designed the layout and visual aesthetics, I handled all
+          aspects of the site's development and implementation.
+        </p>
+        <p>
+          The website emphasizes smooth and satisfying animations. Our goal was
+          to ensure the portfolio felt personal to Sami, incorporating fun,
+          interactive features &mdash; such as emojis that appear when clicking
+          on the background.
+        </p>
+        <p>
+          Visit the site here:{" "}
+          <a href="https://samivaan.com" target="_blank">
+            samivaan.com
+          </a>
+        </p>
+      </Language>
+      <Language lang="fi">
+        <p>
+          Samivaan.com on portfolioverkkosivusto, jonka kehitin ystävälleni
+          Samille. Sami suunnitteli sivuston ulkoasun ja visuaalisen tyylin, kun
+          taas minä vastasin sivuston kehityksestä ja toteutuksesta.
+        </p>
+        <p>
+          Tavoitteena oli tehdä portfoliosta Samille henkilökohtaisen tuntuinen
+          lisäämällä hauskoja ja interaktiivisia ominaisuuksia, kuten taustaa
+          klikkaamalla esiin tulevat emojit.
+        </p>
+        <p>
+          Vieraile sivustolla:{" "}
+          <a href="https://samivaan.com" target="_blank">
+            samivaan.com
+          </a>
+        </p>
+      </Language>
     </ProjectView>
   );
 };
