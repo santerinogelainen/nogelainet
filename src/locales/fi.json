@@ -18,14 +18,14 @@
     "close": "Sulje",
     "project": {
       "mycats": "MyCats",
-      "fundraising": "Varainhankinta",
-      "cardregistry": "Korttirekisteri",
-      "eventmanager": "Tapahtumahallinta",
+      "fundraising": "Kilta Varainhankinta",
+      "cardregistry": "Kilta Korttirekisteri",
+      "eventmanager": "Kilta Tapahtumahallinta",
       "samivaan": "samivaan.com",
-      "kiltaunions": "Ammattiliitto-kilta",
-      "ktsms": "KT.SMS",
-      "ktvuecomponents": "KT.VueComponents",
+      "kiltaunions": "Kilta Ammattiliitoille",
+      "ktsms": "kt-sms",
+      "ktvuecomponents": "kt-vuecomponents",
       "nogelainet": "nogelai.net",
-      "ytj": "Yritys- ja yhteisötietojärjestelmä"
+      "ytj": "Yritystietojärjestelmä"
     }
 }

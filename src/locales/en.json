@@ -18,14 +18,14 @@
   "close": "Close",
   "project": {
     "mycats": "MyCats",
-    "fundraising": "Fund raising module",
-    "cardregistry": "Card registry",
-    "eventmanager": "Event manager",
+    "fundraising": "Kilta Fund Raising",
+    "cardregistry": "Kilta Card Registry",
+    "eventmanager": "Kilta Event Manager",
     "samivaan": "samivaan.com",
     "kiltaunions": "Kilta for Unions",
-    "ktsms": "KT.SMS",
-    "ktvuecomponents": "KT.VueComponents",
+    "ktsms": "kt-sms",
+    "ktvuecomponents": "kt-vuecomponents",
     "nogelainet": "nogelai.net",
-    "ytj": "The Business Information System"
+    "ytj": "Business Information System"
   }
 }
