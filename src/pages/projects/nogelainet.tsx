@@ -32,7 +32,7 @@ const Page = () => {
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
-        <p>This website!</p>
+        <p>This website you are on right now!</p>
         <p>Try some easter eggs:</p>
         <ul>
           <li>powershell</li>
@@ -56,8 +56,8 @@ const Page = () => {
         </ul>
       </Language>
       <Language lang="fi">
-        <p>Tämä sivu!</p>
-        <p>Kokeile easter egg komentoja:</p>
+        <p>Tämä sivusto millä olet juuri nyt!</p>
+        <p>Kokeile esim. komentoja:</p>
         <ul>
           <li>powershell</li>
           <li>häkkeri</li>
