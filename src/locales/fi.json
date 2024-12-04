@@ -20,6 +20,12 @@
       "mycats": "MyCats",
       "fundraising": "Varainhankinta",
       "cardregistry": "Korttirekisteri",
-      "eventmanager": "Tapahtumahallinta"
+      "eventmanager": "Tapahtumahallinta",
+      "samivaan": "samivaan.com",
+      "kiltaunions": "Ammattiliitto-kilta",
+      "ktsms": "KT.SMS",
+      "ktvuecomponents": "KT.VueComponents",
+      "nogelainet": "nogelai.net",
+      "ytj": "Yritys- ja yhteisötietojärjestelmä"
     }
 }
