@@ -194,6 +194,8 @@ $console-controls-height: 12.5rem;
   font-size: 2em;
   padding: .25em .5em;
   line-height: 1;
+  color: var(--text-color);
+  border: none;
   transition:
     transform ease-in-out 0.15s,
     color ease-in-out 0.15s,
