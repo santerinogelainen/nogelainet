@@ -10,6 +10,7 @@ $console-controls-height: 12.5rem;
   .console-view-content {
     transition: filter 0.3s ease-in-out;
     padding: variables.$app-padding;
+    padding-bottom: 0;
   }
 
   .console-view-controls {

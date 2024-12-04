@@ -26,6 +26,7 @@ const Page = () => {
         "Gatsby",
         "JavaScript",
         "TypeScript",
+        "Storybook",
         "Azure Static Web Apps",
       ]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
