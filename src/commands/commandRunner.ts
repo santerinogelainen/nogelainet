@@ -25,8 +25,11 @@ type FoundCommandStats = {
   };
 };
 
+export const getLocalStorage = () =>
+  typeof window !== "undefined" ? window.localStorage : undefined;
+
 export const getFoundCommands = (): FoundCommands => {
-  const stored = localStorage.getItem("found-commands") || "";
+  const stored = getLocalStorage()?.getItem("found-commands") || "";
   try {
     return JSON.parse(stored);
   } catch (e) {
@@ -37,7 +40,7 @@ export const getFoundCommands = (): FoundCommands => {
 export const saveFoundCommand = (command: CommandName) => {
   const found = getFoundCommands();
   found[command] = true;
-  localStorage.setItem("found-commands", JSON.stringify(found));
+  getLocalStorage()?.setItem("found-commands", JSON.stringify(found));
 };
 
 const uniqueAll = Object.values(commands.sets);

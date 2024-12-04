@@ -53,7 +53,7 @@ const HiddenContainer: React.FC<HiddenContainerProps> = ({
     }
   }, [visible, onHide, set, speed]);
 
-  return createPortal(
+  const component = (
     <MouseFollowingContainer
       enabled={enabled && following}
       rotate={rotate}
@@ -68,9 +68,14 @@ const HiddenContainer: React.FC<HiddenContainerProps> = ({
       >
         {children}
       </FadeAnimation>
-    </MouseFollowingContainer>,
-    document.body,
+    </MouseFollowingContainer>
   );
+
+  if (typeof window !== "undefined") {
+    return createPortal(component, window.document.body);
+  }
+
+  return component;
 };
 
 export default HiddenContainer;
