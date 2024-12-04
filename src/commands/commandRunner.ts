@@ -30,6 +30,9 @@ export const getLocalStorage = () =>
 
 export const getFoundCommands = (): FoundCommands => {
   const stored = getLocalStorage()?.getItem("found-commands") || "";
+  if (!stored) {
+    return {};
+  }
   try {
     return JSON.parse(stored);
   } catch (e) {
@@ -50,7 +53,7 @@ const aliasTotal = commands.all.size;
 export const useFoundCommandStats = (): FoundCommandStats => {
   const [found, setFound] = useState(getFoundCommands());
   const unique = uniqueAll.filter((value) =>
-    value.keys().some((x) => found[x]),
+    value.keys?.()?.some((x) => found[x]),
   ).length;
   const alias = Object.keys(found).length;
   const prev = useAppSelector((x) => x.view.previousCommand);
