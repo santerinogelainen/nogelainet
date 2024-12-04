@@ -1,5 +1,6 @@
 import React from "react";
 import ProjectItem from "../projects/ProjectItem";
+import { Pages } from "../../models/pages";
 import { useTranslation } from "react-i18next";
 
 type ProjectsViewProps = {
@@ -12,16 +13,16 @@ type Project = {
 };
 
 const projects: Project[] = [
-  { name: "project.ytj", href: "/projects/ytj" },
-  { name: "project.kiltaunions", href: "/projects/kiltaunions" },
-  { name: "project.ktvuecomponents", href: "/projects/ktvuecomponents" },
-  { name: "project.ktsms", href: "/projects/ktsms" },
-  { name: "project.fundraising", href: "/projects/fundraising" },
-  { name: "project.eventmanager", href: "/projects/eventmanager" },
-  { name: "project.cardregistry", href: "/projects/cardregistry" },
-  { name: "project.mycats", href: "/projects/mycats" },
-  { name: "project.samivaan", href: "/projects/samivaan" },
-  { name: "project.nogelainet", href: "/projects/nogelainet" },
+  { name: "project.ytj", href: Pages.Projects.YTJ },
+  { name: "project.kiltaunions", href: Pages.Projects.KiltaUnions },
+  { name: "project.ktvuecomponents", href: Pages.Projects.KTVueComponents },
+  { name: "project.ktsms", href: Pages.Projects.KTSms },
+  { name: "project.fundraising", href: Pages.Projects.FundRaising },
+  { name: "project.eventmanager", href: Pages.Projects.EventManager },
+  { name: "project.cardregistry", href: Pages.Projects.CardRegistry },
+  { name: "project.mycats", href: Pages.Projects.MyCats },
+  { name: "project.samivaan", href: Pages.Projects.Samivaan },
+  { name: "project.nogelainet", href: Pages.Projects.Nogelainet },
 ];
 
 const ProjectsView: React.FC<ProjectsViewProps> = ({ onComplete }) => {

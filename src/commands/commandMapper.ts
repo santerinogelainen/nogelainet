@@ -11,7 +11,7 @@ export function mapPageToCommand(page: string): CommandName {
     return "contact";
   }
 
-  if (page.startsWith(Pages.Projects)) {
+  if (page.startsWith(Pages.Projects.Index)) {
     return "projects";
   }
 

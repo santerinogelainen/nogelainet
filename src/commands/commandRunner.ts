@@ -38,7 +38,57 @@ export const runCommand = (command: CommandName | null) => {
   }
 
   if (commands.sets.projects.has(command)) {
-    navigate(Pages.Projects);
+    navigate(Pages.Projects.Index);
+    return;
+  }
+
+  if (commands.sets.cardregistry.has(command)) {
+    navigate(Pages.Projects.CardRegistry);
+    return;
+  }
+
+  if (commands.sets.eventmanager.has(command)) {
+    navigate(Pages.Projects.EventManager);
+    return;
+  }
+
+  if (commands.sets.fundraising.has(command)) {
+    navigate(Pages.Projects.FundRaising);
+    return;
+  }
+
+  if (commands.sets.kiltaunions.has(command)) {
+    navigate(Pages.Projects.KiltaUnions);
+    return;
+  }
+
+  if (commands.sets.ktsms.has(command)) {
+    navigate(Pages.Projects.KTSms);
+    return;
+  }
+
+  if (commands.sets.ktvuecomponents.has(command)) {
+    navigate(Pages.Projects.KTVueComponents);
+    return;
+  }
+
+  if (commands.sets.mycats.has(command)) {
+    navigate(Pages.Projects.MyCats);
+    return;
+  }
+
+  if (commands.sets.nogelainet.has(command)) {
+    navigate(Pages.Projects.Nogelainet);
+    return;
+  }
+
+  if (commands.sets.samivaan.has(command)) {
+    navigate(Pages.Projects.Samivaan);
+    return;
+  }
+
+  if (commands.sets.ytj.has(command)) {
+    navigate(Pages.Projects.YTJ);
     return;
   }
 
