@@ -18,7 +18,11 @@ const ConsoleInput: React.FC<ConsoleInputProps> = ({
 }) => {
   const wrapper = React.useRef(null);
   const { t } = useTranslation();
-  const helpTexts = [t("aboutHelpText"), t("contactHelpText")];
+  const helpTexts = [
+    t("projectsHelpText"),
+    t("aboutHelpText"),
+    t("contactHelpText"),
+  ];
   const textContainer = useRef<HTMLDivElement>(null);
   const [state, setState] = React.useState({
     value: "",
