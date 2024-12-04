@@ -18,6 +18,7 @@ $console-controls-height: 12.5rem;
     bottom: variables.$app-padding;
     left: variables.$app-padding;
     width: calc(100% - variables.$app-padding * 2);
+    @include mixins.set-color($background: var(--controls-background-color));
 
     .console-input-wrapper {
       margin: 60px 0 40px 0;

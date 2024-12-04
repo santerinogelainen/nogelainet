@@ -60,13 +60,12 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
       document.documentElement.clientHeight || 0,
       window.innerHeight || 0,
     );
-    if (scrollHeight > offsetHeight) {
-      const scrollDiff = scrollHeight - offsetHeight - scrollTop;
+
+    if (scrollHeight > offsetHeight && !isMobile) {
+      const scrollDiff = scrollHeight - offsetHeight - scrollTop - 10;
       setInset(scrollDiff);
 
-      if (isMobile) {
-        setArrow(null);
-      } else if (scrollDiff === 0) {
+      if (scrollDiff === 0) {
         setArrow("up");
       } else if (scrollTop === 0) {
         setArrow("down");
@@ -77,10 +76,10 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
       setInset(0);
       setArrow(null);
     }
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => window.scrollTo(0, 0), [activePage, activeTheme, location]);
-  useScrollEvent(updateInset, [activePage, activeTheme, location]);
+  useScrollEvent(updateInset, [activePage, activeTheme, location, isMobile]);
 
   return (
     <div className="console-view">
