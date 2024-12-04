@@ -8,28 +8,28 @@
 
   &.btn-primary {
     border: 1px solid transparent;
-    background-color: var(--text-color-muted);
+    @include mixins.set-color($background: var(--text-color-muted));
   }
 
   &.btn-primary:hover {
-    background-color: var(--text-color-muted);
+    @include mixins.set-color($background: var(--text-color-muted));
     border: 1px solid var(--text-color);
   }
 
   &.btn-secondary,
   &.btn-action {
-    background-color: transparent;
+    @include mixins.set-color($background: transparent);
     border: 1px solid transparent;
   }
 
   &.btn-secondary:hover {
-    background-color: transparent;
+    @include mixins.set-color($background: transparent);
     border: 1px solid var(--text-color);
   }
 
   &.btn-action {
+    @include mixins.set-color($text: var(--text-color-muted));
     display: inline-block;
-    color: var(--text-color-muted);
     font-size: 0.8em;
     text-align: center;
     vertical-align: middle;

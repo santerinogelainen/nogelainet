@@ -12,12 +12,6 @@
 
 * {
   box-sizing: border-box;
-
-  // TODO: fix inner transitions
-  transition:
-    color ease-in-out 0.15s,
-    background-color ease-in-out 0.15s,
-    border-color ease-in-out 0.15s;
 }
 
 html,
@@ -33,11 +27,10 @@ body,
 }
 
 body {
+  @include mixins.set-color($text: var(--text-color), $background: var(--background-color));
   position: relative;
   font-family: input-mono, monospace;
   font-weight: 100;
-  background-color: var(--background-color);
-  color: var(--text-color);
   padding: 0;
   margin: 0;
 
@@ -75,7 +68,8 @@ body {
 .block-button,
 .email-at,
 .about-text,
-.about-text p,
-.about-text p b {
-  color: var(--text-color);
+span,
+p,
+p b {
+  @include mixins.set-color($text: var(--text-color))
 }

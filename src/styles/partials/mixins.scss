@@ -20,3 +20,18 @@ $breakpoints: (
     @content
   }
 }
+
+@mixin set-color($text: "", $background: "") {
+  @if $text != "" {
+    color: $text;
+  }
+
+  @if $background != "" {
+    background-color: $background;
+  }
+
+  transition:
+    color ease-in-out 0.15s,
+    background-color ease-in-out 0.15s,
+    border-color ease-in-out 0.15s;
+}

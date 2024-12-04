@@ -11,11 +11,11 @@ h6 {
 }
 
 a {
-  color: var(--text-color-link);
+  @include mixins.set-color($text: var(--text-color-link));
   text-decoration: none;
 
   &:hover {
-    color: var(--text-color-link-hover);
+    @include mixins.set-color($text: var(--text-color-link-hover));
   }
 }
 

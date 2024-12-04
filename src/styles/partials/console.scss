@@ -26,7 +26,7 @@
   .console-menu {
     display: flex;
     font-weight: normal;
-    background-color: transparent;
+    @include mixins.set-color($background: transparent);
 
     .console-menu-help {
       margin: 0 42px 0 5px;
@@ -41,13 +41,13 @@
 
       &.console-menu-item-active {
         .highlighted-word {
-          color: var(--text-color-muted);
+          @include mixins.set-color($text: var(--text-color-muted));
         }
       }
 
       &:hover:not(.console-menu-item-active) {
         .highlighted-word {
-          color: var(--text-color-highlight);
+          @include mixins.set-color($text: var(--text-color-highlight));
         }
       }
     }
@@ -75,7 +75,7 @@
 
       &:hover {
         .highlighted-word {
-          color: var(--text-color-highlight);
+          @include mixins.set-color($text: var(--text-color-highlight));
         }
       }
     }
@@ -92,8 +92,8 @@
 
     .console-menu-handle-line {
       height: 2px;
-      background-color: var(--text-color);
       width: 100%;
+      @include mixins.set-color($background: var(--text-color));
     }
   }
 }
@@ -108,8 +108,8 @@
   .console-input,
   .console-input:focus,
   .console-input:focus-visible {
+    @include mixins.set-color($background: transparent);
     position: absolute;
-    background-color: transparent;
     max-width: 90%;
     min-height: 1.4em;
     outline: none;
@@ -119,7 +119,7 @@
   }
 
   .console-input-text {
-    color: var(--text-color);
+    @include mixins.set-color($text: var(--text-color));
   }
 
   .console-input-text,
@@ -146,7 +146,7 @@
     }
 
     .written-text-visible {
-      color: var(--text-color-muted);
+      @include mixins.set-color($text: var(--text-color-muted));
     }
   }
 
@@ -163,16 +163,16 @@
       }
 
       .console-input-autocomplete {
-        color: var(--text-color-muted);
+        @include mixins.set-color($text: var(--text-color-muted));
       }
     }
   }
 }
 
 .console-input-caret {
+  @include mixins.set-color($background: var(--caret-color));
   height: 1em;
   width: .8ch;
-  background-color: var(--caret-color);
   opacity: 0;
   display: inline-block;
   top: 50%;

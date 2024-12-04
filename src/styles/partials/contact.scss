@@ -21,23 +21,22 @@
     padding: 5px 15px;
 
     &:hover {
-      color: var(--text-color-highlight);
+      @include mixins.set-color($text: var(--text-color-highlight));
     }
 
     &::after {
       content: "";
     }
   }
+}
 
-  .social-tooltip {
-    display: inline-block;
-    position: relative;
-    margin-bottom: 1em;
-    margin-left: -1em;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    z-index: 5;
-  }
+.social-tooltip {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 1em;
+  margin-left: -2em;
+  z-index: 5;
+  @include mixins.set-color($text: var(--text-color), $background: var(--background-color));
 }
 
 @include mixins.media-breakpoint-down(md) {

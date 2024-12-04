@@ -39,6 +39,7 @@
   .project-tag {
     padding: .2em .5em;
     border: 1px solid var(--text-color-muted);
+    @include mixins.set-color($text: var(--text-color));
   }
 }
 
@@ -75,8 +76,8 @@
 
   .project-item {
     .project-item-nr-mobile {
+      @include mixins.set-color($text: var(--text-color-muted));
       display: block;
-      color: var(--text-color-muted);
       font-weight: normal;
       margin-top: -5px;
       margin-left: -15px;
