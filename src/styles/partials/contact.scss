@@ -30,15 +30,6 @@
   }
 }
 
-.social-tooltip {
-  display: inline-block;
-  position: relative;
-  margin-bottom: 1em;
-  margin-left: -2em;
-  z-index: 5;
-  @include mixins.set-color($text: var(--text-color), $background: var(--background-color));
-}
-
 @include mixins.media-breakpoint-down(md) {
   .contacts {
     .large-text {

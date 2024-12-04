@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ConsoleInput from "./ConsoleInput";
 import ConsoleMenu from "./ConsoleMenu";
 import ConsoleMenuMobile from "./ConsoleMenuMobile";
@@ -8,6 +8,7 @@ import store from "../../state/store";
 import { loadLanguage } from "../../i18n";
 import { CommandName } from "../../commands/commands";
 import { useScrollEvent } from "../../utils/scroll";
+import ConsoleScrollArrow from "./ConsoleScrollArrow";
 
 type ConsoleContainerProps = React.PropsWithChildren<{
   visible: boolean;
@@ -25,10 +26,11 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
   onCommand,
   children,
 }) => {
-  const content = React.useRef<HTMLDivElement>(null);
-  const [inputVisible, setInputVisible] = React.useState(visible);
-  const [menuVisible, setMenuVisible] = React.useState(visible);
-  const [inset, setInset] = React.useState(0);
+  const content = useRef<HTMLDivElement>(null);
+  const [arrow, setArrow] = useState<"up" | "down" | "both" | null>(null);
+  const [inputVisible, setInputVisible] = useState(visible);
+  const [menuVisible, setMenuVisible] = useState(visible);
+  const [inset, setInset] = useState(0);
 
   useDidMountEffect(() => {
     loadLanguage();
@@ -36,7 +38,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
     store.dispatch(loadTheme);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setInputVisible(visible);
     setMenuVisible(visible);
   }, [visible]);
@@ -59,8 +61,17 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
     if (scrollHeight > offsetHeight) {
       const scrollDiff = scrollHeight - offsetHeight - scrollTop;
       setInset(scrollDiff);
+
+      if (scrollDiff === 0) {
+        setArrow("up");
+      } else if (scrollTop === 0) {
+        setArrow("down");
+      } else {
+        setArrow("both");
+      }
     } else {
       setInset(0);
+      setArrow(null);
     }
   }, []);
 
@@ -77,6 +88,8 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
         {children}
       </div>
       <div className="console-view-controls">
+        {!!arrow && arrow !== "down" && <ConsoleScrollArrow direction="up" />}
+        {!!arrow && arrow !== "up" && <ConsoleScrollArrow direction="down" />}
         <ConsoleInput visible={inputVisible} onCommand={onCommand} />
         <ConsoleMenu
           activeItem={activePage}

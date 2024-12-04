@@ -1,9 +1,11 @@
 @use "mixins";
 @use "variables";
 
+$console-controls-height: 12.5rem;
+
 .console-view {
   position: relative;
-  padding-bottom: calc(12.5em + variables.$app-padding);
+  padding-bottom: calc($console-controls-height + variables.$app-padding);
 
   .console-view-content {
     transition: filter 0.3s ease-in-out;
@@ -180,6 +182,35 @@
 
   &.console-input-caret-visible {
     opacity: 1;
+  }
+}
+
+.console-scroll-arrow {
+  all: unset;
+  cursor: pointer;
+  position: fixed;
+  right: variables.$app-padding;
+  font-size: 2em;
+  padding: .25em .5em;
+  line-height: 1;
+  transition:
+    transform ease-in-out 0.15s,
+    color ease-in-out 0.15s,
+    background-color ease-in-out 0.15s,
+    border-color ease-in-out 0.15s;
+
+  &:active {
+    transform: scale(.8);
+  }
+
+  &-down {
+    rotate: 270deg;
+    bottom: variables.$app-padding;
+  }
+
+  &-up {
+    rotate: 90deg;
+    top: variables.$app-padding;
   }
 }
 
