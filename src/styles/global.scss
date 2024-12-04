@@ -24,6 +24,7 @@ body,
   flex: 1 0 100%;
   min-height: 100%;
   line-height: 1.4;
+  scroll-behavior: smooth !important;
 }
 
 body {
@@ -46,6 +47,7 @@ body {
 .app {
   flex-direction: column;
   justify-content: flex-end;
+  scroll-behavior: smooth !important;
 }
 
 .container {
