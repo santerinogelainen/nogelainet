@@ -5,6 +5,7 @@ import { HeadLayout } from "../../layout";
 import ProjectView from "../../components/views/ProjectView";
 import Language from "../../components/Language";
 import { useAppDispatch } from "../../state/store";
+import { useFoundCommandStats } from "../../commands/commandRunner";
 
 export const Head = () => {
   const { t } = useTranslation();
@@ -14,6 +15,7 @@ export const Head = () => {
 
 const Page = () => {
   const dispatch = useAppDispatch();
+  const { unique, alias } = useFoundCommandStats();
 
   return (
     <ProjectView
@@ -29,7 +31,8 @@ const Page = () => {
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
-        <p>This website! Try some easter egg commands:</p>
+        <p>This website!</p>
+        <p>Try some easter egg commands:</p>
         <ul>
           <li>powershell</li>
           <li>hacker</li>
@@ -41,9 +44,19 @@ const Page = () => {
             is pink!)
           </li>
         </ul>
+        <p>Your stats:</p>
+        <ul>
+          <li>
+            You have found {unique.found}/{unique.total} unique commands!
+          </li>
+          <li>
+            You have found {alias.found}/{alias.total} alias commands!
+          </li>
+        </ul>
       </Language>
       <Language lang="fi">
-        <p>Tämä sivu! Kokeile easter egg komentoja:</p>
+        <p>Tämä sivu!</p>
+        <p>Kokeile easter egg komentoja:</p>
         <ul>
           <li>powershell</li>
           <li>häkkeri</li>
@@ -53,6 +66,15 @@ const Page = () => {
           <li>
             red/green/blue tai muu ennalta määritetty css värinimi (mun suosikki
             on pink!)
+          </li>
+        </ul>
+        <p>Tilastot:</p>
+        <ul>
+          <li>
+            Olet löytänyt {unique.found}/{unique.total} uniikkia komentoa!
+          </li>
+          <li>
+            Olet löytänyt {alias.found}/{alias.total} alias komentoa!
           </li>
         </ul>
       </Language>

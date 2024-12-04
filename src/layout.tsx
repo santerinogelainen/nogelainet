@@ -5,7 +5,7 @@ import ConsoleContainer from "./components/console/ConsoleContainer";
 import ThemeProvider from "./components/ThemeProvider";
 import { useLocation } from "@reach/router";
 import { mapPageToCommand, mapThemeToCommand } from "./commands/commandMapper";
-import { runCommand } from "./commands/commandRunner";
+import { useCommandRunner } from "./commands/commandRunner";
 import "./i18n";
 import "./styles/global.scss";
 import "./styles/theme-dark.scss";
@@ -59,6 +59,7 @@ const PageElementWithHooks = (props) => {
   const theme = useAppSelector((x) => x.theme);
   const view = useAppSelector((x) => x.view);
   const location = useLocation();
+  const runCommand = useCommandRunner();
 
   return (
     <ThemeProvider theme={theme}>
