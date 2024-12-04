@@ -12,9 +12,14 @@ type Project = {
 };
 
 const projects: Project[] = [
+  { name: "project.ytj", href: "/projects/ytj" },
+  { name: "project.kiltaunions", href: "/projects/kiltaunions" },
+  { name: "project.ktvuecomponents", href: "/projects/ktvuecomponents" },
+  { name: "project.ktsms", href: "/projects/ktsms" },
+  { name: "project.samivaan", href: "/projects/samivaan" },
+  { name: "project.nogelainet", href: "/projects/nogelainet" },
   { name: "project.fundraising", href: "/projects/fundraising" },
   { name: "project.eventmanager", href: "/projects/eventmanager" },
-  { name: "project.cardregistry", href: "/projects/cardregistry" },
   { name: "project.mycats", href: "/projects/mycats" },
 ];
 
