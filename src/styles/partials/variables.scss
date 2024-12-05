@@ -11,3 +11,6 @@
 
 $app-padding: 50px;
 $app-padding-mobile: 25px;
+
+$console-controls-height: calc(12.5rem + $app-padding);
+$console-controls-height-tablet: calc(12.5rem + $app-padding-mobile);

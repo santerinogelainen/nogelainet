@@ -1,12 +1,9 @@
 @use "mixins";
 @use "variables";
 
-$console-controls-height: calc(12.5rem + variables.$app-padding);
-$console-controls-mobile-height: calc(12.5rem + variables.$app-padding-mobile);
-
 .console-view {
   position: relative;
-  padding-bottom: $console-controls-height;
+  padding-bottom: variables.$console-controls-height;
 
   .console-view-content {
     transition: filter 0.3s ease-in-out;
@@ -28,7 +25,7 @@ $console-controls-mobile-height: calc(12.5rem + variables.$app-padding-mobile);
 
 .console-menu-background {
   position: fixed;
-  height: $console-controls-height;
+  height: variables.$console-controls-height;
   width: 100%;
   left: 0;
   bottom: 0;
@@ -252,11 +249,11 @@ $console-controls-mobile-height: calc(12.5rem + variables.$app-padding-mobile);
   }
 
   .console-view {
-    padding-bottom: $console-controls-mobile-height;
+    padding-bottom: variables.$console-controls-height-tablet;
   }
 
   .console-menu-background {
-    height: $console-controls-mobile-height;
+    height: variables.$console-controls-height-tablet;
   }
 }
 

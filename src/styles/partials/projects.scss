@@ -1,10 +1,23 @@
 @use "mixins";
+@use "variables";
+
+// Desktop:
+$show-project-list-items: 5;
+$project-list-item-height: calc(3rem * 1.4 + 10px);
+$project-list-items-height: calc($project-list-item-height * $show-project-list-items);
+$project-list-padding: calc(100vh - variables.$console-controls-height - $project-list-items-height - variables.$app-padding);
+
+// Tablet:
+$show-project-list-items-tablet: 5;
+$project-list-item-height-tablet: calc(2.5rem * 1.4 + 10px);
+$project-list-items-height-tablet: calc($project-list-item-height-tablet * $show-project-list-items-tablet);
+$project-list-padding-tablet: calc(100vh - variables.$console-controls-height-tablet - $project-list-items-height-tablet - variables.$app-padding);
 
 .projects {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 25vh;
+  padding-top: $project-list-padding;
 }
 
 .project-image {
@@ -59,6 +72,10 @@
 }
 
 @include mixins.media-breakpoint-down(xl) {
+  .projects {
+    padding-top: $project-list-padding-tablet;
+  }
+
   .project-content {
     p {
       max-width: 70%;
@@ -75,6 +92,11 @@
 }
 
 @include mixins.media-breakpoint-down(md) {
+  .projects {
+    padding-top: 25vh;
+    padding-bottom: variables.$app-padding
+  }
+
   .project-item-nr {
     display: none;
   }
