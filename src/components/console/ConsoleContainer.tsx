@@ -70,7 +70,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
     ];
 
     if (scrollHeight > offsetHeight && !isMobile) {
-      const scrollDiff = scrollHeight - offsetHeight - scrollTop - 10;
+      const scrollDiff = scrollHeight - offsetHeight - scrollTop;
 
       // No need for inset if the theme is full color. Makes the pages less jittery.
       if (fullColorThemes.some((x) => x.has(activeTheme))) {
