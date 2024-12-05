@@ -21,25 +21,22 @@ const AboutView: React.FC<AboutViewProps> = ({ onComplete }) => {
   const english = (
     <>
       <p>
-        I started my coding journey at age 16 when I learned HTML so I could
-        create a theme for my back then blog. I fell in love with the creativity
-        and problem solving aspects and it lead to me studying software
-        development. In 2018 I graduated from my studies and landed my first job
-        in the field.
+        With over <b>6 years of professional experience</b>, I bring a strong
+        foundation of expertise for software development. I have worked on a
+        diverse range of systems, including full-stack applications, APIs, and
+        system integrations. My work has involved handling large datasets,
+        migrating data from legacy systems to modern platforms, and transforming
+        custom-built solutions into scalable, productized software offerings.
       </p>
       <p>
-        Since then, I've worked on many different types of systems; from full
-        stack applications, to API:s and integrations. I have tackled large data
-        sets and done data transfers from legacy systems to new software. I've
-        also worked on productization of many previously custom software.
-      </p>
-      <p>
-        Tech-wise I am most familiar with <b>C#</b>, <b>JS/React/Vue</b> and{" "}
-        <b>relational databases</b>. I have a{" "}
-        <b>Microsoft certification on Azure</b>. I've also worked with Python
-        and NoSQL databases through personal projects and education. But I
-        always want to learn more. That is why I do a lot of coding during my
-        free time.
+        In terms of technology, I am most proficient in <b>C#</b>,{" "}
+        <b>JavaScript</b> and
+        <b>TypeScript</b>. In recent years, I have focused on front-end
+        development, working with modern libraries such as <b>Vue</b> and{" "}
+        <b>React</b> to create intuitive and responsive user interfaces. This
+        area of development allows me to channel both my technical expertise and
+        my creative mindset. I have a strong interest in accessibility and
+        strive to create inclusive, user-friendly software.
       </p>
     </>
   );
