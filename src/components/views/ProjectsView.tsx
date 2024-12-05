@@ -17,11 +17,11 @@ const projects: Project[] = [
   { name: "project.kiltaunions", href: Pages.Projects.KiltaUnions },
   { name: "project.ktvuecomponents", href: Pages.Projects.KTVueComponents },
   { name: "project.ktsms", href: Pages.Projects.KTSms },
+  { name: "project.samivaan", href: Pages.Projects.Samivaan },
   { name: "project.fundraising", href: Pages.Projects.FundRaising },
   { name: "project.eventmanager", href: Pages.Projects.EventManager },
   { name: "project.cardregistry", href: Pages.Projects.CardRegistry },
   { name: "project.mycats", href: Pages.Projects.MyCats },
-  { name: "project.samivaan", href: Pages.Projects.Samivaan },
   { name: "project.nogelainet", href: Pages.Projects.Nogelainet },
 ];
 
