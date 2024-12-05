@@ -44,29 +44,23 @@ const AboutView: React.FC<AboutViewProps> = ({ onComplete }) => {
   const finnish = (
     <>
       <p>
-        Aloitin urani ohjelmoinnin parissa 16 vuotiaana opettelemalla HTML:n
-        blogini teemaa varten. Pidin ohjelmoinnin luovuudesta ja
-        ongelmanratkaisun puolista, joten päätin mennä opiskelemaan
-        ohjelmistokehittäjäksi. Valmistuin tieto- ja viestintätekniikan
-        perustutkinnon opinnoistani vuonna 2018 ja sain ensimmäisen työni
-        alalla.
+        Yli <b>6 vuoden ammattikokemuksella</b> tuon vahvan osaamisen pohjan
+        ohjelmistokehitykseen. Olen työskennellyt monenlaisten järjestelmien
+        parissa, mukaan lukien full-stack-sovellukset, rajapinnat (API:t) ja
+        järjestelmäintegraatiot. Työhöni on kuulunut suurten tietomäärien
+        käsittely, tietojen siirtäminen vanhoista järjestelmistä moderneille
+        alustoille sekä räätälöityjen ratkaisujen muuntaminen skaalautuviksi,
+        tuotteistetuiksi ohjelmistoratkaisuiksi.
       </p>
-
       <p>
-        Siitä lähtien olen ollut tekemisissä erilaisten järjestelmien kanssa;
-        full stack sovelluksista, rajapintoihin sekä integraatioihin. Data
-        puolelta olen työskennellyt suurien aineistojen kanssa, ja tehnyt usean
-        tiedonsiirron vanhoista sovelluksista uusiin. Tuotekehitys on myös
-        tuttua ja olen ollut mukana tuotteistamassa useita sovelluksia.
-      </p>
-
-      <p>
-        Teknologioista tutuimmat ovat <b>C#</b>, <b>JS/TS/React/Vue</b> ja{" "}
-        <b>relaatio tietokannat</b>. Sen lisäksi minulla on{" "}
-        <b>Microsoftin sertifikaatti Azuresta</b>. Olen myös työskennellyt
-        Pythonin ja NoSQL tietokantojen kanssa vapaa-ajan projektien ja
-        koulutuksen kautta. Haluan aina oppia uutta, ja sen takia ohjelmoin myös
-        paljon vapaa-ajalla.
+        Teknologian osalta olen taitavin <b>C#</b>:ssä, <b>JavaScript</b>:issä
+        ja <b>TypeScript</b>:issä. Viime vuosina olen keskittynyt
+        front-end-kehitykseen ja työskennellyt nykyaikaisten kirjastojen, kuten{" "}
+        <b>Vue</b> ja <b>React</b>, parissa luodakseni intuitiivisia ja
+        responsiivisia käyttöliittymiä. Tämä kehityksen osa-alue mahdollistaa
+        sekä teknisen osaamiseni että luovan ajatteluni hyödyntämisen. Olen
+        erityisen kiinnostunut saavutettavuudesta ja pyrin luomaan
+        käyttäjäystävällisiä ohjelmistoja.
       </p>
     </>
   );
