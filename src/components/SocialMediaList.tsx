@@ -23,7 +23,7 @@ const SocialMediaList: React.FC<SocialMediaListProps> = ({ socials }) => {
 const SocialMediaItem: React.FC<SocialMediaItemProps> = ({ social }) => {
   return (
     <div className="social-item-container">
-      <Tooltip text={social.username}>
+      <Tooltip text={social.username} className="target-blank">
         <a
           className="social-item"
           target="_blank"
