@@ -83,14 +83,14 @@ const ProjectView: React.FC<ProjectViewProps> = ({
           after={onContentFinished}
         >
           {children}
+          {!!images && images.length && (
+            <ProjectImages
+              visible={animationStep >= ProjectViewAnimationStep.TagsAndContent}
+              images={images}
+            />
+          )}
         </FadeAnimation>
       </div>
-      {!!images && images.length && (
-        <ProjectImages
-          visible={animationStep >= ProjectViewAnimationStep.TagsAndContent}
-          images={images}
-        />
-      )}
     </div>
   );
 };

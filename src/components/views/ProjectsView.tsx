@@ -29,7 +29,8 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({ onComplete }) => {
   const { t } = useTranslation();
 
   const items = projects.map((project, index) => {
-    const isLast = index === projects.length - 1;
+    const isLast =
+      projects.length >= 5 ? index === 3 : index === projects.length - 1;
     return (
       <ProjectItem
         index={index}
