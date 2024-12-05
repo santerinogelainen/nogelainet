@@ -10,7 +10,7 @@ const ProjectImages = ({ images, visible }: ProjectImagesProps) => {
   return (
     <div className="project-images">
       {images.map((img) => (
-        <ProjectImage enabled={visible} src={img} />
+        <ProjectImage enabled={visible} src={img} key={img} />
       ))}
     </div>
   );
