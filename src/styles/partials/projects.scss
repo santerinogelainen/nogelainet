@@ -39,7 +39,7 @@ $project-list-padding-tablet: calc(100vh - variables.$console-controls-height-ta
   }
 
   img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: auto;
     float: left;
@@ -79,7 +79,7 @@ $project-list-padding-tablet: calc(100vh - variables.$console-controls-height-ta
 
 .project-images,
 .project-content p {
-  max-width: 60%;
+  max-width: 55%;
 }
 
 @include mixins.media-breakpoint-down(xl) {
