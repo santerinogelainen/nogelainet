@@ -5,6 +5,7 @@ import { HeadLayout } from "../../layout";
 import ProjectView from "../../components/views/ProjectView";
 import Language from "../../components/Language";
 import { useAppDispatch } from "../../state/store";
+import ProjectImages from "../../components/projects/ProjectImages";
 
 export const Head = () => {
   const { t } = useTranslation();
@@ -25,6 +26,10 @@ const Page = () => {
         "JavaScript",
         "TypeScript",
         "Azure Static Web Apps",
+      ]}
+      images={[
+        "/images/samivaan_frontpage.png",
+        "/images/samivaan_butchers.png",
       ]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >

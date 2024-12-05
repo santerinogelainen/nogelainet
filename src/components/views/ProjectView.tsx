@@ -5,12 +5,14 @@ import WrittenTextAnimation, {
 import FadeAnimation from "../animations/FadeAnimation";
 import { useTranslation } from "react-i18next";
 import ProjectTag from "../projects/ProjectTag";
+import ProjectImages from "../projects/ProjectImages";
 
 type ProjectViewProps = React.PropsWithChildren<{
   onComplete?: () => void;
   name?: string;
   employer?: string;
   tags?: string[];
+  images?: string[];
 }>;
 
 enum ProjectViewAnimationStep {
@@ -23,6 +25,7 @@ const ProjectView: React.FC<ProjectViewProps> = ({
   name,
   employer,
   tags,
+  images,
   onComplete,
   children,
 }) => {
@@ -69,7 +72,6 @@ const ProjectView: React.FC<ProjectViewProps> = ({
             <ProjectTag
               key={x}
               text={x}
-              index={i}
               start={animationStep >= ProjectViewAnimationStep.TagsAndContent}
             />
           );
@@ -83,6 +85,12 @@ const ProjectView: React.FC<ProjectViewProps> = ({
           {children}
         </FadeAnimation>
       </div>
+      {!!images && images.length && (
+        <ProjectImages
+          visible={animationStep >= ProjectViewAnimationStep.TagsAndContent}
+          images={images}
+        />
+      )}
     </div>
   );
 };

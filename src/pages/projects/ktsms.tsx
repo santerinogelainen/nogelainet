@@ -20,6 +20,7 @@ const Page = () => {
       name="project.ktsms"
       employer="Kehätieto"
       tags={[".NET", "C#", "Azure Static Web Apps", "Docfx"]}
+      images={["/images/kt-sms_intro.png"]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">

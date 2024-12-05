@@ -20,6 +20,10 @@ const Page = () => {
       name="project.ytj"
       employer="Knowit"
       tags={["React", "JavaScript", "TypeScript", ".NET", "C#", "SQL Server"]}
+      images={[
+        "/images/ytj_perustamisilmoitus.png",
+        "/images/ytj_perustamisilmoitus_2.png",
+      ]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">

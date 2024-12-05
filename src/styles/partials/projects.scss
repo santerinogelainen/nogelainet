@@ -20,10 +20,18 @@ $project-list-padding-tablet: calc(100vh - variables.$console-controls-height-ta
   padding-top: $project-list-padding;
 }
 
-.project-image {
-  width: 100%;
-  height: 80vh;
+.project-images {
   display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.project-image {
+  flex: 0 1 100%;
+  height: 60vh;
+  display: flex;
+  border: 1px solid var(--text-color-muted);
 
   * {
     flex-grow: 1;
@@ -36,6 +44,7 @@ $project-list-padding-tablet: calc(100vh - variables.$console-controls-height-ta
     height: auto;
     float: left;
     flex-grow: 1;
+    @include mixins.set-color($background: var(--text-color))
   }
 }
 
@@ -59,16 +68,18 @@ $project-list-padding-tablet: calc(100vh - variables.$console-controls-height-ta
 
 .project-title {
   margin-bottom: 1rem;
+  margin-top: 3em;
 }
 
 .project-content {
   .fade-animation-container {
     width: 100%;
   }
+}
 
-  p {
-    max-width: 55%;
-  }
+.project-images,
+.project-content p {
+  max-width: 60%;
 }
 
 @include mixins.media-breakpoint-down(xl) {
@@ -76,18 +87,16 @@ $project-list-padding-tablet: calc(100vh - variables.$console-controls-height-ta
     padding-top: $project-list-padding-tablet;
   }
 
-  .project-content {
-    p {
-      max-width: 70%;
-    }
+  .project-images,
+  .project-content p {
+    max-width: 70%;
   }
 }
 
 @include mixins.media-breakpoint-down(lg) {
-  .project-content {
-    p {
-      max-width: 80%;
-    }
+  .project-images,
+  .project-content p {
+    max-width: 80%;
   }
 }
 
@@ -112,9 +121,8 @@ $project-list-padding-tablet: calc(100vh - variables.$console-controls-height-ta
     }
   }
 
-  .project-content {
-    p {
-      max-width: none;
-    }
+  .project-images,
+  .project-content p {
+    max-width: none;
   }
 }

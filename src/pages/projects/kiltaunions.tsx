@@ -30,6 +30,10 @@ const Page = () => {
         "SQL Server",
         "Azure Devops",
       ]}
+      images={[
+        "/images/aml_advanced_selection.png",
+        "/images/aml_employers.png",
+      ]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">

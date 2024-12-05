@@ -27,6 +27,11 @@ const Page = () => {
         "Storybook",
         "Azure Static Web Apps",
       ]}
+      images={[
+        "/images/kt-vuecomponents_success_alert.png",
+        "/images/kt-vuecomponents_link.png",
+        "/images/kt-vuecomponents_prepend_icon.png",
+      ]}
       onComplete={() => dispatch(viewActions.setControlsVisible(true))}
     >
       <Language lang="en">
