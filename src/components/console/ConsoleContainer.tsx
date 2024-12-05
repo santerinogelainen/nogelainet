@@ -66,7 +66,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
       const scrollDiff = scrollHeight - offsetHeight - scrollTop - 10;
       setInset(scrollDiff);
 
-      if (scrollDiff === 0) {
+      if (scrollDiff <= 0) {
         setArrow("up");
       } else if (scrollTop === 0) {
         setArrow("down");
