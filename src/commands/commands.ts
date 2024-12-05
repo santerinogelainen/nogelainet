@@ -21,6 +21,7 @@ class Commands<T extends Record<string, Array<string>>> {
 }
 
 export const commands = new Commands({
+  reset: ["reset", "clear", "resetoi"] as const,
   home: ["home", "frontpage", "top", "index", "koti", "etusivu"] as const,
   about: ["about", "minusta", "minä", "who", "whoami", "santeri"] as const,
   projects: ["project", "projects", "projekti", "projektit"] as const,

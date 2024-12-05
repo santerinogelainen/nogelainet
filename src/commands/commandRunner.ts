@@ -222,6 +222,14 @@ export const useCommandRunner = () => {
       return;
     }
 
+    // ----- RESET ------
+    if (commands.sets.reset.has(command)) {
+      changePage(Pages.Home);
+      changeTheme(Themes.Dark);
+      changeLanguage(Languages.En);
+      return;
+    }
+
     console.error(command);
     throw new Error("No command processor for command " + command);
   }, []);
