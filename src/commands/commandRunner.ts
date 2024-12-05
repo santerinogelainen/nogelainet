@@ -52,7 +52,7 @@ export const useFoundCommandStats = (): FoundCommandStats => {
   const uniqueTotal = uniqueAll.length;
   const aliasTotal = commands.all.size;
   const unique = uniqueAll.filter((value) =>
-    value.keys?.()?.some((x) => found[x]),
+    [...value.keys?.()].some((x) => found[x]),
   ).length;
   const alias = Object.keys(found).length;
   const prev = useAppSelector((x) => x.view.previousCommand);
