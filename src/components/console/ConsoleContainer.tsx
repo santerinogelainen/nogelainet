@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ConsoleInput from "./ConsoleInput";
 import ConsoleMenu from "./ConsoleMenu";
 import ConsoleMenuMobile from "./ConsoleMenuMobile";
+import ConsoleMenuBackground from "./ConsoleMenuBackground";
 import { useDidMountEffect } from "../../utils/reactUtils";
 import { loadTheme } from "../../state/slices/themeSlice";
 import store from "../../state/store";
@@ -90,6 +91,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
       >
         {children}
       </div>
+      {!!arrow && <ConsoleMenuBackground />}
       <div className="console-view-controls">
         {!!arrow && arrow !== "down" && <ConsoleScrollArrow direction="up" />}
         {!!arrow && arrow !== "up" && <ConsoleScrollArrow direction="down" />}

@@ -1,11 +1,12 @@
 @use "mixins";
 @use "variables";
 
-$console-controls-height: 12.5rem;
+$console-controls-height: calc(12.5rem + variables.$app-padding);
+$console-controls-mobile-height: calc(12.5rem + variables.$app-padding-mobile);
 
 .console-view {
   position: relative;
-  padding-bottom: calc($console-controls-height + variables.$app-padding);
+  padding-bottom: $console-controls-height;
 
   .console-view-content {
     transition: filter 0.3s ease-in-out;
@@ -18,12 +19,20 @@ $console-controls-height: 12.5rem;
     bottom: variables.$app-padding;
     left: variables.$app-padding;
     width: calc(100% - variables.$app-padding * 2);
-    @include mixins.set-color($background: var(--controls-background-color));
 
     .console-input-wrapper {
       margin: 60px 0 40px 0;
     }
   }
+}
+
+.console-menu-background {
+  position: fixed;
+  height: $console-controls-height;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  @include mixins.set-color($background: var(--controls-background-color));
 }
 
 .console-menu-wrapper {
@@ -242,11 +251,15 @@ $console-controls-height: 12.5rem;
     }
   }
 
-
   .console-view {
-    padding-bottom: calc($console-controls-height + variables.$app-padding-mobile);
+    padding-bottom: $console-controls-mobile-height;
+  }
+
+  .console-menu-background {
+    height: $console-controls-mobile-height;
   }
 }
+
 // X-Large devices (large desktops, 1200px and up)
 @media (max-width: 1000px) {
   .console-menu {
@@ -291,5 +304,9 @@ $console-controls-height: 12.5rem;
       bottom: 0;
       width: 100%;
     }
+  }
+
+  .console-menu-background {
+    display: none;
   }
 }

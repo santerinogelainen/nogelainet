@@ -1,5 +1,6 @@
 import React from "react";
 import { useDidUpdateEffect } from "../../utils/reactUtils";
+import Text from "../Text";
 
 export const WrittenTextAnimationState = {
   Enabled: "enabled",
@@ -15,12 +16,17 @@ export type WrittenTextAnimationProps = {
   onEnd?: () => void;
 };
 
-const createState = (visible, hidden) => ({
+type WrittenTextState = {
+  visible: string;
+  hidden: string;
+};
+
+const createState = (visible: string, hidden: string): WrittenTextState => ({
   visible,
   hidden,
 });
 
-const getInitialState = (state, text) => {
+const getInitialState = (state, text: string): WrittenTextState => {
   const states = {
     [WrittenTextAnimationState.Enabled]: createState("", text),
     [WrittenTextAnimationState.DisabledHidden]: createState("", text),
@@ -100,8 +106,8 @@ const WrittenTextAnimation: React.FC<WrittenTextAnimationProps> = ({
 
   return (
     <span className="written-text-container">
-      <span className="written-text-visible">{visible}</span>
-      <span className="written-text-hidden noselect">{hidden}</span>
+      <Text className="written-text-visible" text={visible} />
+      <Text className="written-text-hidden" text={hidden} noselect />
     </span>
   );
 };
