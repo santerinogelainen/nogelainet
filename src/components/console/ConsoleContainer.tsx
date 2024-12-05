@@ -7,7 +7,7 @@ import { useDidMountEffect } from "../../utils/reactUtils";
 import { loadTheme } from "../../state/slices/themeSlice";
 import store from "../../state/store";
 import { loadLanguage } from "../../i18n";
-import { CommandName } from "../../commands/commands";
+import { CommandName, commands } from "../../commands/commands";
 import { useScrollEvent } from "../../utils/scroll";
 import ConsoleScrollArrow from "./ConsoleScrollArrow";
 import { useIsMobile } from "../../utils/window";
@@ -50,7 +50,7 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
     "projects",
     "about",
     "contact",
-    activeTheme === "dark" ? "light" : "dark",
+    commands.sets.dark.has(activeTheme) ? "light" : "dark",
     "home",
   ];
 
@@ -62,9 +62,22 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
       window.innerHeight || 0,
     );
 
+    const fullColorThemes = [
+      commands.sets.dark,
+      commands.sets.light,
+      commands.sets.cssColors,
+      commands.sets.powershell,
+    ];
+
     if (scrollHeight > offsetHeight && !isMobile) {
       const scrollDiff = scrollHeight - offsetHeight - scrollTop - 10;
-      setInset(scrollDiff);
+
+      // No need for inset if the theme is full color. Makes the pages less jittery.
+      if (fullColorThemes.some((x) => x.has(activeTheme))) {
+        setInset(0);
+      } else {
+        setInset(scrollDiff);
+      }
 
       if (scrollDiff <= 0) {
         setArrow("up");
@@ -77,9 +90,12 @@ export const ConsoleContainer: React.FC<ConsoleContainerProps> = ({
       setInset(0);
       setArrow(null);
     }
-  }, [isMobile]);
+  }, [isMobile, activeTheme]);
 
-  useEffect(() => window.scrollTo(0, 0), [activePage, activeTheme, location]);
+  useEffect(
+    () => window.scrollTo({ top: 0, left: 0, behavior: "instant" }),
+    [activePage, activeTheme, location],
+  );
   useScrollEvent(updateInset, [activePage, activeTheme, location, isMobile]);
 
   return (
