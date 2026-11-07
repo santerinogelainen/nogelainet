@@ -1,5 +1,5 @@
 import AsciiImage, { AsciiImageRamp } from "./AsciiImage";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof AsciiImage> = {
   title: "Effects/AsciiImage",

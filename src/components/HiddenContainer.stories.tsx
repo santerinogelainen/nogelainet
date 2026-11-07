@@ -1,7 +1,7 @@
 import React from "react";
 import HiddenContainer from "./HiddenContainer";
 import { SBContentPlaceholder } from "../utils/storybookUtils";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 import { Anchor } from "../models/anchor";
 
 const Template = (args) => {

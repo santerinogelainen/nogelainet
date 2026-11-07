@@ -1,5 +1,5 @@
 import ConsoleInputCaret from "./ConsoleInputCaret";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ConsoleInputCaret> = {
   title: "Console/ConsoleInputCaret",

@@ -1,5 +1,5 @@
 import HackerBackground from "./HackerBackground";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof HackerBackground> = {
   title: "Backgrounds/HackerBackground",

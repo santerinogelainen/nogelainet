@@ -1,6 +1,6 @@
 import { AsciiImageRamp } from "./AsciiImage";
 import ColoredAsciiImage from "./ColoredAsciiImage";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ColoredAsciiImage> = {
   title: "Effects/ColoredAsciiImage",

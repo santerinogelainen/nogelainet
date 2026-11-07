@@ -1,5 +1,5 @@
 import HiddenImage from "./HiddenImage";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof HiddenImage> = {
   title: "Components/HiddenImage",

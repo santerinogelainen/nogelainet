@@ -1,5 +1,5 @@
 import ContactView from "./ContactView";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ContactView> = {
   title: "Views/Contact",

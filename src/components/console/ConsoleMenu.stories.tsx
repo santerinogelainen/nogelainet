@@ -1,5 +1,5 @@
 import ConsoleMenu from "./ConsoleMenu";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ConsoleMenu> = {
   title: "Console/ConsoleMenu",

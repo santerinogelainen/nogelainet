@@ -1,7 +1,7 @@
 import React from "react";
 import FadeAnimation from "./FadeAnimation";
 import { SBContentPlaceholder } from "../../utils/storybookUtils";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const Template = (args) => {
   return (

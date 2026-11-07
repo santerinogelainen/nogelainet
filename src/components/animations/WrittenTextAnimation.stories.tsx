@@ -2,7 +2,7 @@ import { SBEnumControl, SBRangeControl } from "../../utils/storybookUtils";
 import WrittenTextAnimation, {
   WrittenTextAnimationState,
 } from "./WrittenTextAnimation";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof WrittenTextAnimation> = {
   title: "Animations/WrittenTextAnimation",

@@ -2,7 +2,7 @@ import React from "react";
 import LineAnimation from "./LineAnimation";
 import { Anchor, AnchorSBArgs } from "../../models/anchor";
 import { SBContentPlaceholder } from "../../utils/storybookUtils";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const Template = (args) => {
   return (

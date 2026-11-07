@@ -1,5 +1,5 @@
 import SocialMediaList from "./SocialMediaList";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof SocialMediaList> = {
   title: "Components/SocialMediaList",

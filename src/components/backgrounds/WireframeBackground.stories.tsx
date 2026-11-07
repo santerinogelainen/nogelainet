@@ -1,5 +1,5 @@
 import WireframeBackground from "./WireframeBackground";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof WireframeBackground> = {
   title: "Backgrounds/WireframeBackground",

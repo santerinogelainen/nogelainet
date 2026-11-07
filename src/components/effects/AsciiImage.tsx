@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import IJS from "image-js";
+import { Image, fetchURL } from "image-js";
 
 // https://marmelab.com/blog/2018/02/20/convert-image-to-ascii-art-masterpiece.html
 
@@ -27,7 +27,7 @@ const AsciiImage: React.FC<AsciiImageProps> = ({
   after = null,
   ramp = AsciiImageRamp.Default,
 }) => {
-  const [image, setImage] = useState<IJS | null>(null);
+  const [image, setImage] = useState<Image | null>(null);
   const [ascii, setAscii] = useState("");
   const [maxIndex, setMaxIndex] = useState(0);
   const [index, setIndex] = useState(0);
@@ -38,7 +38,7 @@ const AsciiImage: React.FC<AsciiImageProps> = ({
       return;
     }
 
-    let image = await IJS.load(src);
+    let image = await fetchURL(src);
 
     if (maxSize > 0) {
       image = image.resize({
@@ -71,7 +71,7 @@ const AsciiImage: React.FC<AsciiImageProps> = ({
 
     for (var y = 0; y < image.height; y++) {
       for (var x = 0; x < image.width; x++) {
-        const pixel = image.getPixelXY(x, y);
+        const pixel = image.getPixel(x, y);
         const grayscale = toGrayScale(pixel[0], pixel[1], pixel[2]);
         result.push(getCharacter(grayscale));
       }

@@ -1,5 +1,5 @@
 import IndexView from "./IndexView";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof IndexView> = {
   title: "Views/Index",

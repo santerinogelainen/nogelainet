@@ -1,5 +1,5 @@
 import BlockButton from "./BlockButton";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof BlockButton> = {
   title: "Components/BlockButton",

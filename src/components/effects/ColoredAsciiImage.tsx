@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import IJS from "image-js";
+import { fetchURL } from "image-js";
 import { AsciiImageRamp } from "./AsciiImage";
 
 // https://marmelab.com/blog/2018/02/20/convert-image-to-ascii-art-masterpiece.html
@@ -37,7 +37,7 @@ const ColoredAsciiImage: React.FC<ColoredAsciiImageProps> = ({
       return ramp[Math.ceil(((ramp.length - 1) * grayscale) / 255)];
     };
 
-    let image = await IJS.load(href);
+    let image = await fetchURL(href);
 
     if (maxSize > 0) {
       image = image.resize({
@@ -64,7 +64,7 @@ const ColoredAsciiImage: React.FC<ColoredAsciiImageProps> = ({
 
     for (var y = 0; y < image.height; y++) {
       for (var x = 0; x < image.width; x++) {
-        const pixel = image.getPixelXY(x, y);
+        const pixel = image.getPixel(x, y);
         const grayscale = toGrayScale(pixel[0], pixel[1], pixel[2]);
         const char = getCharacter(grayscale);
 

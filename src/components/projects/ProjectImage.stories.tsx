@@ -1,5 +1,5 @@
 import ProjectImage from "./ProjectImage";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ProjectImage> = {
   title: "Components/ProjectImage",

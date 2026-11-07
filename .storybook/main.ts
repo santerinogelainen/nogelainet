@@ -2,7 +2,7 @@ import type { StorybookConfig } from "@storybook/react-webpack5";
 import path from "path";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-onboarding",
@@ -38,8 +38,26 @@ const config: StorybookConfig = {
     }
 
     config.module.rules.push({
+      test: /\.[jt]sx?$/,
+      include: [
+        path.resolve(__dirname, "../.cache"),
+        path.resolve(__dirname, "../node_modules/gatsby"),
+      ],
+      use: {
+        loader: require.resolve("babel-loader"),
+        options: {
+          presets: [require.resolve("@babel/preset-react")],
+        },
+      },
+    });
+
+    config.module.rules.push({
       test: /\.scss$/,
-      use: ["style-loader", "css-loader?url=false", "sass-loader"],
+      use: [
+        "style-loader",
+        "css-loader?url=false",
+        { loader: "sass-loader", options: { api: "modern" } },
+      ],
       include: path.resolve(__dirname, "../"),
     });
 

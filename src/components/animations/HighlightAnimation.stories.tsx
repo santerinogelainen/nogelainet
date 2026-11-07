@@ -1,5 +1,5 @@
 import HighlightAnimation from "./HighlightAnimation";
-import { Meta, StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof HighlightAnimation> = {
   title: "Animations/HighlightAnimation",
