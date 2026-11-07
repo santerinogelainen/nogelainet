@@ -62,12 +62,6 @@ const Page = () => {
           We used other libraries like vuetify, shadcn-vue, radix-vue and
           bootstrap as benchmarks when designing new components.
         </p>
-        <p>
-          Visit the documentation:{" "}
-          <a href="https://kt-vuecomponents.kehatieto.dev/" target="_blank">
-            kt-vuecomponents.kehatieto.dev
-          </a>
-        </p>
       </Language>
       <Language lang="fi">
         <p>

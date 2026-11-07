@@ -12,6 +12,8 @@ const AboutView: React.FC<AboutViewProps> = ({ onComplete }) => {
   const [visible, setVisible] = React.useState(false);
   const { i18n } = useTranslation();
 
+  const years = new Date().getFullYear() - 2018;
+
   useDidMountEffect(() => {
     if (!visible) {
       setVisible(true);
@@ -21,10 +23,10 @@ const AboutView: React.FC<AboutViewProps> = ({ onComplete }) => {
   const english = (
     <>
       <p>
-        With over <b>6 years of professional experience</b>, I bring a strong
-        foundation of expertise for software development. I have worked on a
-        diverse range of systems, including full-stack applications, APIs, and
-        system integrations. My work has involved handling large datasets,
+        With over <b>{years} years of professional experience</b>, I bring a
+        strong foundation of expertise for software development. I have worked
+        on a diverse range of systems, including full-stack applications, APIs,
+        and system integrations. My work has involved handling large datasets,
         migrating data from legacy systems to modern platforms, and transforming
         custom-built solutions into scalable, productized software offerings.
       </p>
